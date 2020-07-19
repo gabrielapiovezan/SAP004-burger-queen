@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from "react";
+import "./input.css";
 class Input extends React.Component {
   render() {
     return (
@@ -8,9 +8,10 @@ class Input extends React.Component {
         className={`input ${this.props.className} `}
         placeholder={this.props.placeholder}
         value={this.props.value}
-        onChange={this.props.onChange} />
+        onChange={this.props.onChange}
+      />
     );
   }
 }
 
-export default Input
+export default Input;

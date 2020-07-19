@@ -1,9 +1,9 @@
-import React from 'react';
-
+import React from "react";
+import "./button.css";
 class Button extends React.Component {
   render() {
     return (
-      <button className={this.props.value} onClick={() => alert('funciona')}>{this.props.value}</button>
+      <button onClick={() => alert("funciona")}>{this.props.value}</button>
     );
   }
 }
