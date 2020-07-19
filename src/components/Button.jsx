@@ -1,11 +1,11 @@
 import React from 'react';
 
-class Square extends React.Component {
+class Button extends React.Component {
   render() {
     return (
-      <input className="square" />
+      <button className={this.props.value} onClick={() => alert('funciona')}>{this.props.value}</button>
     );
   }
 }
 
-export default Square
+export default Button;

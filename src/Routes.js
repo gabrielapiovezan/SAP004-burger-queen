@@ -2,8 +2,7 @@ import React from 'react';
 import { isAuthenticated } from "./firebase/auth";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from './pages/Login/index';
-// import Home from './pages/Home';
-
+import Register from './pages/Register/index';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -25,6 +24,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const App = () => {
   return (
     <Switch>
+      <Route path="/register">
+        <Register />
+      </Route>
       <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
       <Route path="/">
         <Login />

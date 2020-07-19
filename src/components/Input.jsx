@@ -1,33 +1,16 @@
-import React from "react"
-// import "./input.css";
+import React from 'react';
 
-export default (props) => {
-  // const stats = {
-  //   backgroundColor: props.color,
-  //   borderColor: props.color,
-  // };
-  // <input type={props.type} placeholder={props.placeholder} />
-
-  <button className="square" onClick={() => alert('click')}>
-    {props.value}
-  </button>
-
+class Input extends React.Component {
+  render() {
+    return (
+      <input
+        type={this.props.type}
+        className={`input ${this.props.className} `}
+        placeholder={this.props.placeholder}
+        value={this.props.value}
+        onChange={this.props.onChange} />
+    );
+  }
 }
 
-
-// class ShoppingList extends React.Component {
-//   render() {
-//     return (
-//       <div className="shopping-list">
-//         <h1>Lista de compras para {this.props.name}</h1>
-//         <ul>
-//           <li>Instagram</li>
-//           <li>WhatsApp</li>
-//           <li>Oculus</li>
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
-// export default ShoppingList
+export default Input

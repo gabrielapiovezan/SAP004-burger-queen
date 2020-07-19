@@ -3,6 +3,7 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { Link } from 'react-router-dom';
 import logo from '../../img/logo1.png';
+import '../styles.css';
 
 // import firebase from '../../firebase/firebase';
 // const email = "ma@ma.com";
@@ -16,7 +17,11 @@ const App = () => {
   return (
     <div className="App">
       <img src={logo} alt='logo' />
-      <h2>Bem Vindo(a)!</h2>
+      <h2>Cadastro</h2>
+      <Input
+        type="text"
+        placeholder="Nome*"
+      />
       <Input
         type="text"
         placeholder="Email*"
@@ -25,9 +30,13 @@ const App = () => {
         type="text"
         placeholder='Senha*'
       />
+      <Input
+        type="text"
+        placeholder='Senha*'
+      />
       <Button value="Entrar"
       />
-      <span> Não possui uma conta? <Link to='/register'>Cadastre-se</Link></span>
+      <span>Possui Cadastro? <Link to='/login'>Login</Link></span>
     </div>
   );
 }
