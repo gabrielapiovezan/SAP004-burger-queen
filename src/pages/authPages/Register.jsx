@@ -16,13 +16,14 @@ const App = () => {
   return (
     <div className="templateAuth">
       <img className="img" src={logo} alt="logo" />
-      <h2>Bem Vindo(a)!</h2>
+      <h2>Cadastro</h2>
+      <Input type="text" placeholder="Nome*" />
       <Input type="text" placeholder="Email*" />
+      <Input type="text" placeholder="Senha*" />
       <Input type="text" placeholder="Senha*" />
       <Button value="Entrar" />
       <span>
-        {" "}
-        Não possui uma conta? <Link to="/register">Cadastre-se</Link>
+        Possui Cadastro? <Link to="/login">Login</Link>
       </span>
     </div>
   );

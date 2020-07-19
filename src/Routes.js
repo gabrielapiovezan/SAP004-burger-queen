@@ -1,13 +1,21 @@
-import React from 'react';
+import React from "react";
 import { isAuthenticated } from "./firebase/auth";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Login from './pages/Login/index';
-import Register from './pages/Register/index';
+import Login from "./pages/authPages/Login";
+import Register from "./pages/authPages/Register";
+// import Register from "./pages/Register/index";
+// import Login from "./pages/Login/index";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => isAuthenticated() ? (<Component {...props} />) : (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)}
+    render={(props) =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
+    }
   />
 );
 
@@ -19,7 +27,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 //     </Switch>
 //   </BrowserRouter>
 // );
-
 
 const App = () => {
   return (
@@ -33,6 +40,6 @@ const App = () => {
       </Route>
     </Switch>
   );
-}
+};
 
 export default App;
