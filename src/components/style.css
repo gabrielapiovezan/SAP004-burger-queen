@@ -7,13 +7,24 @@ button {
   border-radius: 50px;
   width: 100%;
   margin-top: 20px;
+  transition: border 20ms;
 }
 input {
   padding-left: 5%;
   width: 95%;
+  outline: none;
 }
-
+input:hover {
+  border: solid 3px #d97308;
+  width: 96%;
+}
+input:focus {
+  background-color: #1d1b1b;
+  width: 96%;
+}
 button:hover {
+  width: 101%;
+  cursor: pointer;
   background-color: #d97308;
-  border: #d97308;
+  border: solid 3px #d97308;
 }

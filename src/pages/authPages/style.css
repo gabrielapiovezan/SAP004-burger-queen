@@ -16,3 +16,6 @@
 button {
   margin-bottom: 20px;
 }
+.link:hover {
+  color: #d97308;
+}
