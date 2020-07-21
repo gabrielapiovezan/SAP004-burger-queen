@@ -47,10 +47,11 @@ const Register = () => {
           // onChange={(e) => setPassword(e.target.value)}
           type="text"
           placeholder="Nome*"
+          required
         />
-        <Input type="text" placeholder="Email*" />
-        <Input type="text" placeholder="Senha*" />
-        <Input type="text" placeholder="Senha*" />
+        <Input type="text" placeholder="Email*" required />
+        <Input type="password" placeholder="Senha*" />
+        <Input type="password" placeholder="Senha*" />
         <Button value="Entrar" />
         <span>
           <Link className="link" to="/login">

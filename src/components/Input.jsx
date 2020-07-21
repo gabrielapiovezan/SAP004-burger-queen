@@ -6,6 +6,7 @@ const Input = (props) => {
   return (
     <input
       {...props}
+
       // type={this.props.type}
       // className={`input ${this.props.className} `}
       // placeholder={this.props.placeholder}
