@@ -4,7 +4,7 @@ import "./style.css";
 class Button extends React.Component {
   render() {
     return (
-      <button onClick={() => alert("funciona")}>{this.props.value}</button>
+      <button onClick={this.props.onClick}>{this.props.value}</button>
     );
   }
 }
