@@ -1,17 +1,19 @@
 import React from "react";
 import "./style.css";
-class Input extends React.Component {
-  render() {
-    return (
-      <input
-        type={this.props.type}
-        className={`input ${this.props.className} `}
-        placeholder={this.props.placeholder}
-        value={this.props.value}
-        onChange={this.props.onChange}
-      />
-    );
-  }
-}
+// class Input extends React.Component {
+//   render() {
+const Input = (props) => {
+  return (
+    <input
+      {...props}
+
+      // type={this.props.type}
+      // className={`input ${this.props.className} `}
+      // placeholder={this.props.placeholder}
+      // value={this.props.value}
+      // onChange={this.props.onChange}
+    />
+  );
+};
 
 export default Input;

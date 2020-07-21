@@ -16,21 +16,37 @@ import "./style.css";
 const App = () => {
   const history = useHistory();
   const [error, setError] = useState("");
+  const [data, setData] = useState({ email: "", password: "" });
 
   const onClickLogin = () => {
-
     //chamar firebase com a resposta data.erro
+    console.log(data.email, data.password);
+    setError("auth/weak-password");
 
-    setError("auth/weak-password")
     //history.push("/register")
-  }
+  };
+  const onChangeEmail = (event) =>
+    setData({ ...data, email: event.target.value });
+
+  const onChangePassword = (event) =>
+    setData({ ...data, password: event.target.value });
 
   return (
     <div className="templateAuth">
       <img className="img" src={logo} alt="logo" />
       <h2>Bem Vindo(a)!</h2>
-      <Input type="text" placeholder="Email*" />
-      <Input type="text" placeholder="Senha*" />
+      <Input
+        type="email"
+        placeholder="Email*"
+        onChange={(e) => onChangeEmail(e)}
+        required
+      />
+      <Input
+        type="password"
+        placeholder="Senha*"
+        onChange={(e) => onChangePassword(e)}
+        required
+      />
       <ReturnError error={error} />
       <Button value="Entrar" onClick={onClickLogin} />
       <span>
