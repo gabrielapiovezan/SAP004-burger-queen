@@ -1,37 +1,26 @@
-// import React from "react";
+import React from "react";
 
-// const error = (errorCode) => {
-//   errorCode === "auth/email-already-exists" ||
-//   errorCode === "auth/email-already-in-use"
-//     ? (errorCode = "O e-mail fornecido já está em uso por outro usuário. ")
-//     : errorCode === "auth/invalid-email"
-//     ? (errorCode = "E-mail inválido. Favor inserir um e-mail válido.")
-//     : errorCode === "auth/wrong-password"
-//     ? (errorCode = "A senha atual está incorreta.")
-//     : errorCode === "auth/user-not-found"
-//     ? (errorCode = "Usuário não encontrado.")
-//     : errorCode === "auth/weak-password"
-//     ? (errorCode = "A senha deve ter mais de seis caracteres.")
-//     : "";
-//   return errorCode;
-// };
+const ReturnError = (props) => {
 
-// const status = {
-//   err: error(this.prompt.error),
-// };
-// console.log(status);
-// // const ReturnError = (props) => {
-// //   return <div>{props.error}</div>;
-// // };
-// // export default ReturnError;
+  const errorAuth = (errorCode) => {
+    switch (errorCode) {
+      case "auth/email-already-exists":
+      case "auth/email-already-in-use":
+        return "O e-mail fornecido já está em uso por outro usuário. ";
+      case "auth/invalid-email":
+        return "E-mail inválido. Favor inserir um e-mail válido.";
+      case "auth/wrong-password":
+        return "A senha atual está incorreta.";
+      case "auth/user-not-found":
+        return "Usuário não encontrado."
+      case "auth/weak-password":
+        return "A senha deve ter mais de seis caracteres."
+      default:
+        return ""
+    }
+  };
 
-// class ReturnError extends React.Component {
-//   render() {
-//     return (
-//       <div></div>
-//       // <button onClick={() => alert("funciona")}>{this.props.value}</button>
-//     );
-//   }
-// }
+  return <div>{errorAuth(props.error)}</div>;
+};
+export default ReturnError;
 
-// export default ReturnError;
