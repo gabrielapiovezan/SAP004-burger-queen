@@ -1,5 +1,6 @@
 input,
 button {
+  outline: none;
   border: solid 2px #eeeeee;
   color: #eeeeee;
   background-color: transparent;
