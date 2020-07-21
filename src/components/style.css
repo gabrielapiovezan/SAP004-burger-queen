@@ -4,9 +4,11 @@ button {
   border: solid 2px #eeeeee;
   color: #eeeeee;
   background-color: transparent;
-  height: 50px;
+  height: 45px;
   border-radius: 50px;
   width: 100%;
+  max-width: 400px;
+  min-width: 250px;
   margin-top: 20px;
   transition: border 20ms;
 }
@@ -14,7 +16,10 @@ input {
   padding-left: 5%;
   width: 95%;
   outline: none;
+  max-width: 370px;
+  min-width: 237.5px;
 }
+
 input:hover {
   border: solid 3px #d97308;
   width: 96%;

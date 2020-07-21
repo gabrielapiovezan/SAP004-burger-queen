@@ -16,27 +16,27 @@ import "./style.css";
 const App = () => {
   const history = useHistory();
   const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({ email: "", password: "" });
+
   const onClickLogin = () => {
     //chamar firebase com a resposta data.erro
-    console.log(email, password);
+    console.log(data.email, data.password);
     setError("auth/weak-password");
+
     //history.push("/register")
   };
-  const onChangeEmail = (event) => {
-    setEmail(event.target.value);
-  };
-  const onChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
+  const onChangeEmail = (event) =>
+    setData({ ...data, email: event.target.value });
+
+  const onChangePassword = (event) =>
+    setData({ ...data, password: event.target.value });
 
   return (
     <div className="templateAuth">
       <img className="img" src={logo} alt="logo" />
       <h2>Bem Vindo(a)!</h2>
       <Input
-        type="text"
+        type="email"
         placeholder="Email*"
         onChange={(e) => onChangeEmail(e)}
         required
