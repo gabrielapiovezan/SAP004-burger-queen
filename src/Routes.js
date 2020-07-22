@@ -1,6 +1,6 @@
 import React from "react";
-import { isAuthenticated } from "./firebase/auth";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { isAuthenticated } from "./firebase/authService";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 // import Register from "./pages/Register/index";
@@ -13,8 +13,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
     }
   />
 );

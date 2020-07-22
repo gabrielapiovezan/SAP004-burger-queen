@@ -19,3 +19,13 @@ button {
 .link:hover {
   color: #d97308;
 }
+
+.sector{
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin: 15px 55px;
+  padding: 5px;
+  background-color: #eeeeee;
+  color: #272626;
+} 
