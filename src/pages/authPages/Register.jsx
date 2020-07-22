@@ -49,10 +49,23 @@ const Register = () => {
           placeholder="Nome*"
           required
         />
-        <Input type="text" placeholder="Email*" required />
-        <Input type="password" placeholder="Senha*" />
-        <Input type="password" placeholder="Senha*" />
-        <Button value="Entrar" />
+        <Input
+          className="input input-auth"
+          type="text"
+          placeholder="Email*"
+          required
+        />
+        <Input
+          className="input input-auth"
+          type="password"
+          placeholder="Senha*"
+        />
+        <Input
+          className="input input-auth"
+          type="password"
+          placeholder="Senha*"
+        />
+        <Button className="button button-auth" value="Entrar" />
         <span>
           <Link className="link" to="/login">
             Login

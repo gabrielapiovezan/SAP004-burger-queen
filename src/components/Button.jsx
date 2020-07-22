@@ -5,7 +5,9 @@ import "./style.css";
 //   render() {
 const Button = (props) => {
   return (
-    <button {...props}>{props.value}</button> //onClick={this.props.onClick}>{this.props.value}
+    <button className="button" {...props}>
+      {props.value}
+    </button> //onClick={this.props.onClick}>{this.props.value}
   );
 };
 //}

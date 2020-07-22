@@ -1,0 +1,16 @@
+.hall {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img {
+  width: 220px;
+  height: 254px;
+}
+.data {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

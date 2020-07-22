@@ -1,0 +1,31 @@
+.input-button-selector::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.input-button-selector {
+  font-size: 15px;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.input-button-selector,
+.button-change {
+  text-align: center;
+  outline: none;
+  border: none;
+  color: #434242;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+}
+
+.button-selector {
+  background-color: #eeeeee;
+  border-radius: 2px;
+  width: 75px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+}
+.button-change:hover {
+  cursor: pointer;
+}

@@ -1,5 +1,5 @@
-input,
-button {
+.input,
+.button {
   outline: none;
   border: solid 2px #eeeeee;
   color: #eeeeee;
@@ -7,31 +7,42 @@ button {
   height: 45px;
   border-radius: 50px;
   width: 100%;
-  max-width: 400px;
-  min-width: 250px;
+  /* max-width: 400px;
+  min-width: 250px; */
   margin-top: 20px;
   transition: border 20ms;
 }
-input {
+.input {
   padding-left: 5%;
   width: 95%;
   outline: none;
-  max-width: 370px;
-  min-width: 237.5px;
 }
 
-input:hover {
+.input:hover {
   border: solid 3px #d97308;
   width: 96%;
 }
-input:focus {
+.input:focus {
   background-color: #1d1b1b;
   border: solid 3px #d97308;
   width: 96%;
 }
-button:hover {
+.button:hover {
   width: 101%;
   cursor: pointer;
   background-color: #d97308;
   border: solid 3px #d97308;
+}
+.button-auth,
+.input-auth {
+  max-width: 370px;
+  min-width: 237.5px;
+}
+.name-input {
+  width: 100px;
+  background-color: blue;
+}
+.table-input {
+  width: 10px;
+  background-color: burlywood;
 }
