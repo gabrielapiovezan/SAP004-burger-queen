@@ -40,7 +40,6 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [type, setType] = useState("");
 
-
   const onClickRegister = async () => {
     if (password !== confirmPassword) {
       alert("email e senhao não sao iguis")
@@ -63,14 +62,12 @@ const Register = () => {
       <Input type="text" placeholder="Email*" onChange={(e) => setEmail(e.target.value)} required />
       <Input type="password" placeholder="Senha*" onChange={(e) => setPassword(e.target.value)} required />
       <Input type="password" placeholder="Confirmar Senha*" onChange={(e) => setConfirmPassword(e.target.value)} required />
-      <span className="sector" onChange={(e) => setType(e.target.value)} >
-        <img src="https://img.icons8.com/ios/30/000000/chef-hat.png" />
-        <img src="https://img.icons8.com/ios-filled/30/000000/chef-hat.png" />
+      <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("kitchen")} >
+        <img src={type === "kitchen" ? "https://img.icons8.com/ios-filled/30/000000/chef-hat.png" : "https://img.icons8.com/ios/30/000000/chef-hat.png"} />
         Cozinha
       </span>
-      <span className="sector" onChange={(e) => setType(e.target.value)} >
-        <img src="https://img.icons8.com/ios/30/000500/waiter.png" />
-        <img src="https://img.icons8.com/ios-filled/30/000000/waiter.png" />
+      <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("service")}  >
+        <img src={type === "service" ? "https://img.icons8.com/ios-filled/30/000000/waiter.png" : "https://img.icons8.com/ios/30/000500/waiter.png"} />
         Salão
       </span>
       <Button value="Entrar" onClick={onClickRegister} />
