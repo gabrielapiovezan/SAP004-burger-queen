@@ -44,6 +44,7 @@ const Register = () => {
         <img className="img" src={logo} alt="logo" />
         <h2>Cadastro</h2>
         <Input
+          className="input input-auth"
           // onChange={(e) => setPassword(e.target.value)}
           type="text"
           placeholder="Nome*"
@@ -67,6 +68,7 @@ const Register = () => {
         />
         <Button className="button button-auth" value="Entrar" />
         <span>
+          Possui Cadastro?{" "}
           <Link className="link" to="/login">
             Login
           </Link>

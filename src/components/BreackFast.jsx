@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonSelector from "./ButtonSelector";
+import "./breackfast.css";
 
 const breackfast = [
   { id: 1, item: "Café americano", valor: 5.0 },
@@ -23,7 +24,7 @@ const Breackfast = () => {
 
   return (
     <div>
-      <table className="table">
+      <table className="table" className="table">
         <thead>
           <th>Item</th>
           <th>valor</th>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import ButtonSelector from "../components/ButtonSelector";
 // import Table from "../components/Table";
 import Breackfast from "../components/BreackFast";
+import Dinner from "../components/Dinner";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
 import "./hall.css";
@@ -34,6 +35,7 @@ const Hall = () => {
         </button>
       </div>
       <Breackfast />
+      <Dinner />
     </div>
   );
 };
