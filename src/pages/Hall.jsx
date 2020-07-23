@@ -11,15 +11,17 @@ const Hall = () => {
     <div className="hall">
       <div className="data">
         <img className="img" src={logo} alt="logo" />
-        <span>
-          <Input type="text" placeholder="Nome" className="button name-input" />
-          <h1>MESA</h1>
-          <Input
-            type="text"
-            placeholder="Mesa"
-            className="button table-input"
-          />
-        </span>
+        <div className="box-data">
+          <Input type="text" placeholder="Nome" className="input name-input" />
+          <div className="data-table">
+            <h1 className="text">MESA</h1>
+            <Input
+              type="number"
+              placeholder="Mesa"
+              className="input table-input"
+            />
+          </div>
+        </div>
       </div>
       <Table products={Breackfast} />
     </div>

@@ -18,7 +18,7 @@ const Table = (props) => {
 
   return (
     <div>
-      <table>
+      <table className="table">
         <thead>
           <th>Item</th>
           <th>valor</th>

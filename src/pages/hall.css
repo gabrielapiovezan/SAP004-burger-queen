@@ -3,14 +3,28 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 30px;
 }
 
 .img {
-  width: 220px;
-  height: 254px;
+  width: 30%;
+  /* height: 254px; */
 }
 .data {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
+.data-table {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.text {
+  font-size: 25px;
+  color: #d97308;
+}
+/* .box-data {
+  height: 150px;
+} */
