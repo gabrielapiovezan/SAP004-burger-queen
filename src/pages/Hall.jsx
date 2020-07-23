@@ -19,7 +19,7 @@ const Hall = () => {
           <div className="data-table">
             <h1 className="text">MESA</h1>
             <Input
-              type="number"
+              // type="number"
               placeholder="Mesa"
               className="input table-input"
             />
