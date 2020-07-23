@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonSelector from "./ButtonSelector";
+import "./menu.css";
 
 const accompaniment = [
   { id: 1, item: "Batata frita", valor: 5.0 },
@@ -23,9 +24,13 @@ const Dinner = (props) => {
     return products.map((product) => {
       return (
         <tr>
-          <td>{product.item}</td>
+          <td colSpan="2">{product.item}</td>
           <td>{product.valor}</td>
-          <td>{<ButtonSelector />}</td>
+          <td>
+            {
+              <ButtonSelector className="button-selecto button-selector-dinner" />
+            }
+          </td>
         </tr>
       );
     });
@@ -33,23 +38,26 @@ const Dinner = (props) => {
 
   return (
     <div>
-      <table>
+      <table className="table-dinner">
         <thead>
           <th>Item</th>
           <th>HAMBÚRGUERES</th>
           <th>valor</th>
+          <th></th>
         </thead>
         <tbody>{creatTable(burguers)}</tbody>
         <thead>
           <th>Item</th>
           <th>ACOMPANHAMENTOS</th>
           <th>valor</th>
+          <th></th>
         </thead>
         <tbody>{creatTable(accompaniment)}</tbody>
         <thead>
           <th>Item</th>
           <th>Bebidas</th>
           <th>valor</th>
+          <th></th>
         </thead>
         <tbody>{creatTable(drinks)}</tbody>
         {/* <th>produto</th>

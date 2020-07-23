@@ -32,6 +32,7 @@
 } */
 .breack-fast,
 .dinner {
+  outline: none;
   width: 115px;
   height: 35px;
   margin: 0;

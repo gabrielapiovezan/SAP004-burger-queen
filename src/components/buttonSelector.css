@@ -9,23 +9,42 @@
 
 .input-button-selector,
 .button-change {
+  margin: 0;
   text-align: center;
   outline: none;
   border: none;
-  color: #434242;
   width: 25px;
   height: 25px;
   background-color: transparent;
+  /* color: #272626; */
 }
 
 .button-selector {
-  background-color: #eeeeee;
   border-radius: 2px;
   width: 75px;
-  height: 25px;
   display: flex;
   justify-content: center;
 }
 .button-change:hover {
   cursor: pointer;
+}
+
+.button-selector-breackfast {
+  border-radius: 3px;
+  width: 75px;
+  border: solid 1px #434242;
+}
+.button-selector-breackfast > button,
+input {
+  color: #272626;
+}
+.button-selector-dinner {
+  color: #eeeeee;
+  border-radius: 3px;
+  width: 75px;
+  border: solid 1px #eeeeee;
+}
+.button-selector-dinner > button,
+input {
+  color: #eeeeee;
 }

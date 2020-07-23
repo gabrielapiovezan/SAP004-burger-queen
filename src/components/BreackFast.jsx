@@ -1,6 +1,6 @@
 import React from "react";
 import ButtonSelector from "./ButtonSelector";
-import "./breackfast.css";
+import "./menu.css";
 
 const breackfast = [
   { id: 1, item: "Café americano", valor: 5.0 },
@@ -15,8 +15,12 @@ const Breackfast = () => {
       return (
         <tr>
           <td>{product.item}</td>
-          <td>{product.valor}</td>
-          <td>{<ButtonSelector />}</td>
+          <td align="center">{product.valor}</td>
+          <td align="center">
+            {
+              <ButtonSelector className="button-selecto button-selector-breackfast" />
+            }
+          </td>
         </tr>
       );
     });
@@ -24,10 +28,11 @@ const Breackfast = () => {
 
   return (
     <div>
-      <table className="table" className="table">
+      <table className="table-breackfast">
         <thead>
           <th>Item</th>
           <th>valor</th>
+          <th className="item-center"></th>
         </thead>
         <tbody>
           {creatTable()}
