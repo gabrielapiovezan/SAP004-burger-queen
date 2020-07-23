@@ -1,30 +1,26 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import { authLoginEmail } from "../../firebase/authService.js"
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../img/logo1.png";
 import ReturnError from "./authError";
 import "./style.css";
-
-// import firebase from '../../firebase/firebase';
-// const email = "ma@ma.com";
-// const password = "123456";
-// firebase
-//   .auth()
-//   .createUserWithEmailAndPassword(email, password);
 
 const App = () => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [data, setData] = useState({ email: "", password: "" });
 
-  const onClickLogin = () => {
-    //chamar firebase com a resposta data.erro
-    console.log(data.email, data.password);
-    setError("auth/weak-password");
-
-    //history.push("/register")
+  const onClickLogin = async () => {
+    try {
+      const response = await authLoginEmail(data.email, data.password);
+      //history.push("/register")
+    } catch (error) {
+      setError(error.code);
+    }
   };
+
   const onChangeEmail = (event) =>
     setData({ ...data, email: event.target.value });
 

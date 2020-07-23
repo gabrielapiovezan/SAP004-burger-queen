@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { authRegister } from "../../firebase/authService";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import { Link } from "react-router-dom";
 import logo from "../../img/logo1.png";
 import "./style.css";
 
@@ -31,51 +32,55 @@ import "./style.css";
 //   .createUserWithEmailAndPassword(email, password);
 
 const Register = () => {
-  {
-    //  const [email] = useState("");
+  const history = useHistory();
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [type, setType] = useState("");
 
-    //  const [password, setPassword] = useState("");
-    // const onClickLogin = () => {
-    //   console.log(password);
-    // };
+  const onClickRegister = async () => {
+    if (password !== confirmPassword) {
+      alert("email e senhao não sao iguis")
+    }
+    else {
+      try {
+        const response = await authRegister({ name, email, password, type });
+        console.log(response)
+      } catch (error) {
+        setError(error.code);
+      }
+    }
+  };
 
-    return (
-      <div className="templateAuth">
-        <img className="img" src={logo} alt="logo" />
-        <h2>Cadastro</h2>
-        <Input
-          className="input input-auth"
-          // onChange={(e) => setPassword(e.target.value)}
-          type="text"
-          placeholder="Nome*"
-          required
-        />
-        <Input
-          className="input input-auth"
-          type="text"
-          placeholder="Email*"
-          required
-        />
-        <Input
-          className="input input-auth"
-          type="password"
-          placeholder="Senha*"
-        />
-        <Input
-          className="input input-auth"
-          type="password"
-          placeholder="Senha*"
-        />
-        <Button className="button button-auth" value="Entrar" />
-        <span>
+
+  return (
+    <div className="templateAuth">
+      <img className="img" src={logo} alt="logo" />
+      <h2>Cadastro</h2>
+      <Input type="text" placeholder="Nome*" onChange={(e) => setName(e.target.value)} required />
+      <Input type="text" placeholder="Email*" onChange={(e) => setEmail(e.target.value)} required />
+      <Input type="password" placeholder="Senha*" onChange={(e) => setPassword(e.target.value)} required />
+      <Input type="password" placeholder="Confirmar Senha*" onChange={(e) => setConfirmPassword(e.target.value)} required />
+      <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("kitchen")} >
+        <img src={type === "kitchen" ? "https://img.icons8.com/ios-filled/30/000000/chef-hat.png" : "https://img.icons8.com/ios/30/000000/chef-hat.png"} />
+        Cozinha
+      </span>
+      <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("service")}  >
+        <img src={type === "service" ? "https://img.icons8.com/ios-filled/30/000000/waiter.png" : "https://img.icons8.com/ios/30/000500/waiter.png"} />
+        Salão
+      </span>
+      <Button value="Entrar" onClick={onClickRegister} />
+      <span>
           Possui Cadastro?{" "}
           <Link className="link" to="/login">
             Login
+
           </Link>
-        </span>
-      </div>
-    );
-  }
+      </span>
+    </div>
+  );
 };
 
 export default Register;
