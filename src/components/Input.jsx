@@ -5,6 +5,7 @@ import "./style.css";
 const Input = (props) => {
   return (
     <input
+      className="input"
       {...props}
 
       // type={this.props.type}

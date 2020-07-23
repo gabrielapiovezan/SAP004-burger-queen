@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { isAuthenticated } from "./firebase/authService";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
+import Hall from "./pages/Hall";
 // import Register from "./pages/Register/index";
 // import Login from "./pages/Login/index";
 
@@ -31,6 +32,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const App = () => {
   return (
     <Switch>
+      <Route path="/hall">
+        <Hall />
+      </Route>
       <Route path="/register">
         <Register />
       </Route>

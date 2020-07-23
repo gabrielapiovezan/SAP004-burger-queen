@@ -54,6 +54,7 @@ const Register = () => {
     }
   };
 
+
   return (
     <div className="templateAuth">
       <img className="img" src={logo} alt="logo" />
@@ -72,8 +73,10 @@ const Register = () => {
       </span>
       <Button value="Entrar" onClick={onClickRegister} />
       <span>
-        <Link className="link" to="/login">
-          Login
+          Possui Cadastro?{" "}
+          <Link className="link" to="/login">
+            Login
+
           </Link>
       </span>
     </div>

@@ -32,19 +32,25 @@ const App = () => {
       <img className="img" src={logo} alt="logo" />
       <h2>Bem Vindo(a)!</h2>
       <Input
+        className="input input-auth"
         type="email"
         placeholder="Email*"
         onChange={(e) => onChangeEmail(e)}
         required
       />
       <Input
+        className="input input-auth"
         type="password"
         placeholder="Senha*"
         onChange={(e) => onChangePassword(e)}
         required
       />
       <ReturnError error={error} />
-      <Button value="Entrar" onClick={onClickLogin} />
+      <Button
+        className="button button-auth"
+        value="Entrar"
+        onClick={onClickLogin}
+      />
       <span>
         Não possui uma conta?{" "}
         <Link className="link" to="/register">

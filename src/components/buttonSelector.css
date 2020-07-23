@@ -1,0 +1,50 @@
+.input-button-selector::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.input-button-selector {
+  font-size: 15px;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.input-button-selector,
+.button-change {
+  margin: 0;
+  text-align: center;
+  outline: none;
+  border: none;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  /* color: #272626; */
+}
+
+.button-selector {
+  border-radius: 2px;
+  width: 75px;
+  display: flex;
+  justify-content: center;
+}
+.button-change:hover {
+  cursor: pointer;
+}
+
+.button-selector-breackfast {
+  border-radius: 3px;
+  width: 75px;
+  border: solid 1px #434242;
+}
+.button-selector-breackfast > button,
+input {
+  color: #272626;
+}
+.button-selector-dinner {
+  color: #eeeeee;
+  border-radius: 3px;
+  width: 75px;
+  border: solid 1px #eeeeee;
+}
+.button-selector-dinner > button,
+input {
+  color: #eeeeee;
+}

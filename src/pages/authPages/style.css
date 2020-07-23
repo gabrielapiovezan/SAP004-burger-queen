@@ -5,16 +5,17 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  color: #eeeeee;
 }
 
 .img {
-  width: 188px;
-  height: auto;
-  height: auto;
+  width: 250px;
 }
-
 button {
   margin-bottom: 20px;
+}
+.link {
+  color: #eeeeee;
 }
 .link:hover {
   color: #d97308;
