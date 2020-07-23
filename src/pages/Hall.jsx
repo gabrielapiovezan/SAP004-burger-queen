@@ -13,7 +13,7 @@ const Hall = () => {
   return (
     <div className="hall">
       <div className="data">
-        <img className="img" src={logo} alt="logo" />
+        <img className="img-hall" src={logo} alt="logo" />
         <div className="box-data">
           <Input type="text" placeholder="Nome" className="input name-input" />
           <div className="data-table">

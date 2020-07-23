@@ -9,10 +9,9 @@
 }
 
 .img {
-  width: 188px;
-  /* height: auto; */
+  width: 50%;
+  min-width: 200px;
 }
-
 button {
   margin-bottom: 20px;
 }
