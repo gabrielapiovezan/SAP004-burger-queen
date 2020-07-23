@@ -23,6 +23,10 @@ const Hall = () => {
           </div>
         </div>
       </div>
+      <div className="buttons-menu">
+        <button className="breack-fast">Café da manha</button>
+        <button className="dinner">Almoço e jantar</button>
+      </div>
       <Table products={Breackfast} />
     </div>
   );

@@ -1,6 +1,10 @@
-/* th {
-  font-size: 10px;
+th {
+  width: 200px;
 }
 td {
-  font-size: 10px;
-} */
+  width: 100%;
+}
+.table {
+  width: 100%;
+  background-color: burlywood;
+}
