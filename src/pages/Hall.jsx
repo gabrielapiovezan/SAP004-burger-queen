@@ -1,12 +1,14 @@
-import React from "react";
-import ButtonSelector from "../components/ButtonSelector";
-import Table from "../components/Table";
+import React, { useState } from "react";
+// import ButtonSelector from "../components/ButtonSelector";
+// import Table from "../components/Table";
 import Breackfast from "../components/BreackFast";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
 import "./hall.css";
 
 const Hall = () => {
+  const [menu, setMenu] = useState(0);
+
   return (
     <div className="hall">
       <div className="data">
@@ -24,10 +26,14 @@ const Hall = () => {
         </div>
       </div>
       <div className="buttons-menu">
-        <button className="breack-fast">Café da manha</button>
-        <button className="dinner">Almoço e jantar</button>
+        <button className="breack-fast" onClick={() => setMenu(0)}>
+          Café da manha
+        </button>
+        <button className="dinner" onClick={() => setMenu(1)}>
+          Almoço e jantar
+        </button>
       </div>
-      <Table products={Breackfast} />
+      <Breackfast />
     </div>
   );
 };
