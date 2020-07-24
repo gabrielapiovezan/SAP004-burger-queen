@@ -5,6 +5,7 @@ import Breackfast from "../components/BreackFast";
 import Dinner from "../components/Dinner";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
+import Total from "../components/Total";
 import "./hall.css";
 
 const Hall = () => {
@@ -36,6 +37,7 @@ const Hall = () => {
       </div>
       <Breackfast />
       <Dinner />
+      <Total />
     </div>
   );
 };

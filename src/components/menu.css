@@ -11,15 +11,21 @@ table {
   color: #eeeeee;
   background-color: #272626;
 }
+.table-total {
+  margin-top: 20px;
+  border-radius: 5px;
+  color: #eeeeee;
+  background-color: transparent;
+  border: solid 2px #eeeeee;
+}
 /* tr {
   color: #272626;
 } */
 th {
   color: #d97308;
 }
-td,
-th {
-  padding: 3px;
+td {
+  padding: 4px;
 }
 .menu-type {
   width: 40%;
@@ -29,4 +35,9 @@ th {
 }
 .menu-item {
   width: 30%;
+}
+.resume {
+  padding: 2px;
+  height: 0.7px;
+  border-bottom: 0.5px solid #eeeeee44;
 }
