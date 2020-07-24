@@ -17,3 +17,16 @@ table {
 th {
   color: #d97308;
 }
+td,
+th {
+  padding: 3px;
+}
+.menu-type {
+  width: 40%;
+}
+.menu-value {
+  width: 30%;
+}
+.menu-item {
+  width: 30%;
+}

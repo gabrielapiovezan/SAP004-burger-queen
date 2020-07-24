@@ -23,9 +23,9 @@ const Dinner = (props) => {
   const creatTable = (products) => {
     return products.map((product) => {
       return (
-        <tr>
+        <tr column-width="100px">
           <td colSpan="2">{product.item}</td>
-          <td>{product.valor}</td>
+          <td align="center">{product.valor}</td>
           <td>
             {
               <ButtonSelector className="button-selecto button-selector-dinner" />
@@ -40,23 +40,25 @@ const Dinner = (props) => {
     <div>
       <table className="table-dinner">
         <thead>
-          <th>Item</th>
-          <th>HAMBÚRGUERES</th>
-          <th>valor</th>
+          <th align="start" className="menu-item">
+            Item
+          </th>
+          <th className="menu-type">HAMBÚRGUERES</th>
+          <th className="menu-value">valor</th>
           <th></th>
         </thead>
         <tbody>{creatTable(burguers)}</tbody>
         <thead>
-          <th>Item</th>
-          <th>ACOMPANHAMENTOS</th>
-          <th>valor</th>
+          <th align="start">Item</th>
+          <th className="menu-type">ACOMPANHAMENTOS</th>
+          <th className="menu-value">valor</th>
           <th></th>
         </thead>
         <tbody>{creatTable(accompaniment)}</tbody>
         <thead>
-          <th>Item</th>
-          <th>Bebidas</th>
-          <th>valor</th>
+          <th align="start">Item</th>
+          <th className="menu-type">Bebidas</th>
+          <th className="menu-value">valor</th>
           <th></th>
         </thead>
         <tbody>{creatTable(drinks)}</tbody>

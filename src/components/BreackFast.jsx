@@ -14,7 +14,7 @@ const Breackfast = () => {
     return breackfast.map((product) => {
       return (
         <tr>
-          <td>{product.item}</td>
+          <td colSpan="2">{product.item}</td>
           <td align="center">{product.valor}</td>
           <td align="center">
             {
@@ -30,9 +30,12 @@ const Breackfast = () => {
     <div>
       <table className="table-breackfast">
         <thead>
-          <th>Item</th>
-          <th>valor</th>
-          <th className="item-center"></th>
+          <th align="start" className="menu-item">
+            Item
+          </th>
+          <th className="menu-type">Café da manha</th>
+          <th className="menu-value">valor</th>
+          <th></th>
         </thead>
         <tbody>
           {creatTable()}
