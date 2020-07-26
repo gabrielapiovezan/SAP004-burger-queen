@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import ButtonSelector from "./ButtonSelector";
 import "./menu.css";
 
 const Table = (props) => {
+  const verifica = (value) => {
+    console.log(value);
+  };
+
   const creatProduct = (product) => {
     return (
       <tr key={product.item}>
         <td colSpan="2">{product.item}</td>
         <td align="center">{product.valor}</td>
         <td align="center">
-          {<ButtonSelector className={"button-selecto " + props.selector} />}
+          <ButtonSelector
+            className={props.selector}
+            product={product.item}
+            menu={props.menu}
+            func={verifica}
+          />
         </td>
       </tr>
     );

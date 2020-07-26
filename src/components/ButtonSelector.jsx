@@ -3,16 +3,31 @@ import "./buttonSelector.css";
 
 const ButtonSelector = (props) => {
   const [value, setValue] = useState(0);
+  const [total, setTotal] = useState([]);
 
-  const less = () => setValue(value > 1 ? value - 1 : 0);
-  const more = () => setValue(value < 20 ? value + 1 : 20);
+  const onChangeValue = () => {
+    setTotal({});
+  };
 
+  const less = () => {
+    setValue(value > 1 ? value - 1 : 0);
+    onChangeValue();
+  };
+  const more = () => {
+    setValue(value < 20 ? value + 1 : 20);
+    onChangeValue();
+  };
   return (
-    <div className="button-selector" {...props}>
+    <div className={"button-selector " + props.className}>
       <button onClick={less} className="button-change">
         -
       </button>
-      <input className="input-button-selector" type="number" value={value} />
+      <input
+        className="input-button-selector"
+        type="number"
+        value={value}
+        onChange={(e) => onChangeValue(e)}
+      />
       <button onClick={more} className="button-change">
         +
       </button>
