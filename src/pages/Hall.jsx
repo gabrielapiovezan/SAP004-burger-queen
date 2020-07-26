@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 // import ButtonSelector from "../components/ButtonSelector";
-// import Table from "../components/Table";
 import Breackfast from "../components/BreackFast";
 import Dinner from "../components/Dinner";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
 import Total from "../components/Total";
+import Table from "../components/Table";
+import MenuBreackfast from "../components/MenuBreackfast";
+import MenuDinner from "../components/MenuDinner";
 import "./hall.css";
 
 const Hall = () => {
-  const [menu, setMenu] = useState(0);
+  const [menu, setMenu] = useState(false);
 
   return (
     <div className="hall">
@@ -28,16 +30,31 @@ const Hall = () => {
         </div>
       </div>
       <div className="buttons-menu">
-        <button className="breack-fast" onClick={() => setMenu(0)}>
+        <button className="breack-fast" onClick={() => setMenu(false)}>
           Café da manha
         </button>
-        <button className="dinner" onClick={() => setMenu(1)}>
+        <button className="dinner" onClick={() => setMenu(true)}>
           Almoço e jantar
         </button>
       </div>
-      <Breackfast />
+      {/* <Breackfast />
       <Dinner />
-      <Total />
+      <Total /> */}
+      <Table
+        className="table-breackfast"
+        menu={MenuBreackfast}
+        selector="button-selector-breackfast"
+      />
+      <Table
+        className="table-dinner"
+        menu={MenuDinner}
+        selector="button-selector-dinner"
+      />
+      <Table
+        className="table-total"
+        menu={MenuBreackfast}
+        selector="button-selector-dinner"
+      />
     </div>
   );
 };
