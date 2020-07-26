@@ -5,7 +5,7 @@ import "./menu.css";
 const Table = (props) => {
   const creatProduct = (product) => {
     return (
-      <tr>
+      <tr key={product.item}>
         <td colSpan="2">{product.item}</td>
         <td align="center">{product.valor}</td>
         <td align="center">
@@ -17,7 +17,7 @@ const Table = (props) => {
 
   const creatCategory = (category) => {
     return (
-      <tr>
+      <tr key={category}>
         <th align="start" className="menu-item">
           Item
         </th>

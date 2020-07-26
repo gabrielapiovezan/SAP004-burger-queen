@@ -54,3 +54,6 @@
   flex-direction: row;
   justify-content: flex-end;
 }
+.button-menu:hover {
+  cursor: pointer;
+}

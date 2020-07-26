@@ -26,24 +26,29 @@ const Hall = () => {
         </div>
       </div>
       <div className="buttons-menu">
-        <button className="breack-fast" onClick={() => setMenu(false)}>
+        <button
+          className="button-menu breack-fast"
+          onClick={() => setMenu(true)}
+        >
           Café da manha
         </button>
-        <button className="dinner" onClick={() => setMenu(true)}>
+        <button className="button-menu dinner" onClick={() => setMenu(false)}>
           Almoço e jantar
         </button>
       </div>
-
-      <Table
-        className="table-breackfast"
-        menu={MenuBreackfast}
-        selector="button-selector-breackfast"
-      />
-      <Table
-        className="table-dinner"
-        menu={MenuDinner}
-        selector="button-selector-dinner"
-      />
+      {menu ? (
+        <Table
+          className="table-breackfast"
+          menu={MenuBreackfast}
+          selector="button-selector-breackfast"
+        />
+      ) : (
+        <Table
+          className="table-dinner"
+          menu={MenuDinner}
+          selector="button-selector-dinner"
+        />
+      )}
       <Table
         className="table-total"
         menu={MenuBreackfast}
