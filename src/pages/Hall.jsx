@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-// import ButtonSelector from "../components/ButtonSelector";
-import Breackfast from "../components/BreackFast";
-import Dinner from "../components/Dinner";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
-import Total from "../components/Total";
 import Table from "../components/Table";
 import MenuBreackfast from "../components/MenuBreackfast";
 import MenuDinner from "../components/MenuDinner";
@@ -37,9 +33,7 @@ const Hall = () => {
           Almoço e jantar
         </button>
       </div>
-      {/* <Breackfast />
-      <Dinner />
-      <Total /> */}
+
       <Table
         className="table-breackfast"
         menu={MenuBreackfast}

@@ -2,18 +2,6 @@ import React from "react";
 import ButtonSelector from "./ButtonSelector";
 import "./menu.css";
 
-const breackfast = [
-  { id: "c1", category: "Café da Manha", item: "Café americano", valor: 5.0 },
-  { id: "c2", category: "Café da Manha", item: "Café com leite ", valor: 7.0 },
-  { id: "c3", category: "Café da Manha", item: "Misto Quente", valor: 10.0 },
-  {
-    id: "c4",
-    category: "Café da Manha",
-    item: "Suco de fruta natural",
-    valor: 7.0,
-  },
-];
-
 const Table = (props) => {
   const creatProduct = (product) => {
     return (
@@ -53,9 +41,18 @@ const Table = (props) => {
     return rows;
   };
 
+  const resume = () => {
+    return (
+      <tr>
+        <td colSpan="4" className="resume"></td>
+      </tr>
+    );
+  };
+
   return (
     <table className={props.className}>
       <tbody>{creatTable()}</tbody>
+      {props.className === "table-total" && resume()}
     </table>
   );
 };
