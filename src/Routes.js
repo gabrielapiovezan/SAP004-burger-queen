@@ -1,49 +1,56 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { isAuthenticated } from "./firebase/authService";
+import { Switch, Route } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall";
-// import Register from "./pages/Register/index";
-// import Login from "./pages/Login/index";
+import { useAuth } from "./contexts/auth"
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-        )
-    }
-  />
-);
+const RouteDisconnected = () => (
+  <Switch>
+    <Route path="/register">
+      <Register />
+    </Route>
+    <Route path="/">
+      <Login />
+    </Route>
+  </Switch>
+)
 
-// const Routes = () => (
-//   <BrowserRouter>
-//     <Switch>
-//       <Route exact path="/" component={() => <h1>hello world</h1>} />
-//       <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
-//     </Switch>
-//   </BrowserRouter>
-// );
+const RouteKitchen = () => (
+  <Switch>
+    <Route path="/register">
+      <h1>register</h1>
+    </Route>
+    <Route exact path="/">
+      <h1>Kitchen</h1>
+    </Route>
+  </Switch>
+)
 
-const App = () => {
-  return (
-    <Switch>
-      <Route path="/hall">
-        <Hall />
-      </Route>
-      <Route path="/register">
-        <Register />
-      </Route>
-      <PrivateRoute path="/app" component={() => <h1>Você está logado</h1>} />
-      <Route path="/">
-        <Login />
-      </Route>
-    </Switch>
-  );
+const RouteService = () => (
+  <Switch>
+    <Route path="/register">
+      <h1>register</h1>
+    </Route>
+    <Route path="/">
+      <Hall />
+    </Route>
+  </Switch>
+)
+
+const Routes = () => {
+  const { signed, user } = useAuth()
+  if (!signed) {
+    return <RouteDisconnected />
+  }
+  else if (user.type === "service") {
+    return <RouteService />
+  }
+  else {
+    return <RouteKitchen />
+  }
 };
 
-export default App;
+
+
+export default Routes;
