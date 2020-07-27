@@ -11,22 +11,35 @@
 .img {
   width: 250px;
 }
+
 button {
   margin-bottom: 20px;
 }
+
 .link {
   color: #eeeeee;
 }
+
 .link:hover {
   color: #d97308;
 }
 
 .sector{
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  
   border-radius: 10px;
   margin: 15px 55px;
   padding: 15px;
-  background-color: #eeeeee;
-  color: #272626;
+  color: #eeeeee;
 } 
+
+.icon{
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.oi{
+  display: flex;
+}

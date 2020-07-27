@@ -4,6 +4,11 @@ import { authRegister } from "../../firebase/authService";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import logo from "../../img/logo1.png";
+import chapeu1 from "../../img/chapeu-1.png";
+import chapeu2 from "../../img/chapeu-2.png";
+import cozinha1 from "../../img/cozinha-1.png";
+import cozinha2 from "../../img/cozinha-2.png";
+
 import "./style.css";
 
 // const email = "ma@ma.com";
@@ -63,21 +68,20 @@ const Register = () => {
       <Input type="text" placeholder="Email*" onChange={(e) => setEmail(e.target.value)} required />
       <Input type="password" placeholder="Senha*" onChange={(e) => setPassword(e.target.value)} required />
       <Input type="password" placeholder="Confirmar Senha*" onChange={(e) => setConfirmPassword(e.target.value)} required />
-      <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("kitchen")} >
-        <img src={type === "kitchen" ? "https://img.icons8.com/ios-filled/30/000000/chef-hat.png" : "https://img.icons8.com/ios/30/000000/chef-hat.png"} />
+      <div className="oi">
+        <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("kitchen")} >
+          <img src={type === "kitchen" ? chapeu2 : chapeu1} className="icon" />
         Cozinha
       </span>
-      <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("service")}  >
-        <img src={type === "service" ? "https://img.icons8.com/ios-filled/30/000000/waiter.png" : "https://img.icons8.com/ios/30/000500/waiter.png"} />
+        <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("service")}  >
+          <img src={type === "service" ? cozinha2 : cozinha1} className="icon" />
         Salão
       </span>
+      </div>
       <Button value="Entrar" onClick={onClickRegister} />
       <span>
-          Possui Cadastro?{" "}
-          <Link className="link" to="/login">
-            Login
-
-          </Link>
+        Possui Cadastro?{" "}
+        <Link className="link" to="/login"> Login </Link>
       </span>
     </div>
   );
