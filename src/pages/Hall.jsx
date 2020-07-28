@@ -19,6 +19,7 @@ const Hall = () => {
         // setValue([...value, (value[i].total = array[i].total)]);
         // setValue((value = array));
         // setValue(array);
+        setValue(...value);
 
         console.log(value);
 
