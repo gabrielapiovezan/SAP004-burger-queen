@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
 import Table from "../components/Table";
@@ -8,6 +8,52 @@ import "./hall.css";
 
 const Hall = () => {
   const [menu, setMenu] = useState(false);
+  const [value, setValue] = useState([]);
+
+  const createTotal = (index, menuChoice, amount) => {
+    let array = value;
+    const newArray = value.filter((a, i) => {
+      if (a.item === menuChoice[index].item) {
+        array[i].amount += 1;
+        array[i].total = array[i].amount * array[i].price;
+        // setValue([...value, (value[i].total = array[i].total)]);
+        // setValue((value = array));
+        // setValue(array);
+
+        console.log(value);
+
+        // console.log(array[i].price);
+        // console.log(array[i].total);
+        return true;
+      }
+    });
+
+    if (!newArray[0]) {
+      //  let oi = [];
+      array = {
+        id: value.length,
+        category: "Total",
+        item: menuChoice[index].item,
+        price: menuChoice[index].price,
+        amount: 1,
+        total: menuChoice[index].price,
+      };
+      // array = [menuChoice[index]];
+      // console.log(value.length);
+      // array[0].id = `t${value.length}`;
+      // array[0].category = "Total";
+      // console.log(menuChoice[index]);
+      //  console.log(array);
+
+      setValue([...value, array]);
+
+      // setValue([...value, (value[value.length - 1].category = "oi")]);
+    }
+    // else {
+    //   setValue(array);
+    // }
+    //   setValue([...value, array]);
+  };
 
   return (
     <div className="hall">
@@ -41,19 +87,29 @@ const Hall = () => {
           className="table-breackfast"
           menu={MenuBreackfast}
           selector="button-selector-breackfast"
+          func={createTotal}
         />
       ) : (
         <Table
           className="table-dinner"
           menu={MenuDinner}
           selector="button-selector-dinner"
+          func={createTotal}
         />
       )}
-      <Table
+      {/* <Table
         className="table-total"
         menu={MenuBreackfast}
         selector="button-selector-dinner"
+        func={createTotal}
+      /> */}
+      <Table
+        className="table-total"
+        menu={value}
+        selector="button-selector-dinner"
+        func={createTotal}
       />
+      ;
     </div>
   );
 };

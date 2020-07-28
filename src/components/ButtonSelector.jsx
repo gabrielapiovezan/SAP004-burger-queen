@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import "./buttonSelector.css";
 
 const ButtonSelector = (props) => {
-  const [value, setValue] = useState(0);
-  const [total, setTotal] = useState([]);
+  const [value, setValue] = useState(props.value);
+  // const [total, setTotal] = useState([]);
 
-  const onChangeValue = () => {
-    setTotal({});
-  };
+  // const onChangeValue = () => {
+  //   setTotal([...total, props.index]);
+  //   console.log(total);
+  // };
+  // props.menu.category === "Total" ?
+  // console.log(props.menu[props.index].category); //: "";
+  const less = async () => {
+    await setValue(value > 1 ? value - 1 : 0);
 
-  const less = () => {
-    setValue(value > 1 ? value - 1 : 0);
-    onChangeValue();
+    props.func(props.index, props.menu, props.value);
+    // onChangeValue();
   };
-  const more = () => {
-    setValue(value < 20 ? value + 1 : 20);
-    onChangeValue();
+  const more = async () => {
+    await setValue(value < 20 ? value + 1 : 20);
+    // if (props.menu[props.index].category === "Total")
+    props.func(props.index, props.menu, props.value);
+    // onChangeValue();
   };
   return (
     <div className={"button-selector " + props.className}>
@@ -26,11 +32,16 @@ const ButtonSelector = (props) => {
         className="input-button-selector"
         type="number"
         value={value}
-        onChange={(e) => onChangeValue(e)}
+        //  onChange={(e) => onChangeValue(e)}
       />
       <button onClick={more} className="button-change">
         +
       </button>
+      {/* <ul>
+        {total.map((a) => (
+          <li key={a.item}>{a.item}</li>
+        ))}
+      </ul> */}
     </div>
   );
 };

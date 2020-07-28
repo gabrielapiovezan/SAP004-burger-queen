@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEff } from "react";
 import ButtonSelector from "./ButtonSelector";
 import "./menu.css";
 
 const Table = (props) => {
-  const verifica = (value) => {
-    console.log(value);
-  };
+  //   const [value, setValue] = useState(0);
 
-  const creatProduct = (product) => {
+  //   const verifica = (v, i) => {
+  //     setValue(i);
+  //   };
+
+  const creatProduct = (product, i) => {
     return (
-      <tr key={product.item}>
+      <tr key={product.id}>
         <td colSpan="2">{product.item}</td>
-        <td align="center">{product.valor}</td>
+        {props.className === "table-total" ? (
+          <td align="center">
+            {
+              product.total
+              // .toFixed(2).replace(".", ",")
+            }
+          </td>
+        ) : (
+          <td align="center">{product.price.toFixed(2).replace(".", ",")}</td>
+        )}
         <td align="center">
           <ButtonSelector
             className={props.selector}
-            product={product.item}
+            index={i}
             menu={props.menu}
-            func={verifica}
+            func={props.func}
+            value={product.amount}
           />
         </td>
       </tr>
@@ -26,12 +38,12 @@ const Table = (props) => {
 
   const creatCategory = (category) => {
     return (
-      <tr key={category}>
+      <tr>
         <th align="start" className="menu-item">
           Item
         </th>
         <th className="menu-type">{category}</th>
-        <th className="menu-value">valor</th>
+        <th className="menu-value">Valor</th>
         <th></th>
       </tr>
     );
@@ -40,11 +52,11 @@ const Table = (props) => {
   const creatTable = () => {
     const rows = [];
     let lastCategory = null;
-    props.menu.forEach((product) => {
+    props.menu.forEach((product, i) => {
       if (product.category !== lastCategory) {
         rows.push(creatCategory(product.category));
       }
-      rows.push(creatProduct(product));
+      rows.push(creatProduct(product, i));
       lastCategory = product.category;
     });
     return rows;

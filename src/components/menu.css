@@ -29,6 +29,8 @@ td {
 }
 .menu-type {
   width: 40%;
+  color: #eeeeee;
+  font-weight: 700;
 }
 .menu-value {
   width: 30%;
