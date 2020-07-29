@@ -34,8 +34,7 @@
   width: 75px;
   border: solid 1px #434242;
 }
-.button-selector-breackfast > button,
-input {
+.button-selector-breackfast > input {
   color: #272626;
 }
 .button-selector-dinner {

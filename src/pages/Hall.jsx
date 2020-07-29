@@ -1,14 +1,58 @@
-import React, { useState } from "react";
-// import ButtonSelector from "../components/ButtonSelector";
-// import Table from "../components/Table";
-import Breackfast from "../components/BreackFast";
-import Dinner from "../components/Dinner";
+import React, { useState, useEffect } from "react";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
+import Table from "../components/Table";
+import MenuBreackfast from "../components/MenuBreackfast";
+import MenuDinner from "../components/MenuDinner";
 import "./hall.css";
 
 const Hall = () => {
-  const [menu, setMenu] = useState(0);
+  const [menu, setMenu] = useState(true);
+  const [value, setValue] = useState([]);
+
+  const deleteItem = (item) => {
+    const newArray = value.filter((a) => {
+      if (a.item !== item) {
+        return true;
+      }
+    });
+    setValue(newArray);
+  };
+
+  const createTotal = (index, menuChoice, amount) => {
+    // if (!amount) {
+    //   deleteItem(menuChoice[index].item);
+    // }
+    let array = [...value];
+    const newArray = value.filter((a, i) => {
+      if (menuChoice[index].item && a.item === menuChoice[index].item) {
+        array[i].amount = amount;
+        value[i].amount = amount;
+
+        setValue(array);
+
+        //  setValue([value[i], { amount: amount }]);
+        // setValue([value[i], { ...(amount = amount) }]);
+        //    setValue((set) => [(set[i] = array[i])]);
+        return true;
+      }
+    });
+
+    if (!newArray[0] && amount !== 0) {
+      const objProduct = {
+        id: value.length,
+        category: "Resumo",
+        item: menuChoice[index].item,
+        price: menuChoice[index].price,
+        amount: 1,
+        //   total: menuChoice[index].price,
+      };
+
+      setValue([...value, objProduct]);
+    }
+  };
+
+  useEffect(() => {}, [value]);
 
   return (
     <div className="hall">
@@ -27,15 +71,39 @@ const Hall = () => {
         </div>
       </div>
       <div className="buttons-menu">
-        <button className="breack-fast" onClick={() => setMenu(0)}>
+        <button
+          className="button-menu breack-fast"
+          onClick={() => setMenu(true)}
+        >
           Café da manha
         </button>
-        <button className="dinner" onClick={() => setMenu(1)}>
+        <button className="button-menu dinner" onClick={() => setMenu(false)}>
           Almoço e jantar
         </button>
       </div>
-      <Breackfast />
-      <Dinner />
+      {menu ? (
+        <Table
+          className="table-breackfast"
+          menu={MenuBreackfast}
+          selector="button-selector-breackfast"
+          func={createTotal}
+        />
+      ) : (
+        <Table
+          className="table-dinner"
+          menu={MenuDinner}
+          selector="button-selector-dinner"
+          func={createTotal}
+        />
+      )}
+      {value[0] && (
+        <Table
+          className="table-total"
+          menu={value}
+          selector="button-selector-dinner"
+          func={deleteItem}
+        />
+      )}
     </div>
   );
 };

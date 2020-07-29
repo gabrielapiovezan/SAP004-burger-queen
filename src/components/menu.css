@@ -11,9 +11,43 @@ table {
   color: #eeeeee;
   background-color: #272626;
 }
+.table-total {
+  margin-top: 20px;
+  border-radius: 5px;
+  color: #eeeeee;
+  background-color: transparent;
+  border: solid 2px #eeeeee;
+}
 /* tr {
   color: #272626;
 } */
 th {
   color: #d97308;
 }
+td {
+  padding: 4px;
+}
+.menu-type {
+  width: 30%;
+  color: #eeeeee;
+  font-weight: 700;
+}
+.menu-value {
+  width: 25%;
+}
+.menu-item {
+  width: 25%;
+}
+.menu-button {
+  width: 20%;
+}
+.resume {
+  padding: 2px;
+  height: 0.7px;
+  border-bottom: 0.5px solid #eeeeee44;
+}
+
+/* .last-colun {
+  width: 75px;
+  background-color: aqua;
+} */

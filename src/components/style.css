@@ -23,7 +23,7 @@
   /* width: 96%; */
 }
 .input:focus {
-  background-color: #1d1b1b;
+  background-color: #363535;
   border: solid 2px #d97308;
   /* width: 96%; */
 }
@@ -38,7 +38,12 @@
   max-width: 370px;
   min-width: 237.5px;
 }
-/* 
-.table-input {
-  background-color: #eeeeee;
-} */
+
+.delete {
+  width: 25px;
+  border-radius: 5px;
+}
+.delete:hover {
+  cursor: pointer;
+  background-color: #d97308;
+}
