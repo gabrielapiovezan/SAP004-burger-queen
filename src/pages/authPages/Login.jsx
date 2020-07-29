@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+
+import { useAuth } from "../../contexts/auth"
+
 import { authLoginEmail } from "../../firebase/authService.js"
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../img/logo1.png";
@@ -9,13 +12,14 @@ import "./style.css";
 
 const App = () => {
   const history = useHistory();
+  const { signIn } = useAuth()
   const [error, setError] = useState("");
   const [data, setData] = useState({ email: "", password: "" });
 
   const onClickLogin = async () => {
     try {
-      const response = await authLoginEmail(data.email, data.password);
-      //history.push("/register")
+      await signIn(data.email, data.password);
+      // history.push("/")
     } catch (error) {
       setError(error.code);
     }
