@@ -14,7 +14,9 @@ const ButtonSelector = (props) => {
   // };
 
   useEffect(() => {
-    props.func(props.index, props.menu, value);
+    value
+      ? props.func[0](props.index, props.menu, value)
+      : props.func[1](props.product.item);
   }, [value]);
 
   return (

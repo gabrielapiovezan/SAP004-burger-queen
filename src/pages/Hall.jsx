@@ -86,14 +86,14 @@ const Hall = () => {
           className="table-breackfast"
           menu={MenuBreackfast}
           selector="button-selector-breackfast"
-          func={createTotal}
+          func={[createTotal, deleteItem]}
         />
       ) : (
         <Table
           className="table-dinner"
           menu={MenuDinner}
           selector="button-selector-dinner"
-          func={createTotal}
+          func={[createTotal, deleteItem]}
         />
       )}
       {value[0] && (
