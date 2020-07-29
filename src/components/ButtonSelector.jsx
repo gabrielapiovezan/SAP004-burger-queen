@@ -4,14 +4,9 @@ import "./buttonSelector.css";
 const ButtonSelector = (props) => {
   const [value, setValue] = useState(props.product.amount);
 
-  // const less = () => {
-  //   setValue(value > 1 ? value - 1 : 0);
-
-  // };
-
-  // const more = () => {
-  //   setValue(value < 20 ? value + 1 : 20);
-  // };
+  useEffect(() => {
+    if (!value) console.log("deletou");
+  }, [value]);
 
   useEffect(() => {
     value

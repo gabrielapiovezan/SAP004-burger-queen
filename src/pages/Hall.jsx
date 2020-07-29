@@ -16,6 +16,7 @@ const Hall = () => {
         return true;
       }
     });
+
     setValue(newArray);
   };
 
