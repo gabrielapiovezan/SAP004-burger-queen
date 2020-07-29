@@ -10,28 +10,30 @@ const Table = (props) => {
   //   };
 
   const creatProduct = (product, i) => {
+    // console.log(product.amount);
     return (
       <tr key={product.id}>
         <td colSpan="2">{product.item}</td>
         {props.className === "table-total" ? (
           <td align="center">
-            {
-              product.total
-              // .toFixed(2).replace(".", ",")
-            }
+            {(product.amount * product.price).toFixed(2).replace(".", ",")}
           </td>
         ) : (
           <td align="center">{product.price.toFixed(2).replace(".", ",")}</td>
         )}
-        <td align="center">
-          <ButtonSelector
-            className={props.selector}
-            index={i}
-            menu={props.menu}
-            func={props.func}
-            value={product.amount}
-          />
-        </td>
+        {props.className !== "table-total" ? (
+          <td align="center">
+            <ButtonSelector
+              className={props.selector}
+              index={i}
+              menu={props.menu}
+              func={props.func}
+              product={product}
+            />
+          </td>
+        ) : (
+          <td></td>
+        )}
       </tr>
     );
   };

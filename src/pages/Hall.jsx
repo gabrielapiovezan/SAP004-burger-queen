@@ -7,54 +7,46 @@ import MenuDinner from "../components/MenuDinner";
 import "./hall.css";
 
 const Hall = () => {
-  const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
 
   const createTotal = (index, menuChoice, amount) => {
-    let array = value;
+    let array = [...value];
     const newArray = value.filter((a, i) => {
-      if (a.item === menuChoice[index].item) {
-        array[i].amount += 1;
-        array[i].total = array[i].amount * array[i].price;
-        // setValue([...value, (value[i].total = array[i].total)]);
-        // setValue((value = array));
-        // setValue(array);
-        setValue(...value);
+      if (menuChoice[index].item && a.item === menuChoice[index].item) {
+        array[i].amount = amount;
+        value[i].amount = amount;
 
-        console.log(value);
+        setValue(array);
 
-        // console.log(array[i].price);
-        // console.log(array[i].total);
+        //  setValue([value[i], { amount: amount }]);
+
+        // setValue([value[i], { ...(amount = amount) }]);
+
+        //    setValue((set) => [(set[i] = array[i])]);
         return true;
       }
     });
 
-    if (!newArray[0]) {
-      //  let oi = [];
-      array = {
+    if (!newArray[0] && amount !== 0) {
+      const objProduct = {
         id: value.length,
-        category: "Total",
+        category: "Resumo",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-        total: menuChoice[index].price,
+        //   total: menuChoice[index].price,
       };
-      // array = [menuChoice[index]];
-      // console.log(value.length);
-      // array[0].id = `t${value.length}`;
-      // array[0].category = "Total";
-      // console.log(menuChoice[index]);
-      //  console.log(array);
 
-      setValue([...value, array]);
-
-      // setValue([...value, (value[value.length - 1].category = "oi")]);
+      setValue([...value, objProduct]);
     }
-    // else {
-    //   setValue(array);
-    // }
-    //   setValue([...value, array]);
+
+    //  console.log(value);
   };
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <div className="hall">
@@ -104,13 +96,14 @@ const Hall = () => {
         selector="button-selector-dinner"
         func={createTotal}
       /> */}
-      <Table
-        className="table-total"
-        menu={value}
-        selector="button-selector-dinner"
-        func={createTotal}
-      />
-      ;
+      {value[0] && (
+        <Table
+          className="table-total"
+          menu={value}
+          selector="button-selector-dinner"
+          func={createTotal}
+        />
+      )}
     </div>
   );
 };

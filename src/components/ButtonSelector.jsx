@@ -1,31 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./buttonSelector.css";
 
 const ButtonSelector = (props) => {
-  const [value, setValue] = useState(props.value);
-  // const [total, setTotal] = useState([]);
+  const [value, setValue] = useState(props.product.amount);
 
-  // const onChangeValue = () => {
-  //   setTotal([...total, props.index]);
-  //   console.log(total);
+  // const less = () => {
+  //   setValue(value > 1 ? value - 1 : 0);
+
   // };
-  // props.menu.category === "Total" ?
-  // console.log(props.menu[props.index].category); //: "";
-  const less = async () => {
-    await setValue(value > 1 ? value - 1 : 0);
 
-    props.func(props.index, props.menu, props.value);
-    // onChangeValue();
+  const more = () => {
+    setValue(value < 20 ? value + 1 : 20);
   };
-  const more = async () => {
-    await setValue(value < 20 ? value + 1 : 20);
-    // if (props.menu[props.index].category === "Total")
-    props.func(props.index, props.menu, props.value);
-    // onChangeValue();
-  };
+
+  useEffect(() => {
+    props.func(props.index, props.menu, value);
+  }, [value]);
+
   return (
     <div className={"button-selector " + props.className}>
-      <button onClick={less} className="button-change">
+      <button
+        onClick={() => setValue(value > 1 ? value - 1 : 0)}
+        className="button-change"
+      >
         -
       </button>
       <input
@@ -34,7 +31,10 @@ const ButtonSelector = (props) => {
         value={value}
         //  onChange={(e) => onChangeValue(e)}
       />
-      <button onClick={more} className="button-change">
+      <button
+        onClick={() => setValue(value < 20 ? value + 1 : 20)}
+        className="button-change"
+      >
         +
       </button>
       {/* <ul>
