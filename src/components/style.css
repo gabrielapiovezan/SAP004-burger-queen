@@ -39,6 +39,11 @@
   min-width: 237.5px;
 }
 
-/* .table-input {
-  background-color: #eeeeee;
-} */
+.delete {
+  width: 25px;
+  border-radius: 5px;
+}
+.delete:hover {
+  cursor: pointer;
+  background-color: #d97308;
+}

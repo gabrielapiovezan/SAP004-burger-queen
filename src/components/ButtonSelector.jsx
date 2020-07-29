@@ -9,9 +9,9 @@ const ButtonSelector = (props) => {
 
   // };
 
-  const more = () => {
-    setValue(value < 20 ? value + 1 : 20);
-  };
+  // const more = () => {
+  //   setValue(value < 20 ? value + 1 : 20);
+  // };
 
   useEffect(() => {
     props.func(props.index, props.menu, value);

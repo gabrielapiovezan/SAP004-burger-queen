@@ -1,16 +1,10 @@
 import React, { useState, useEff } from "react";
 import ButtonSelector from "./ButtonSelector";
 import "./menu.css";
+import Delete from "./Delete";
 
 const Table = (props) => {
-  //   const [value, setValue] = useState(0);
-
-  //   const verifica = (v, i) => {
-  //     setValue(i);
-  //   };
-
   const creatProduct = (product, i) => {
-    // console.log(product.amount);
     return (
       <tr key={product.id}>
         <td colSpan="2">{product.item}</td>
@@ -32,7 +26,9 @@ const Table = (props) => {
             />
           </td>
         ) : (
-          <td></td>
+          <td align="center">
+            <Delete func={props.func} product={product} />
+          </td>
         )}
       </tr>
     );
@@ -46,7 +42,7 @@ const Table = (props) => {
         </th>
         <th className="menu-type">{category}</th>
         <th className="menu-value">Valor</th>
-        <th></th>
+        <th className="menu-button"></th>
       </tr>
     );
   };

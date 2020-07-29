@@ -10,7 +10,19 @@ const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
 
+  const deleteItem = (item) => {
+    const newArray = value.filter((a) => {
+      if (a.item !== item) {
+        return true;
+      }
+    });
+    setValue(newArray);
+  };
+
   const createTotal = (index, menuChoice, amount) => {
+    // if (!amount) {
+    //   deleteItem(menuChoice[index].item);
+    // }
     let array = [...value];
     const newArray = value.filter((a, i) => {
       if (menuChoice[index].item && a.item === menuChoice[index].item) {
@@ -20,9 +32,7 @@ const Hall = () => {
         setValue(array);
 
         //  setValue([value[i], { amount: amount }]);
-
         // setValue([value[i], { ...(amount = amount) }]);
-
         //    setValue((set) => [(set[i] = array[i])]);
         return true;
       }
@@ -40,13 +50,9 @@ const Hall = () => {
 
       setValue([...value, objProduct]);
     }
-
-    //  console.log(value);
   };
 
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
+  useEffect(() => {}, [value]);
 
   return (
     <div className="hall">
@@ -90,18 +96,12 @@ const Hall = () => {
           func={createTotal}
         />
       )}
-      {/* <Table
-        className="table-total"
-        menu={MenuBreackfast}
-        selector="button-selector-dinner"
-        func={createTotal}
-      /> */}
       {value[0] && (
         <Table
           className="table-total"
           menu={value}
           selector="button-selector-dinner"
-          func={createTotal}
+          func={deleteItem}
         />
       )}
     </div>
