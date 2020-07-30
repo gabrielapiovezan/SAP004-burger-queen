@@ -1,5 +1,4 @@
 .hall {
-
   width: 500px;
 
   display: flex;
@@ -54,4 +53,7 @@
 }
 .button-menu:hover {
   cursor: pointer;
+}
+.name-input {
+  width: 100%;
 }
