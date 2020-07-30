@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall";
+import Kitchen from "./pages/Kitchen/index"
 import { useAuth } from "./contexts/auth"
 
 const RouteDisconnected = () => (
@@ -18,11 +19,11 @@ const RouteDisconnected = () => (
 
 const RouteKitchen = () => (
   <Switch>
-    <Route path="/register">
-      <h1>register</h1>
-    </Route>
+    {/* <Route path="/">
+      <Kitchen />
+    </Route> */}
     <Route exact path="/">
-      <h1>Kitchen</h1>
+      <Kitchen />
     </Route>
   </Switch>
 )

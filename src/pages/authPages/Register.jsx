@@ -37,7 +37,7 @@ const Register = () => {
 
   return (
     <div className="templateAuth">
-      <img className="img" src={logo} alt="logo" />
+      <img className="img-auth" src={logo} alt="logo" />
       <h2>Cadastro</h2>
       <Input type="text" placeholder="Nome*" onChange={(e) => setName(e.target.value)} required />
       <Input type="text" placeholder="Email*" onChange={(e) => setEmail(e.target.value)} required />
