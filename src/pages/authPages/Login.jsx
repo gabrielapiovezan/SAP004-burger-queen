@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="templateAuth">
-      <img className="img" src={logo} alt="logo" />
+      <img className="img-auth" src={logo} alt="logo" />
       <h2>Bem Vindo(a)!</h2>
       <Input
         className="input input-auth"
