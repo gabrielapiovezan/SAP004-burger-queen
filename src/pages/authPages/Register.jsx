@@ -11,31 +11,6 @@ import cozinha2 from "../../img/cozinha-2.png";
 
 import "./style.css";
 
-// const email = "ma@ma.com";
-// const password = "123456";
-
-// const register = (email, password) => {
-// if (user.userName && user.profession) {
-// firebase.auth().createUserWithEmailAndPassword(email, password);
-// .then(function() {
-//     firebase.auth().currentUser.updateProfile({
-//         displayName: user.userName,
-//     });
-// user.userUid = firebase.auth().currentUser.uid;
-//     // firebase.firestore().collection('users').add(user);
-// })
-// } else {
-//   printErrorLogin("Digite todos os campos");
-// }
-// };
-
-// import firebase from '../../firebase/firebase';
-// const email = "ma@ma.com";
-// const password = "123456";
-// firebase
-//   .auth()
-//   .createUserWithEmailAndPassword(email, password);
-
 const Register = () => {
   const history = useHistory();
   const [error, setError] = useState("");
