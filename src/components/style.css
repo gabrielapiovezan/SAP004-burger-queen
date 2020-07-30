@@ -7,8 +7,6 @@
   height: 45px;
   border-radius: 50px;
   width: 100%;
-  /* max-width: 400px;
-  min-width: 250px; */
   margin-top: 20px;
   transition: border 20ms;
 }
@@ -20,15 +18,12 @@
 
 .input:hover {
   border: solid 2px #d97308;
-  /* width: 96%; */
 }
 .input:focus {
   background-color: #363535;
   border: solid 2px #d97308;
-  /* width: 96%; */
 }
 .button:hover {
-  /* width: 101%; */
   cursor: pointer;
   background-color: #d97308;
   border: solid 2px #d97308;

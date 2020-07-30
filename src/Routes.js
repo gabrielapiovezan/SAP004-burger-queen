@@ -3,8 +3,10 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall";
+
 import Kitchen from "./pages/Kitchen/index"
 import { useAuth } from "./contexts/auth"
+
 
 const RouteDisconnected = () => (
   <Switch>
@@ -15,7 +17,7 @@ const RouteDisconnected = () => (
       <Login />
     </Route>
   </Switch>
-)
+);
 
 const RouteKitchen = () => (
   <Switch>
@@ -26,7 +28,7 @@ const RouteKitchen = () => (
       <Kitchen />
     </Route>
   </Switch>
-)
+);
 
 const RouteService = () => (
   <Switch>
@@ -37,21 +39,17 @@ const RouteService = () => (
       <Hall />
     </Route>
   </Switch>
-)
+);
 
 const Routes = () => {
-  const { signed, user } = useAuth()
+  const { signed, user } = useAuth();
   if (!signed) {
-    return <RouteDisconnected />
-  }
-  else if (user.type === "service") {
-    return <RouteService />
-  }
-  else {
-    return <RouteKitchen />
+    return <RouteDisconnected />;
+  } else if (user.type === "service") {
+    return <RouteService />;
+  } else {
+    return <RouteKitchen />;
   }
 };
-
-
 
 export default Routes;

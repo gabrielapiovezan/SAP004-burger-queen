@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
 import Table from "../components/Table";
+import Button from "../components/Button";
 import MenuBreackfast from "../components/MenuBreackfast";
 import MenuDinner from "../components/MenuDinner";
 import "./hall.css";
@@ -16,24 +17,17 @@ const Hall = () => {
         return true;
       }
     });
+
     setValue(newArray);
   };
 
   const createTotal = (index, menuChoice, amount) => {
-    // if (!amount) {
-    //   deleteItem(menuChoice[index].item);
-    // }
     let array = [...value];
     const newArray = value.filter((a, i) => {
       if (menuChoice[index].item && a.item === menuChoice[index].item) {
         array[i].amount = amount;
         value[i].amount = amount;
-
         setValue(array);
-
-        //  setValue([value[i], { amount: amount }]);
-        // setValue([value[i], { ...(amount = amount) }]);
-        //    setValue((set) => [(set[i] = array[i])]);
         return true;
       }
     });
@@ -45,13 +39,15 @@ const Hall = () => {
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-        //   total: menuChoice[index].price,
       };
 
       setValue([...value, objProduct]);
     }
   };
-
+  const setData = () => {
+    setValue([]);
+    setMenu(!menu);
+  };
   useEffect(() => {}, [value]);
 
   return (
@@ -62,22 +58,15 @@ const Hall = () => {
           <Input type="text" placeholder="Nome" className="input name-input" />
           <div className="data-table">
             <h1 className="text">MESA</h1>
-            <Input
-              // type="number"
-              placeholder="Mesa"
-              className="input table-input"
-            />
+            <Input placeholder="Mesa" className="input table-input" />
           </div>
         </div>
       </div>
       <div className="buttons-menu">
-        <button
-          className="button-menu breack-fast"
-          onClick={() => setMenu(true)}
-        >
+        <button className="button-menu breack-fast" onClick={() => setData()}>
           Café da manha
         </button>
-        <button className="button-menu dinner" onClick={() => setMenu(false)}>
+        <button className="button-menu dinner" onClick={() => setData()}>
           Almoço e jantar
         </button>
       </div>
@@ -86,23 +75,26 @@ const Hall = () => {
           className="table-breackfast"
           menu={MenuBreackfast}
           selector="button-selector-breackfast"
-          func={createTotal}
+          func={[createTotal, deleteItem]}
         />
       ) : (
         <Table
           className="table-dinner"
           menu={MenuDinner}
           selector="button-selector-dinner"
-          func={createTotal}
+          func={[createTotal, deleteItem]}
         />
       )}
       {value[0] && (
-        <Table
-          className="table-total"
-          menu={value}
-          selector="button-selector-dinner"
-          func={deleteItem}
-        />
+        <>
+          <Table
+            className="table-total"
+            menu={value}
+            selector="button-selector-dinner"
+            func={deleteItem}
+          />
+          <Button value="Enviar" />
+        </>
       )}
     </div>
   );
