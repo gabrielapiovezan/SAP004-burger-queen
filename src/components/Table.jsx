@@ -30,6 +30,7 @@ const Table = (props) => {
           </td>
         ) : (
           <td align="center">
+            {product.amount}x
             <Delete func={props.func} product={product} />
           </td>
         )}
@@ -61,40 +62,17 @@ const Table = (props) => {
       if (burguer && product.id === "b1") {
         for (let i = 0; i < burguer; i++) {
           rows.push(creatOptions(product.id, burguer));
-          rows.push(creatDideDish());
         }
       }
       if (doubleBurguer && product.id === "b2") {
         for (let i = 0; i < doubleBurguer; i++) {
           rows.push(creatOptions(product.id, doubleBurguer));
-          rows.push(creatDideDish());
         }
       }
 
       lastCategory = product.category;
     });
     return rows;
-  };
-
-  const creatDideDish = () => {
-    return (
-      <tr>
-        <td colSpan="4" className="options">
-          <form className="input-options">
-            <div>
-              {" "}
-              <input type="checkbox" value={1} name="burguer" />
-              <label>Queijo</label>
-            </div>
-            <div>
-              {" "}
-              <input type="checkbox" name="burguer" value={2} />
-              <label>Ovo</label>
-            </div>
-          </form>
-        </td>
-      </tr>
-    );
   };
 
   const typeBurguer = (amount, id) => {
@@ -121,6 +99,18 @@ const Table = (props) => {
               {" "}
               <input type="radio" name="burguer" value={3} />
               <label>Vegetariano</label>
+            </div>
+          </form>
+          <form className="input-options">
+            <div>
+              {" "}
+              <input type="checkbox" value={1} name="burguer" />
+              <label>Queijo</label>
+            </div>
+            <div>
+              {" "}
+              <input type="checkbox" name="burguer" value={2} />
+              <label>Ovo</label>
             </div>
           </form>
         </td>

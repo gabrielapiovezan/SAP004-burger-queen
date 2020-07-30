@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../img/logo1.png";
 import Input from "../components/Input";
 import Table from "../components/Table";
+import Button from "../components/Button";
 import MenuBreackfast from "../components/MenuBreackfast";
 import MenuDinner from "../components/MenuDinner";
 import "./hall.css";
@@ -43,7 +44,10 @@ const Hall = () => {
       setValue([...value, objProduct]);
     }
   };
-
+  const setData = () => {
+    setValue([]);
+    setMenu(!menu);
+  };
   useEffect(() => {}, [value]);
 
   return (
@@ -59,13 +63,10 @@ const Hall = () => {
         </div>
       </div>
       <div className="buttons-menu">
-        <button
-          className="button-menu breack-fast"
-          onClick={() => setMenu(true)}
-        >
+        <button className="button-menu breack-fast" onClick={() => setData()}>
           Café da manha
         </button>
-        <button className="button-menu dinner" onClick={() => setMenu(false)}>
+        <button className="button-menu dinner" onClick={() => setData()}>
           Almoço e jantar
         </button>
       </div>
@@ -85,12 +86,15 @@ const Hall = () => {
         />
       )}
       {value[0] && (
-        <Table
-          className="table-total"
-          menu={value}
-          selector="button-selector-dinner"
-          func={deleteItem}
-        />
+        <>
+          <Table
+            className="table-total"
+            menu={value}
+            selector="button-selector-dinner"
+            func={deleteItem}
+          />
+          <Button value="Enviar" />
+        </>
       )}
     </div>
   );
