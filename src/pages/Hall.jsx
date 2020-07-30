@@ -21,20 +21,12 @@ const Hall = () => {
   };
 
   const createTotal = (index, menuChoice, amount) => {
-    // if (!amount) {
-    //   deleteItem(menuChoice[index].item);
-    // }
     let array = [...value];
     const newArray = value.filter((a, i) => {
       if (menuChoice[index].item && a.item === menuChoice[index].item) {
         array[i].amount = amount;
         value[i].amount = amount;
-
         setValue(array);
-
-        //  setValue([value[i], { amount: amount }]);
-        // setValue([value[i], { ...(amount = amount) }]);
-        //    setValue((set) => [(set[i] = array[i])]);
         return true;
       }
     });
@@ -46,7 +38,6 @@ const Hall = () => {
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-        //   total: menuChoice[index].price,
       };
 
       setValue([...value, objProduct]);
@@ -63,11 +54,7 @@ const Hall = () => {
           <Input type="text" placeholder="Nome" className="input name-input" />
           <div className="data-table">
             <h1 className="text">MESA</h1>
-            <Input
-              // type="number"
-              placeholder="Mesa"
-              className="input table-input"
-            />
+            <Input placeholder="Mesa" className="input table-input" />
           </div>
         </div>
       </div>

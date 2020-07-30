@@ -1,5 +1,5 @@
 .hall {
-  width: 100%;
+  width: 500px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -8,7 +8,6 @@
 
 .img-hall {
   width: 150px;
-  /* height: 254px; */
 }
 .data {
   width: 100%;
@@ -27,9 +26,6 @@
   font-size: 25px;
   color: #d97308;
 }
-/* .box-data {
-  height: 150px;
-} */
 .breack-fast,
 .dinner {
   outline: none;

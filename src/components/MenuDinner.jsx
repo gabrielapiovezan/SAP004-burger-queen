@@ -5,6 +5,8 @@ const MenuDinner = [
     item: "Hambúrguer simples",
     price: 10.0,
     amount: 0,
+    burguer: ["Carne Bovina", "Frango", "Vegetariano"],
+    option: ["Queijo", "Ovo"],
   },
   {
     id: "b2",
@@ -12,6 +14,8 @@ const MenuDinner = [
     item: "Hambúrguer duplo ",
     price: 15.0,
     amount: 0,
+    burguer: ["Carne Bovina", "Frango", "Vegetariano"],
+    option: ["Queijo", "Ovo"],
   },
   {
     id: "a1",
