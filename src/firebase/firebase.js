@@ -14,11 +14,3 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export default firebase;
 
-
-// class Firebase {
-//   constructor() {
-//     firebase.initializeApp(firebaseConfig);
-//   }
-// }
-
-// export default Firebase;
