@@ -8,8 +8,8 @@ const ButtonSelector = (props) => {
     value
       ? props.func[0](props.index, props.menu, value)
       : props.func[1](props.product.item);
-    (props.product.id === "b1" || props.product.id === "b2") &&
-      props.func[2](value, props.product.id);
+    props.product.category === "Hambúrgueres" &&
+      props.func[4](value, props.product);
   }, [value]);
 
   return (

@@ -5,12 +5,13 @@ import Table from "../components/Table";
 import Button from "../components/Button";
 import MenuBreackfast from "../components/MenuBreackfast";
 import MenuDinner from "../components/MenuDinner";
+import ButtonOptions from "../components/ButtonOption";
 import "./hall.css";
 
 const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
-
+  const [teste, setTeste] = useState("");
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
       if (a.item !== item) {
@@ -23,32 +24,63 @@ const Hall = () => {
 
   const createTotal = (index, menuChoice, amount) => {
     let array = [...value];
-    const newArray = value.filter((a, i) => {
-      if (menuChoice[index].item && a.item === menuChoice[index].item) {
-        array[i].amount = amount;
-        value[i].amount = amount;
-        setValue(array);
-        return true;
-      }
-    });
+    const result = value
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(menuChoice[index].item);
 
-    if (!newArray[0] && amount !== 0) {
-      const objProduct = {
+    if (result === -1 && amount !== 0) {
+      array.push({
         id: value.length,
         category: "Resumo",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-      };
-
-      setValue([...value, objProduct]);
+        burguer: [],
+        option: [],
+      });
+    } else {
+      array[result].amount = amount;
     }
+    setValue(array);
   };
+
   const setData = () => {
     setValue([]);
     setMenu(!menu);
   };
-  useEffect(() => {}, [value]);
+
+  const searchIndex = (item) => {
+    return value
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(item);
+  };
+
+  const setBurguer = (product, burguer, index) => {
+    const newArray = [...value];
+    const result = searchIndex(product.item);
+    newArray[result].burguer[index] = burguer;
+    setValue(newArray);
+  };
+
+  const setOptions = (product, option, index) => {
+    const newArray = [...value];
+    const result = searchIndex(product.item);
+    const options = newArray[result].option[index] || [];
+    options.includes(option)
+      ? options.splice(options.indexOf(option), 1)
+      : options.push(option);
+
+    newArray[result].option[index] = options;
+    setValue(newArray);
+  };
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <div className="hall">
@@ -82,7 +114,7 @@ const Hall = () => {
           className="table-dinner"
           menu={MenuDinner}
           selector="button-selector-dinner"
-          func={[createTotal, deleteItem]}
+          func={[createTotal, deleteItem, setBurguer, setOptions]}
         />
       )}
       {value[0] && (

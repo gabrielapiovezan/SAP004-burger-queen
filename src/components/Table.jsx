@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import ButtonSelector from "./ButtonSelector";
+import Button from "../components/Button";
 import "./menu.css";
+import ButtonOptions from "./ButtonOption";
 import Delete from "./Delete";
 
 const Table = (props) => {
-  const [burguer, setBuguer] = useState(0);
-  const [doubleBurguer, setDoubleBuguer] = useState(0);
+  const [burguer, setBuguer] = useState([
+    { item: "Hambúrguer simples", amount: 0 },
+    { item: "Hambúrguer duplo", amount: 0 },
+  ]);
+  // const [doubleBurguer, setDoubleBuguer] = useState(0);
 
   const creatProduct = (product, i) => {
     return (
@@ -59,14 +64,14 @@ const Table = (props) => {
         rows.push(creatCategory(product.category));
       }
       rows.push(creatProduct(product, i));
-      if (burguer && product.id === "b1") {
-        for (let i = 0; i < burguer; i++) {
-          rows.push(creatOptions(product.id, burguer));
-        }
-      }
-      if (doubleBurguer && product.id === "b2") {
-        for (let i = 0; i < doubleBurguer; i++) {
-          rows.push(creatOptions(product.id, doubleBurguer));
+      if (product.category === "Hambúrgueres") {
+        const result = burguer
+          .map((a) => {
+            return a.item;
+          })
+          .indexOf(product.item);
+        for (let j = 0; j < burguer[result].amount; j++) {
+          rows.push(creatOptions(product, j));
         }
       }
 
@@ -75,44 +80,51 @@ const Table = (props) => {
     return rows;
   };
 
-  const typeBurguer = (amount, id) => {
-    id === "b1" && setBuguer(amount);
-    id === "b2" && setDoubleBuguer(amount);
+  const typeBurguer = (amount, product) => {
+    let array = [...burguer];
+    const result = burguer
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(product.item);
+    array[result].amount = amount;
+    setBuguer(array);
   };
 
-  const creatOptions = (it, amount) => {
+  const creatOptions = (product, index) => {
+    // const productSelect = burguer.filter((burg) => burg.item === product.item);
     return (
       <tr>
-        <td colSpan="4" className="options">
-          <form className="input-options">
-            <div>
-              {" "}
-              <input type="radio" value={1} name="burguer" checked={true} />
-              <label>Carne Bovina</label>
-            </div>
-            <div>
-              {" "}
-              <input type="radio" name="burguer" value={2} />
-              <label>Fango</label>
-            </div>
-            <div>
-              {" "}
-              <input type="radio" name="burguer" value={3} />
-              <label>Vegetariano</label>
-            </div>
-          </form>
-          <form className="input-options">
-            <div>
-              {" "}
-              <input type="checkbox" value={1} name="burguer" />
-              <label>Queijo</label>
-            </div>
-            <div>
-              {" "}
-              <input type="checkbox" name="burguer" value={2} />
-              <label>Ovo</label>
-            </div>
-          </form>
+        <td colSpan="4" className="options" align="center">
+          <div className="input-options">
+            <Button
+              className=" button button-options"
+              value="Carne Bovina"
+              onClick={() => props.func[2](product, "Carne Bovina", index)}
+            />
+            <Button
+              className=" button button-options"
+              value="Frango"
+              onClick={() => props.func[2](product, "Frango", index)}
+            />
+            <Button
+              className=" button button-options"
+              value="Vegetariano"
+              onClick={() => props.func[2](product, "Vegetariano", index)}
+            />
+          </div>
+          <div className="input-options">
+            <Button
+              className=" button button-options"
+              value="Queijo"
+              onClick={() => props.func[3](product, "Queijo", index)}
+            />
+            <Button
+              className=" button button-options"
+              value="Ovo"
+              onClick={() => props.func[3](product, "Ovo", index)}
+            />
+          </div>
         </td>
       </tr>
     );
