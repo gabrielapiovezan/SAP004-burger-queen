@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { authRegister } from "../../firebase/authService";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import ReturnError from "./authError";
 import logo from "../../img/logo1.png";
 import chapeu1 from "../../img/chapeu-1.png";
 import chapeu2 from "../../img/chapeu-2.png";
@@ -27,7 +28,8 @@ const Register = () => {
     else {
       try {
         const response = await authRegister({ name, email, password, type });
-        console.log(response)
+        alert("cadastro realizado com sucesso")
+        history.push("/login")
       } catch (error) {
         setError(error.code);
       }
@@ -53,6 +55,7 @@ const Register = () => {
         Salão
       </span>
       </div>
+      <ReturnError error={error} />
       <Button value="Entrar" onClick={onClickRegister} />
       <span>
         Possui Cadastro?{" "}
