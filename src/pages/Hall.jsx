@@ -61,7 +61,6 @@ const Hall = () => {
   const setBurguer = (product, burguer, index) => {
     const newArray = [...value];
     const result = searchIndex(product.item);
-    console.log(result);
     newArray[result].burguer[index] = burguer;
     setValue(newArray);
   };
@@ -78,9 +77,9 @@ const Hall = () => {
     setValue(newArray);
   };
 
-  // useEffect(() => {
-  //   console.log(value);
-  // }, [value]);
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <div className="hall">

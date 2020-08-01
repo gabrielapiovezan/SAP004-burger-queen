@@ -11,14 +11,9 @@ import Egg from "../img/egg.png";
 
 const Table = (props) => {
   const [burguer, setBuguer] = useState([
-    { item: "Hambúrguer simples", amount: 0 },
-    { item: "Hambúrguer duplo", amount: 0 },
+    { item: "Hambúrguer simples", amount: 0, typeBurguer: [], sideSish: [] },
+    { item: "Hambúrguer duplo", amount: 0, typeBurguer: [], sideSish: [] },
   ]);
-
-  const [check, setCheck] = useState([false, false]);
-  const [radio, setRadio] = useState([]);
-
-  // const [doubleBurguer, setDoubleBuguer] = useState(0);
 
   const creatProduct = (product, i) => {
     return (
@@ -102,52 +97,50 @@ const Table = (props) => {
       })
       .indexOf(product.item);
     array[result].amount = amount;
+    if (amount > 0) {
+      array[result].typeBurguer[amount - 1] = "Carne Bovina"; // : "";
+      array[result].sideSish[amount - 1] = [];
+    }
     setBuguer(array);
-
-    const arrayRadio = [...radio];
-    arrayRadio[amount - 1] = "Carne Bovina";
-    //  props.func[2](product, "Carne Bovina", amount);
-    setRadio(arrayRadio);
   };
 
   const funcRadio = (idButton, product, index, type) => {
-    const array = [...radio];
+    const array = [...burguer];
+
     const result = burguer
       .map((a) => {
         return a.item;
       })
       .indexOf(product.item);
-    array[index] = type;
-    // array[index][idButton] = true;
-    setRadio(array);
+    array[result].typeBurguer[index] = type;
+
+    setBuguer(array);
   };
 
-  const funcCheck = (idButton) => {
-    const array = check;
-    array[idButton] = !check[idButton];
-    setCheck(array);
+  const funcCheck = (idButton, product, index, type) => {
+    const result = burguer
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(product.item);
+    const array = [...burguer];
+    array[result].sideSish[index].includes(type)
+      ? array[result].sideSish[index].splice(
+          array[result].sideSish[index].indexOf(type),
+          1
+        )
+      : array[result].sideSish[index].push(type);
+
+    setBuguer(array);
   };
-  // useEffect(() => {
-  //   console.log(check);
-  // }, [check]);
 
   const creatOptions = (product, index) => {
-    console.log(radio);
-    //  setRadio(1);
-    // const array = [...radio];
-    // array[index] = [true, false, false];
-    //array[index][idButton] = true;
-    // setRadio(array);
-    //console.log(radio);
-
     const result = burguer
       .map((a) => {
         return a.item;
       })
       .indexOf(product.item);
 
-    // console.log(result);
-    // newArray[radio]
     return (
       <tr>
         <td className="option-item">{index + 1}º</td>
@@ -165,7 +158,10 @@ const Table = (props) => {
                   index={index}
                   idButton={0}
                   colorButton={funcRadio}
-                  className={radio[index] === "Carne Bovina" && "checked"}
+                  className={
+                    burguer[result].typeBurguer[index] === "Carne Bovina" &&
+                    "checked"
+                  }
                 />
                 <ButtonIcon
                   img={Chicken}
@@ -176,7 +172,9 @@ const Table = (props) => {
                   index={index}
                   idButton={1}
                   colorButton={funcRadio}
-                  className={radio[index] === "Frango" && "checked"}
+                  className={
+                    burguer[result].typeBurguer[index] === "Frango" && "checked"
+                  }
                 />
                 <ButtonIcon
                   img={Plant}
@@ -187,7 +185,10 @@ const Table = (props) => {
                   index={index}
                   idButton={2}
                   colorButton={funcRadio}
-                  className={radio[index] === "Vegetariano" && "checked"}
+                  className={
+                    burguer[result].typeBurguer[index] === "Vegetariano" &&
+                    "checked"
+                  }
                 />
               </span>
             </div>
@@ -203,7 +204,10 @@ const Table = (props) => {
                   index={index}
                   idButton={0}
                   colorButton={funcCheck}
-                  className={check[0] && "checked"}
+                  className={
+                    burguer[result].sideSish[index].includes("Queijo") &&
+                    "checked"
+                  }
                 />
                 <ButtonIcon
                   img={Egg}
@@ -214,7 +218,9 @@ const Table = (props) => {
                   index={index}
                   idButton={1}
                   colorButton={funcCheck}
-                  className={check[1] && "checked"}
+                  className={
+                    burguer[result].sideSish[index].includes("Ovo") && "checked"
+                  }
                 />
               </span>
             </div>
