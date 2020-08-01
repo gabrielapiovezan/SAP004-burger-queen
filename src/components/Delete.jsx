@@ -5,7 +5,7 @@ const Delete = (props) => {
   return (
     <img
       className="delete"
-      onClick={() => props.func(props.product.item)}
+      // onClick={() => props.func(props.product.item)}
       src={Lixo}
       alt="deletar"
     />
