@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonSelector from "./ButtonSelector";
 import Button from "../components/Button";
 import "./menu.css";
@@ -15,6 +15,10 @@ const Table = (props) => {
     { item: "Hambúrguer simples", amount: 0 },
     { item: "Hambúrguer duplo", amount: 0 },
   ]);
+
+  const [check, setCheck] = useState([false, false]);
+  const [radio, setRadio] = useState([true, false, false]);
+
   // const [doubleBurguer, setDoubleBuguer] = useState(0);
 
   const creatProduct = (product, i) => {
@@ -106,6 +110,22 @@ const Table = (props) => {
     setBuguer(array);
   };
 
+  const funcRadio = (idButton) => {
+    //  if (idButton < 3) {
+    const array = [false, false, false];
+    array[idButton] = true;
+    setRadio(array);
+  };
+
+  const funcCheck = (idButton) => {
+    const array = check;
+    array[idButton] = !check[idButton];
+    setCheck(array);
+  };
+  // useEffect(() => {
+  //   console.log(check);
+  // }, [check]);
+
   const creatOptions = (product, index) => {
     // const productSelect = burguer.filter((burg) => burg.item === product.item);
     return (
@@ -120,6 +140,9 @@ const Table = (props) => {
               product={product}
               type={"Carne Bovina"}
               index={index}
+              idButton={0}
+              colorButton={funcRadio}
+              className={radio[0] && "checked"}
             />
             <ButtonIcon
               img={Chicken}
@@ -129,7 +152,9 @@ const Table = (props) => {
               product={product}
               type={"Frango"}
               index={index}
-              // onClick={() => props.func[2](product, "Frango", index)}
+              idButton={1}
+              colorButton={funcRadio}
+              className={radio[1] && "checked"}
             />
             <ButtonIcon
               img={Plant}
@@ -138,6 +163,9 @@ const Table = (props) => {
               product={product}
               type={"Vegetariano"}
               index={index}
+              idButton={2}
+              colorButton={funcRadio}
+              className={radio[2] && "checked"}
               // onClick={() => props.func[2](product, "Vegetariano", index)}
             />
           </span>
@@ -149,6 +177,9 @@ const Table = (props) => {
               product={product}
               type={"Queijo"}
               index={index}
+              idButton={0}
+              colorButton={funcCheck}
+              className={check[0] && "checked"}
               // onClick={() => props.func[3](product, "Queijo", index)}
             />
             <ButtonIcon
@@ -159,6 +190,9 @@ const Table = (props) => {
               product={product}
               type={"Ovo"}
               index={index}
+              idButton={1}
+              colorButton={funcCheck}
+              className={check[1] && "checked"}
               // onClick={() => props.func[3](product, "Ovo", index)}
             />
           </span>

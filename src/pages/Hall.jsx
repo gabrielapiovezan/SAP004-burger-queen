@@ -10,7 +10,7 @@ import "./hall.css";
 const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
-  const [teste, setTeste] = useState("");
+  // const [teste, setTeste] = useState("");
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
       if (a.item !== item) {

@@ -5,6 +5,8 @@ const ButtonSelector = (props) => {
   const [value, setValue] = useState(props.product.amount);
 
   useEffect(() => {
+    console.log(value);
+    console.log(value);
     value
       ? props.func[0](props.index, props.menu, value)
       : props.func[1](props.product.item);
