@@ -42,3 +42,25 @@
   cursor: pointer;
   background-color: #d97308;
 }
+
+.button-icon {
+  width: 25px;
+  border-radius: 5px;
+}
+.button-icon-div {
+  background-color: transparent;
+  margin: 3px;
+  font-size: 10px;
+  width: 35px;
+  padding: 1px;
+  height: 35px;
+  border: solid 1px #eeeeee;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.button-icon-div:hover {
+  border: 1px #d97308;
+  cursor: pointer;
+  background-color: #d97308;
+}

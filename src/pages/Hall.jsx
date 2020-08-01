@@ -5,7 +5,6 @@ import Table from "../components/Table";
 import Button from "../components/Button";
 import MenuBreackfast from "../components/MenuBreackfast";
 import MenuDinner from "../components/MenuDinner";
-import ButtonOptions from "../components/ButtonOption";
 import "./hall.css";
 
 const Hall = () => {

@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import ButtonSelector from "./ButtonSelector";
 import Button from "../components/Button";
 import "./menu.css";
-import ButtonOptions from "./ButtonOption";
-import Delete from "./Delete";
+import ButtonIcon from "./Button-Icon";
+import Lixo from "../img/lixo.png";
+import Chicken from "../img/Chicken.png";
+import Ox from "../img/Ox.png";
+import Plant from "../img/Plant.png";
+import Chease from "../img/chease.png";
+import Egg from "../img/egg.png";
 
 const Table = (props) => {
   const [burguer, setBuguer] = useState([
@@ -34,9 +39,19 @@ const Table = (props) => {
             />
           </td>
         ) : (
-          <td align="center">
+          <td align="center" className="del">
             {product.amount}x
-            <Delete func={props.func} product={product} />
+            <ButtonIcon
+              func={props.func}
+              product={product.item}
+              name="Delete"
+              // onClick={() => props.func(props.product.item)}
+              // // onClick={() => props.func(product.item)}
+              img={Lixo}
+              alt="delete"
+              //props.func(product.item)}
+            />
+            {/* <Delete func={props.func} product={product} /> */}
           </td>
         )}
       </tr>
@@ -95,36 +110,58 @@ const Table = (props) => {
     // const productSelect = burguer.filter((burg) => burg.item === product.item);
     return (
       <tr>
-        <td colSpan="4" className="options" align="center">
-          <div className="input-options">
-            <Button
-              className=" button button-options"
-              value="Carne Bovina"
-              onClick={() => props.func[2](product, "Carne Bovina", index)}
+        <td className="option-item">{index + 1}º</td>
+        <td colSpan="3" className="options" align="center">
+          <span className="input-options">
+            <ButtonIcon
+              img={Ox}
+              name="Bovina"
+              func={props.func[2]}
+              product={product}
+              type={"Carne Bovina"}
+              index={index}
             />
-            <Button
-              className=" button button-options"
-              value="Frango"
-              onClick={() => props.func[2](product, "Frango", index)}
+            <ButtonIcon
+              img={Chicken}
+              // className=" button button-options"
+              name="Frango"
+              func={props.func[2]}
+              product={product}
+              type={"Frango"}
+              index={index}
+              // onClick={() => props.func[2](product, "Frango", index)}
             />
-            <Button
-              className=" button button-options"
-              value="Vegetariano"
-              onClick={() => props.func[2](product, "Vegetariano", index)}
+            <ButtonIcon
+              img={Plant}
+              name="Veg"
+              func={props.func[2]}
+              product={product}
+              type={"Vegetariano"}
+              index={index}
+              // onClick={() => props.func[2](product, "Vegetariano", index)}
             />
-          </div>
-          <div className="input-options">
-            <Button
-              className=" button button-options"
-              value="Queijo"
-              onClick={() => props.func[3](product, "Queijo", index)}
+          </span>
+          <span className="input-options">
+            <ButtonIcon
+              img={Chease}
+              name="Queijo"
+              func={props.func[3]}
+              product={product}
+              type={"Queijo"}
+              index={index}
+              // onClick={() => props.func[3](product, "Queijo", index)}
             />
-            <Button
-              className=" button button-options"
-              value="Ovo"
-              onClick={() => props.func[3](product, "Ovo", index)}
+            <ButtonIcon
+              img={Egg}
+              // className=" button button-options"
+              name="Ovo"
+              func={props.func[3]}
+              product={product}
+              type={"Ovo"}
+              index={index}
+              // onClick={() => props.func[3](product, "Ovo", index)}
             />
-          </div>
+          </span>
         </td>
       </tr>
     );
