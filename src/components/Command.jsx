@@ -2,22 +2,25 @@ import React from "react";
 // import "./style.css";
 
 
-const Command = ({ pedido }) => {
+const Command = ({ request }) => {
   return (
     <>
-      <div className="data-commands">
-        <span>{pedido.name}</span>
-        <span>{pedido.table}</span>
+      <div className="container-command">
+        <div className="data-command">
+          <span>{request.name}</span>
+          <span>{request.table}</span>
+        </div>
+        <div className="data-calendar">
+          <span>{request.calendar}</span>
+          <span>{request.schedule}</span>
+        </div>
+        <ul>
+          {request.itens.map(item =>
+            <li>{item.product} {item.quant}</li>
+
+          )}
+        </ul>
       </div>
-      <div>
-        <span>{pedido.calendar}{pedido.schedule}</span>
-      </div>
-      <br />
-      <ul>
-        {pedido.itens.map(item =>
-          <li>{item.product}-{item.quant}</li>
-        )}
-      </ul>
     </>
   );
 };

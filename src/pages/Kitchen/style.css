@@ -5,6 +5,7 @@
 .container{
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding: 30px;
 }
 
@@ -18,3 +19,7 @@
   align-items: center;
 }
 
+.request{
+  display: flex;
+  margin-top: 20px;
+}
