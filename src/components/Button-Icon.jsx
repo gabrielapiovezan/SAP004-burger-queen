@@ -4,7 +4,7 @@ import "./style.css";
 const ButtonIcon = (props) => {
   const clicked = () => {
     props.func(props.product, props.type, props.index);
-    props.colorButton(props.idButton);
+    props.colorButton(props.idButton, props.product, props.index, props.type);
   };
 
   return (

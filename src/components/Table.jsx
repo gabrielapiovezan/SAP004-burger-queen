@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ButtonSelector from "./ButtonSelector";
-import Button from "../components/Button";
 import "./menu.css";
 import ButtonIcon from "./Button-Icon";
 import Lixo from "../img/lixo.png";
@@ -17,7 +16,7 @@ const Table = (props) => {
   ]);
 
   const [check, setCheck] = useState([false, false]);
-  const [radio, setRadio] = useState([true, false, false]);
+  const [radio, setRadio] = useState([]);
 
   // const [doubleBurguer, setDoubleBuguer] = useState(0);
 
@@ -49,13 +48,9 @@ const Table = (props) => {
               func={props.func}
               product={product.item}
               name="Delete"
-              // onClick={() => props.func(props.product.item)}
-              // // onClick={() => props.func(product.item)}
               img={Lixo}
               alt="delete"
-              //props.func(product.item)}
             />
-            {/* <Delete func={props.func} product={product} /> */}
           </td>
         )}
       </tr>
@@ -108,12 +103,22 @@ const Table = (props) => {
       .indexOf(product.item);
     array[result].amount = amount;
     setBuguer(array);
+
+    const arrayRadio = [...radio];
+    arrayRadio[amount - 1] = "Carne Bovina";
+    //  props.func[2](product, "Carne Bovina", amount);
+    setRadio(arrayRadio);
   };
 
-  const funcRadio = (idButton) => {
-    //  if (idButton < 3) {
-    const array = [false, false, false];
-    array[idButton] = true;
+  const funcRadio = (idButton, product, index, type) => {
+    const array = [...radio];
+    const result = burguer
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(product.item);
+    array[index] = type;
+    // array[index][idButton] = true;
     setRadio(array);
   };
 
@@ -127,75 +132,93 @@ const Table = (props) => {
   // }, [check]);
 
   const creatOptions = (product, index) => {
-    // const productSelect = burguer.filter((burg) => burg.item === product.item);
+    console.log(radio);
+    //  setRadio(1);
+    // const array = [...radio];
+    // array[index] = [true, false, false];
+    //array[index][idButton] = true;
+    // setRadio(array);
+    //console.log(radio);
+
+    const result = burguer
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(product.item);
+
+    // console.log(result);
+    // newArray[radio]
     return (
       <tr>
         <td className="option-item">{index + 1}º</td>
         <td colSpan="3" className="options" align="center">
-          <span className="input-options">
-            <ButtonIcon
-              img={Ox}
-              name="Bovina"
-              func={props.func[2]}
-              product={product}
-              type={"Carne Bovina"}
-              index={index}
-              idButton={0}
-              colorButton={funcRadio}
-              className={radio[0] && "checked"}
-            />
-            <ButtonIcon
-              img={Chicken}
-              // className=" button button-options"
-              name="Frango"
-              func={props.func[2]}
-              product={product}
-              type={"Frango"}
-              index={index}
-              idButton={1}
-              colorButton={funcRadio}
-              className={radio[1] && "checked"}
-            />
-            <ButtonIcon
-              img={Plant}
-              name="Veg"
-              func={props.func[2]}
-              product={product}
-              type={"Vegetariano"}
-              index={index}
-              idButton={2}
-              colorButton={funcRadio}
-              className={radio[2] && "checked"}
-              // onClick={() => props.func[2](product, "Vegetariano", index)}
-            />
-          </span>
-          <span className="input-options">
-            <ButtonIcon
-              img={Chease}
-              name="Queijo"
-              func={props.func[3]}
-              product={product}
-              type={"Queijo"}
-              index={index}
-              idButton={0}
-              colorButton={funcCheck}
-              className={check[0] && "checked"}
-              // onClick={() => props.func[3](product, "Queijo", index)}
-            />
-            <ButtonIcon
-              img={Egg}
-              // className=" button button-options"
-              name="Ovo"
-              func={props.func[3]}
-              product={product}
-              type={"Ovo"}
-              index={index}
-              idButton={1}
-              colorButton={funcCheck}
-              className={check[1] && "checked"}
-              // onClick={() => props.func[3](product, "Ovo", index)}
-            />
-          </span>
+          <div className="buttons-box">
+            <div className="box-buttons">
+              <span className="type-option-burguer">Carne</span>
+              <span className="input-options">
+                <ButtonIcon
+                  img={Ox}
+                  name="Bovina"
+                  func={props.func[2]}
+                  product={product}
+                  type={"Carne Bovina"}
+                  index={index}
+                  idButton={0}
+                  colorButton={funcRadio}
+                  className={radio[index] === "Carne Bovina" && "checked"}
+                />
+                <ButtonIcon
+                  img={Chicken}
+                  name="Frango"
+                  func={props.func[2]}
+                  product={product}
+                  type={"Frango"}
+                  index={index}
+                  idButton={1}
+                  colorButton={funcRadio}
+                  className={radio[index] === "Frango" && "checked"}
+                />
+                <ButtonIcon
+                  img={Plant}
+                  name="Veg"
+                  func={props.func[2]}
+                  product={product}
+                  type={"Vegetariano"}
+                  index={index}
+                  idButton={2}
+                  colorButton={funcRadio}
+                  className={radio[index] === "Vegetariano" && "checked"}
+                />
+              </span>
+            </div>
+            <div className="box-buttons">
+              <span className="type-option-burguer">Acompanhamentos</span>
+              <span className="input-options">
+                <ButtonIcon
+                  img={Chease}
+                  name="Queijo"
+                  func={props.func[3]}
+                  product={product}
+                  type={"Queijo"}
+                  index={index}
+                  idButton={0}
+                  colorButton={funcCheck}
+                  className={check[0] && "checked"}
+                />
+                <ButtonIcon
+                  img={Egg}
+                  name="Ovo"
+                  func={props.func[3]}
+                  product={product}
+                  type={"Ovo"}
+                  index={index}
+                  idButton={1}
+                  colorButton={funcCheck}
+                  className={check[1] && "checked"}
+                />
+              </span>
+            </div>
+          </div>
         </td>
       </tr>
     );
@@ -203,9 +226,15 @@ const Table = (props) => {
 
   const resume = () => {
     return (
-      <tr>
-        <td colSpan="4" className="resume"></td>
-      </tr>
+      <>
+        <tr>
+          <td colSpan="4" className="resume"></td>
+        </tr>
+        <tr>
+          <td colSpan="3">Total</td>
+          {/* <td>{props.menu.reduce((acc, val) => acc + val.price)}</td> */}
+        </tr>
+      </>
     );
   };
 
