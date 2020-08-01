@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonSelector from "./ButtonSelector";
+import Button from "../components/Button";
 import "./menu.css";
-import Delete from "./Delete";
+import ButtonIcon from "./Button-Icon";
+import Lixo from "../img/lixo.png";
+import Chicken from "../img/Chicken.png";
+import Ox from "../img/Ox.png";
+import Plant from "../img/Plant.png";
+import Chease from "../img/chease.png";
+import Egg from "../img/egg.png";
 
 const Table = (props) => {
-  const [burguer, setBuguer] = useState(0);
-  const [doubleBurguer, setDoubleBuguer] = useState(0);
+  const [burguer, setBuguer] = useState([
+    { item: "Hambúrguer simples", amount: 0 },
+    { item: "Hambúrguer duplo", amount: 0 },
+  ]);
+
+  const [check, setCheck] = useState([false, false]);
+  const [radio, setRadio] = useState([true, false, false]);
+
+  // const [doubleBurguer, setDoubleBuguer] = useState(0);
 
   const creatProduct = (product, i) => {
     return (
@@ -29,9 +43,19 @@ const Table = (props) => {
             />
           </td>
         ) : (
-          <td align="center">
+          <td align="center" className="del">
             {product.amount}x
-            <Delete func={props.func} product={product} />
+            <ButtonIcon
+              func={props.func}
+              product={product.item}
+              name="Delete"
+              // onClick={() => props.func(props.product.item)}
+              // // onClick={() => props.func(product.item)}
+              img={Lixo}
+              alt="delete"
+              //props.func(product.item)}
+            />
+            {/* <Delete func={props.func} product={product} /> */}
           </td>
         )}
       </tr>
@@ -59,14 +83,14 @@ const Table = (props) => {
         rows.push(creatCategory(product.category));
       }
       rows.push(creatProduct(product, i));
-      if (burguer && product.id === "b1") {
-        for (let i = 0; i < burguer; i++) {
-          rows.push(creatOptions(product.id, burguer));
-        }
-      }
-      if (doubleBurguer && product.id === "b2") {
-        for (let i = 0; i < doubleBurguer; i++) {
-          rows.push(creatOptions(product.id, doubleBurguer));
+      if (product.category === "Hambúrgueres") {
+        const result = burguer
+          .map((a) => {
+            return a.item;
+          })
+          .indexOf(product.item);
+        for (let j = 0; j < burguer[result].amount; j++) {
+          rows.push(creatOptions(product, j));
         }
       }
 
@@ -75,44 +99,103 @@ const Table = (props) => {
     return rows;
   };
 
-  const typeBurguer = (amount, id) => {
-    id === "b1" && setBuguer(amount);
-    id === "b2" && setDoubleBuguer(amount);
+  const typeBurguer = (amount, product) => {
+    let array = [...burguer];
+    const result = burguer
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(product.item);
+    array[result].amount = amount;
+    setBuguer(array);
   };
 
-  const creatOptions = (it, amount) => {
+  const funcRadio = (idButton) => {
+    //  if (idButton < 3) {
+    const array = [false, false, false];
+    array[idButton] = true;
+    setRadio(array);
+  };
+
+  const funcCheck = (idButton) => {
+    const array = check;
+    array[idButton] = !check[idButton];
+    setCheck(array);
+  };
+  // useEffect(() => {
+  //   console.log(check);
+  // }, [check]);
+
+  const creatOptions = (product, index) => {
+    // const productSelect = burguer.filter((burg) => burg.item === product.item);
     return (
       <tr>
-        <td colSpan="4" className="options">
-          <form className="input-options">
-            <div>
-              {" "}
-              <input type="radio" value={1} name="burguer" checked={true} />
-              <label>Carne Bovina</label>
-            </div>
-            <div>
-              {" "}
-              <input type="radio" name="burguer" value={2} />
-              <label>Fango</label>
-            </div>
-            <div>
-              {" "}
-              <input type="radio" name="burguer" value={3} />
-              <label>Vegetariano</label>
-            </div>
-          </form>
-          <form className="input-options">
-            <div>
-              {" "}
-              <input type="checkbox" value={1} name="burguer" />
-              <label>Queijo</label>
-            </div>
-            <div>
-              {" "}
-              <input type="checkbox" name="burguer" value={2} />
-              <label>Ovo</label>
-            </div>
-          </form>
+        <td className="option-item">{index + 1}º</td>
+        <td colSpan="3" className="options" align="center">
+          <span className="input-options">
+            <ButtonIcon
+              img={Ox}
+              name="Bovina"
+              func={props.func[2]}
+              product={product}
+              type={"Carne Bovina"}
+              index={index}
+              idButton={0}
+              colorButton={funcRadio}
+              className={radio[0] && "checked"}
+            />
+            <ButtonIcon
+              img={Chicken}
+              // className=" button button-options"
+              name="Frango"
+              func={props.func[2]}
+              product={product}
+              type={"Frango"}
+              index={index}
+              idButton={1}
+              colorButton={funcRadio}
+              className={radio[1] && "checked"}
+            />
+            <ButtonIcon
+              img={Plant}
+              name="Veg"
+              func={props.func[2]}
+              product={product}
+              type={"Vegetariano"}
+              index={index}
+              idButton={2}
+              colorButton={funcRadio}
+              className={radio[2] && "checked"}
+              // onClick={() => props.func[2](product, "Vegetariano", index)}
+            />
+          </span>
+          <span className="input-options">
+            <ButtonIcon
+              img={Chease}
+              name="Queijo"
+              func={props.func[3]}
+              product={product}
+              type={"Queijo"}
+              index={index}
+              idButton={0}
+              colorButton={funcCheck}
+              className={check[0] && "checked"}
+              // onClick={() => props.func[3](product, "Queijo", index)}
+            />
+            <ButtonIcon
+              img={Egg}
+              // className=" button button-options"
+              name="Ovo"
+              func={props.func[3]}
+              product={product}
+              type={"Ovo"}
+              index={index}
+              idButton={1}
+              colorButton={funcCheck}
+              className={check[1] && "checked"}
+              // onClick={() => props.func[3](product, "Ovo", index)}
+            />
+          </span>
         </td>
       </tr>
     );
