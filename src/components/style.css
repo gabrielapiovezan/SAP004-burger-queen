@@ -5,14 +5,13 @@
   color: #eeeeee;
   background-color: transparent;
   height: 45px;
-  border-radius: 50px;
-  width: 100%;
+  border-radius: 50px;  
   margin-top: 20px;
   transition: border 20ms;
 }
 .input {
   padding-left: 5%;
-  width: 95%;
+  width: 60%;
   outline: none;
 }
 
@@ -23,6 +22,11 @@
   background-color: #363535;
   border: solid 2px #d97308;
 }
+.button{
+  width: 350px;
+  margin-bottom: 20px;
+}
+
 .button:hover {
   cursor: pointer;
   background-color: #d97308;
@@ -30,7 +34,7 @@
 }
 .button-auth,
 .input-auth {
-  max-width: 370px;
+  max-width: 470px;
   min-width: 237.5px;
 }
 

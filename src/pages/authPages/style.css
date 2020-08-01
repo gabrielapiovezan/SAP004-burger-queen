@@ -1,5 +1,4 @@
 .templateAuth {
-  width: 80%;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -8,12 +7,9 @@
   color: #eeeeee;
 }
 
-.img {
-  width: 250px;
-}
-
-button {
-  margin-bottom: 20px;
+.img-auth {
+  margin-bottom: 5px;
+  width: 200px;
 }
 
 .link {
@@ -26,8 +22,7 @@ button {
 
 .sector{
   display: flex;
-  align-items: flex-end;
-  
+  align-items: flex-end;  
   border-radius: 10px;
   margin: 15px 55px;
   padding: 15px;
