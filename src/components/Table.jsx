@@ -23,12 +23,29 @@ const Table = (props) => {
       .indexOf(item);
   };
 
+  // const imgBurguer = (burguer) => {
+  //   // const typeBurguers = burguers
+  //     // .map((a) => {
+  //       if (a === "Vegetariano") return Plant;
+  //       if (a === "Carne Bovina") return Ox;
+  //       if (a === "Frango") return Chicken;
+  //     // })
+  //     // .map((a) => {
+  //     //   return <img src={a}></img>;
+  //     // });
+  //   console.log(typeBurguers);
+  // };
+
   const creatProduct = (product, i) => {
     return (
       <tr key={product.id}>
-        <td colSpan="2">{product.item}</td>
         {props.className === "table-total" ? (
           <>
+            {" "}
+            <td colSpan="2">
+              {product.item}
+              {/* {product.burguer && <img src={imgBurguer()}></img>} */}
+            </td>
             <td align="center">
               {(product.amount * product.price).toFixed(2).replace(".", ",")}
             </td>
@@ -45,6 +62,7 @@ const Table = (props) => {
           </>
         ) : (
           <>
+            <td colSpan="2">{product.item}</td>
             <td align="center">{product.price.toFixed(2).replace(".", ",")}</td>
             <td align="center">
               <ButtonSelector
