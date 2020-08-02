@@ -21,11 +21,6 @@ const Hall = () => {
   };
 
   const deleteAll = () => {
-    // const newArray = value.filter((a) => {
-    //   if (a.item !== item) {
-    //     return true;
-    //   }
-    // });
     setValue([]);
   };
 
@@ -81,9 +76,9 @@ const Hall = () => {
     setValue(newArray);
   };
 
-  // useEffect(() => {
-  //   console.log(value);
-  // }, [value]);
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <div className="hall">
