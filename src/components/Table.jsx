@@ -20,34 +20,35 @@ const Table = (props) => {
       <tr key={product.id}>
         <td colSpan="2">{product.item}</td>
         {props.className === "table-total" ? (
-          <td align="center">
-            {(product.amount * product.price).toFixed(2).replace(".", ",")}
-          </td>
+          <>
+            <td align="center">
+              {(product.amount * product.price).toFixed(2).replace(".", ",")}
+            </td>
+            <td align="center" className="del">
+              {product.amount}x
+              <ButtonIcon
+                func={props.func}
+                product={product.item}
+                name="Delete"
+                img={Lixo}
+                alt="delete"
+              />
+            </td>
+          </>
         ) : (
-          <td align="center">{product.price.toFixed(2).replace(".", ",")}</td>
-        )}
-        {props.className !== "table-total" ? (
-          <td align="center">
-            <ButtonSelector
-              className={props.selector}
-              index={i}
-              menu={props.menu}
-              func={[...props.func, typeBurguer]}
-              product={product}
-              total={props.total}
-            />
-          </td>
-        ) : (
-          <td align="center" className="del">
-            {product.amount}x
-            <ButtonIcon
-              func={props.func}
-              product={product.item}
-              name="Delete"
-              img={Lixo}
-              alt="delete"
-            />
-          </td>
+          <>
+            <td align="center">{product.price.toFixed(2).replace(".", ",")}</td>
+            <td align="center">
+              <ButtonSelector
+                className={props.selector}
+                index={i}
+                menu={props.menu}
+                func={[...props.func, typeBurguer]}
+                product={product}
+                total={props.total}
+              />
+            </td>
+          </>
         )}
       </tr>
     );
