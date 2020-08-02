@@ -3,6 +3,16 @@ import "./buttonSelector.css";
 
 const ButtonSelector = (props) => {
   const [value, setValue] = useState(props.product.amount);
+  // const [total, setotal] = useState(props.total);
+
+  useEffect(() => {
+    const result = props.total
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(props.product.item);
+    result === -1 && setValue(0);
+  }, [props.total]);
 
   useEffect(() => {
     value

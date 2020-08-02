@@ -34,6 +34,7 @@ const Table = (props) => {
               menu={props.menu}
               func={[...props.func, typeBurguer]}
               product={product}
+              total={props.total}
             />
           </td>
         ) : (
@@ -104,7 +105,7 @@ const Table = (props) => {
     setBuguer(array);
   };
 
-  const funcRadio = (idButton, product, index, type) => {
+  const funcRadio = (product, index, type) => {
     const array = [...burguer];
 
     const result = burguer
@@ -117,7 +118,7 @@ const Table = (props) => {
     setBuguer(array);
   };
 
-  const funcCheck = (idButton, product, index, type) => {
+  const funcCheck = (product, index, type) => {
     const result = burguer
       .map((a) => {
         return a.item;
@@ -156,7 +157,6 @@ const Table = (props) => {
                   product={product}
                   type={"Carne Bovina"}
                   index={index}
-                  idButton={0}
                   colorButton={funcRadio}
                   className={
                     burguer[result].typeBurguer[index] === "Carne Bovina" &&
@@ -170,7 +170,6 @@ const Table = (props) => {
                   product={product}
                   type={"Frango"}
                   index={index}
-                  idButton={1}
                   colorButton={funcRadio}
                   className={
                     burguer[result].typeBurguer[index] === "Frango" && "checked"
@@ -183,7 +182,6 @@ const Table = (props) => {
                   product={product}
                   type={"Vegetariano"}
                   index={index}
-                  idButton={2}
                   colorButton={funcRadio}
                   className={
                     burguer[result].typeBurguer[index] === "Vegetariano" &&
@@ -202,7 +200,6 @@ const Table = (props) => {
                   product={product}
                   type={"Queijo"}
                   index={index}
-                  idButton={0}
                   colorButton={funcCheck}
                   className={
                     burguer[result].sideSish[index].includes("Queijo") &&
@@ -216,7 +213,6 @@ const Table = (props) => {
                   product={product}
                   type={"Ovo"}
                   index={index}
-                  idButton={1}
                   colorButton={funcCheck}
                   className={
                     burguer[result].sideSish[index].includes("Ovo") && "checked"

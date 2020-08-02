@@ -10,16 +10,19 @@ import "./hall.css";
 const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
-  // const [teste, setTeste] = useState("");
+
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
       if (a.item !== item) {
         return true;
       }
     });
-
     setValue(newArray);
   };
+
+  // const zerarProduct = (item) =>{
+
+  // }
 
   const createTotal = (index, menuChoice, amount) => {
     let array = [...value];
@@ -77,9 +80,9 @@ const Hall = () => {
     setValue(newArray);
   };
 
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
+  // useEffect(() => {
+  //   console.log(value);
+  // }, [value]);
 
   return (
     <div className="hall">
@@ -107,6 +110,7 @@ const Hall = () => {
           menu={MenuBreackfast}
           selector="button-selector-breackfast"
           func={[createTotal, deleteItem]}
+          total={value}
         />
       ) : (
         <Table
@@ -114,6 +118,7 @@ const Hall = () => {
           menu={MenuDinner}
           selector="button-selector-dinner"
           func={[createTotal, deleteItem, setBurguer, setOptions]}
+          total={value}
         />
       )}
       {value[0] && (
