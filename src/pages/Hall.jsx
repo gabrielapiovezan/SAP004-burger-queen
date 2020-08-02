@@ -12,6 +12,7 @@ const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
   const [orderData, setOrderData] = useState({});
+  const [total, setTotal] = useState(0);
 
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
@@ -90,15 +91,29 @@ const Hall = () => {
   };
 
   useEffect(() => {
-    console.log(orderData);
-  }, [orderData]);
+    totalOrder();
+  }, [value]);
+
+  const totalOrder = () => {
+    let cont = 0;
+    value.forEach((a) => {
+      a.option &&
+        a.option.forEach((b) => {
+          cont += b.length;
+        });
+    });
+    setTotal(
+      value.reduce((acc, att) => acc + att.price * att.amount, 0) + cont
+    );
+  };
 
   const saveOrder = async () => {
     const obj = {};
     obj[0] = {
       Nome: orderData.name,
       Mesa: orderData.table,
-      Total: value.reduce((acc, att) => acc + att.price * att.amount, 0),
+      Total: total,
+      //value.reduce((acc, att) => acc + att.price * att.amount, 0),
     };
     value.forEach((a, i) => {
       obj[i + 1] = a;
@@ -163,6 +178,7 @@ const Hall = () => {
             menu={value}
             selector="button-selector-dinner"
             func={[deleteItem, deleteAll]}
+            total={total}
           />
           <Button value="Enviar" onClick={() => saveOrder()} />
         </>

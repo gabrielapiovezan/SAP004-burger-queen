@@ -30,7 +30,12 @@ const ButtonSelector = (props) => {
       >
         -
       </button>
-      <input className="input-button-selector" type="number" value={value} />
+      <input
+        className="input-button-selector"
+        type="number"
+        value={value}
+        onChange={(e) => {}}
+      />
       <button
         onClick={() => setValue(value < 20 ? value + 1 : 20)}
         className="button-change"

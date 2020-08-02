@@ -23,28 +23,29 @@ const Table = (props) => {
       .indexOf(item);
   };
 
-  // const imgBurguer = (burguer) => {
-  //   // const typeBurguers = burguers
-  //     // .map((a) => {
-  //       if (a === "Vegetariano") return Plant;
-  //       if (a === "Carne Bovina") return Ox;
-  //       if (a === "Frango") return Chicken;
-  //     // })
-  //     // .map((a) => {
-  //     //   return <img src={a}></img>;
-  //     // });
-  //   console.log(typeBurguers);
-  // };
+  const imgBurguer = (burguers, options) => {
+    let type;
+    let result = " - ";
+
+    burguers.forEach((a, i) => {
+      result += i + 1 + "º" + " " + a + " ";
+      options.forEach((op) => {
+        result += "+" + op;
+      });
+    });
+
+    return result.replace(",", " e ");
+  };
 
   const creatProduct = (product, i) => {
     return (
-      <tr key={product.id}>
+      <tr key={product.id + product.category}>
         {props.className === "table-total" ? (
           <>
             {" "}
             <td colSpan="2">
               {product.item}
-              {/* {product.burguer && <img src={imgBurguer()}></img>} */}
+              {product.burguer && imgBurguer(product.burguer, product.option)}
             </td>
             <td align="center">
               {(product.amount * product.price).toFixed(2).replace(".", ",")}
@@ -82,7 +83,7 @@ const Table = (props) => {
 
   const creatCategory = (category) => {
     return (
-      <tr>
+      <tr key={category}>
         <th align="start" className="menu-item">
           Item
         </th>
@@ -249,11 +250,11 @@ const Table = (props) => {
         <tr>
           <td colSpan="2">Total</td>
           <td align="center">
-            {" "}
-            {props.menu
+            {/* {props.menu
               .reduce((acc, att) => acc + att.price * att.amount, 0)
               .toFixed(2)
-              .replace(".", ",")}
+              .replace(".", ",")} */}
+            {props.total.toFixed(2).replace(".", ",")}
           </td>
           <td align="center" className="del">
             {props.menu.reduce((acc, att) => acc + att.amount, 0)}
