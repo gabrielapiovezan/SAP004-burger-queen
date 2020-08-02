@@ -37,6 +37,15 @@ const Table = (props) => {
     return result.replace(",", " e ");
   };
 
+  const resultOptions = (product) => {
+    let cont = 0;
+    product.option &&
+      product.option.forEach((b) => {
+        cont += b.length;
+      });
+    return cont;
+  };
+
   const creatProduct = (product, i) => {
     return (
       <tr key={product.id + product.category}>
@@ -48,7 +57,9 @@ const Table = (props) => {
               {product.burguer && imgBurguer(product.burguer, product.option)}
             </td>
             <td align="center">
-              {(product.amount * product.price).toFixed(2).replace(".", ",")}
+              {(product.amount * product.price + resultOptions(product))
+                .toFixed(2)
+                .replace(".", ",")}
             </td>
             <td align="center" className="del">
               {product.amount}x
@@ -163,7 +174,7 @@ const Table = (props) => {
         <td colSpan="3" className="options" align="center">
           <div className="buttons-box">
             <div className="box-buttons">
-              <span className="type-option-burguer">Carne</span>
+              <span className="type-option-burguer">Hamburguer</span>
               <span className="input-options">
                 <ButtonIcon
                   img={Ox}
