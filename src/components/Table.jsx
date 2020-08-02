@@ -15,6 +15,14 @@ const Table = (props) => {
     { item: "Hambúrguer duplo", amount: 0, typeBurguer: [], sideSish: [] },
   ]);
 
+  const searchIndex = (item) => {
+    return burguer
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(item);
+  };
+
   const creatProduct = (product, i) => {
     return (
       <tr key={product.id}>
@@ -27,7 +35,7 @@ const Table = (props) => {
             <td align="center" className="del">
               {product.amount}x
               <ButtonIcon
-                func={props.func}
+                func={props.func[0]}
                 product={product.item}
                 name="Delete"
                 img={Lixo}
@@ -76,11 +84,8 @@ const Table = (props) => {
       }
       rows.push(creatProduct(product, i));
       if (product.category === "Hambúrgueres") {
-        const result = burguer
-          .map((a) => {
-            return a.item;
-          })
-          .indexOf(product.item);
+        const result = searchIndex(product.item);
+
         for (let j = 0; j < burguer[result].amount; j++) {
           rows.push(creatOptions(product, j));
         }
@@ -93,11 +98,8 @@ const Table = (props) => {
 
   const typeBurguer = (amount, product) => {
     let array = [...burguer];
-    const result = burguer
-      .map((a) => {
-        return a.item;
-      })
-      .indexOf(product.item);
+    const result = searchIndex(product.item);
+
     array[result].amount = amount;
     if (amount > 0) {
       array[result].typeBurguer[amount - 1] = "Carne Bovina"; // : "";
@@ -109,11 +111,8 @@ const Table = (props) => {
   const funcRadio = (product, index, type) => {
     const array = [...burguer];
 
-    const result = burguer
-      .map((a) => {
-        return a.item;
-      })
-      .indexOf(product.item);
+    const result = searchIndex(product.item);
+
     array[result].typeBurguer[index] = type;
 
     setBuguer(array);
@@ -137,11 +136,7 @@ const Table = (props) => {
   };
 
   const creatOptions = (product, index) => {
-    const result = burguer
-      .map((a) => {
-        return a.item;
-      })
-      .indexOf(product.item);
+    const result = searchIndex(product.item);
 
     return (
       <tr>
@@ -234,8 +229,24 @@ const Table = (props) => {
           <td colSpan="4" className="resume"></td>
         </tr>
         <tr>
-          <td colSpan="3">Total</td>
-          {/* <td>{props.menu.reduce((acc, val) => acc + val.price)}</td> */}
+          <td colSpan="2">Total</td>
+          <td align="center">
+            {" "}
+            {props.menu
+              .reduce((acc, att) => acc + att.price * att.amount, 0)
+              .toFixed(2)
+              .replace(".", ",")}
+          </td>
+          <td align="center" className="del">
+            {props.menu.reduce((acc, att) => acc + att.amount, 0)}
+            x
+            <ButtonIcon
+              func={props.func[1]}
+              name="delete"
+              img={Lixo}
+              alt="deleteca"
+            />
+          </td>
         </tr>
       </>
     );

@@ -3,7 +3,9 @@ import "./style.css";
 
 const ButtonIcon = (props) => {
   const clicked = () => {
-    props.func(props.product, props.type, props.index);
+    props.product
+      ? props.func((props.product, props.type, props.index))
+      : props.func();
     props.colorButton &&
       props.colorButton(props.product, props.index, props.type);
   };

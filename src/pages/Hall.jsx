@@ -20,17 +20,18 @@ const Hall = () => {
     setValue(newArray);
   };
 
-  // const zerarProduct = (item) =>{
-
-  // }
+  const deleteAll = () => {
+    // const newArray = value.filter((a) => {
+    //   if (a.item !== item) {
+    //     return true;
+    //   }
+    // });
+    setValue([]);
+  };
 
   const createTotal = (index, menuChoice, amount) => {
     let array = [...value];
-    const result = value
-      .map((a) => {
-        return a.item;
-      })
-      .indexOf(menuChoice[index].item);
+    const result = searchIndex(menuChoice[index].item);
 
     if (result === -1 && amount !== 0) {
       array.push({
@@ -127,7 +128,7 @@ const Hall = () => {
             className="table-total"
             menu={value}
             selector="button-selector-dinner"
-            func={deleteItem}
+            func={[deleteItem, deleteAll]}
           />
           <Button value="Enviar" />
         </>
