@@ -35,11 +35,19 @@ const Hall = () => {
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-        burguer: [],
-        option: [],
+        // burguer: [],
+        // option: [],
       });
+      if (menuChoice[index].category === "Hambúrgueres")
+        array[array.length - 1] = {
+          ...array[array.length - 1],
+          burguer: ["Carne Bovina"],
+          option: [],
+        };
     } else {
       array[result].amount = amount;
+      array[result].burguer = [...array[result].burguer, "Carne Bovina"];
+      array[result].option = [...array[result].option, []];
     }
     setValue(array);
   };
