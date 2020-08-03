@@ -39,10 +39,15 @@ const Table = (props) => {
 
   const resultOptions = (product) => {
     let cont = 0;
+
     product.option &&
       product.option.forEach((b) => {
-        cont += b.length;
+        if (b.length) {
+          b.includes(",") ? (cont += 2) : (cont += 1);
+        } else {
+        }
       });
+
     return cont;
   };
 
@@ -260,13 +265,7 @@ const Table = (props) => {
         </tr>
         <tr>
           <td colSpan="2">Total</td>
-          <td align="center">
-            {/* {props.menu
-              .reduce((acc, att) => acc + att.price * att.amount, 0)
-              .toFixed(2)
-              .replace(".", ",")} */}
-            {props.total.toFixed(2).replace(".", ",")}
-          </td>
+          <td align="center">{props.total.toFixed(2).replace(".", ",")}</td>
           <td align="center" className="del">
             {props.menu.reduce((acc, att) => acc + att.amount, 0)}
             x

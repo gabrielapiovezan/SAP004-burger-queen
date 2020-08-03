@@ -11,7 +11,6 @@ import firebase from "../firebase/firebase";
 const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
-  const [orderData, setOrderData] = useState({});
   const [total, setTotal] = useState(0);
 
   const deleteItem = (item) => {
@@ -25,7 +24,7 @@ const Hall = () => {
 
   const deleteAll = () => {
     setValue([]);
-    setOrderData({});
+    setMenu(0);
   };
 
   const createTotal = (index, menuChoice, amount) => {
@@ -34,22 +33,27 @@ const Hall = () => {
 
     if (result === -1 && amount !== 0) {
       array.push({
+        name: "",
+        table: "",
         id: value.length,
         category: "Resumo",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
+        total: total,
       });
       if (menuChoice[index].category === "Hambúrgueres")
         array[array.length - 1] = {
           ...array[array.length - 1],
           burguer: ["Carne Bovina"],
-          option: [],
+          option: [""],
         };
     } else {
       array[result].amount = amount;
-      array[result].burguer = [...array[result].burguer, "Carne Bovina"];
-      array[result].option = [...array[result].option, []];
+      array[result].burguer = [
+        ...array[result].burguer,
+        (array[result].burguer = "Carne Bovina"),
+      ];
     }
     setValue(array);
   };
@@ -77,21 +81,30 @@ const Hall = () => {
   const setOptions = (product, option, index) => {
     const newArray = [...value];
     const result = searchIndex(product.item);
-    const options = newArray[result].option[index] || [];
-    options.includes(option)
-      ? options.splice(options.indexOf(option), 1)
-      : options.push(option);
-    console.log(result);
+    let options = newArray[result].option[index] || "";
+    if (options.includes(option)) {
+      options = options.replace(option, "");
+      if (options.includes(",")) options = options.replace(",", "");
+    } else {
+      if (options !== "") options += ",";
+      options += option;
+    }
+
     newArray[result].option[index] = options;
     setValue(newArray);
   };
 
   const updateData = (event, param) => {
-    setOrderData({ ...orderData, [param]: event.target.value });
+    const array = [...value];
+    array.forEach((a) => {
+      a[param] = event.target.value;
+    });
+    setValue(array);
   };
 
   useEffect(() => {
     totalOrder();
+    console.log(value);
   }, [value]);
 
   const totalOrder = () => {
@@ -99,26 +112,26 @@ const Hall = () => {
     value.forEach((a) => {
       a.option &&
         a.option.forEach((b) => {
-          cont += b.length;
+          if (b.length) {
+            b.includes(",") ? (cont += 2) : (cont += 1);
+          }
         });
     });
+
     setTotal(
       value.reduce((acc, att) => acc + att.price * att.amount, 0) + cont
     );
+    const array = [...value];
+    array.forEach((a) => {
+      a.total = total;
+    });
   };
 
   const saveOrder = async () => {
-    const obj = {};
-    obj[0] = {
-      Nome: orderData.name,
-      Mesa: orderData.table,
-      Total: total,
-      //value.reduce((acc, att) => acc + att.price * att.amount, 0),
-    };
-    value.forEach((a, i) => {
-      obj[i + 1] = a;
-    });
+    const obj = { value };
+
     await firebase.firestore().collection("orders").add(obj);
+
     deleteAll();
   };
 
@@ -132,7 +145,6 @@ const Hall = () => {
             placeholder="Nome"
             className="input name-input"
             onChange={(e) => updateData(e, "name")}
-            value={orderData.name}
           />
           <div className="data-table">
             <h1 className="text">MESA</h1>
@@ -141,7 +153,6 @@ const Hall = () => {
               className="input table-input"
               type="number"
               onChange={(e) => updateData(e, "table")}
-              value={orderData.table}
             />
           </div>
         </div>
