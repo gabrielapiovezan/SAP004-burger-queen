@@ -53,7 +53,7 @@ const Table = (props) => {
 
   const creatProduct = (product, i) => {
     return (
-      <tr key={product.id + i + product.category}>
+      <tr key={product.item + i + product.category}>
         {props.className === "table-total" ? (
           <>
             {" "}
@@ -174,7 +174,7 @@ const Table = (props) => {
     const result = searchIndex(product.item);
 
     return (
-      <tr key={product.item + product.category}>
+      <tr key={product.item + product.category + index}>
         <td className="option-item">{index + 1}º</td>
         <td colSpan="3" className="options" align="center">
           <div className="buttons-box">

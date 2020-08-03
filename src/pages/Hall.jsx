@@ -12,6 +12,7 @@ const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
   const [total, setTotal] = useState(0);
+  const [order, setOrder] = useState({ name: "", table: "" });
 
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
@@ -33,8 +34,8 @@ const Hall = () => {
 
     if (result === -1 && amount !== 0) {
       array.push({
-        name: "",
-        table: "",
+        name: order.name,
+        table: order.table,
         id: value.length,
         category: "Resumo",
         item: menuChoice[index].item,
@@ -50,10 +51,10 @@ const Hall = () => {
         };
     } else {
       array[result].amount = amount;
-      array[result].burguer = [
-        ...array[result].burguer,
-        (array[result].burguer = "Carne Bovina"),
-      ];
+      if (menuChoice[index].category === "Hambúrgueres") {
+        array[result].burguer = [...array[result].burguer, "Carne Bovina"];
+        array[result].burguer = [...array[result].option, ""];
+      }
     }
     setValue(array);
   };
@@ -95,11 +96,13 @@ const Hall = () => {
   };
 
   const updateData = (event, param) => {
-    const array = [...value];
-    array.forEach((a) => {
-      a[param] = event.target.value;
-    });
-    setValue(array);
+    // const array = [...value];
+    // array.forEach((a) => {
+    //   a[param] = event.target.value;
+    // });
+    // setValue(array);
+    //  setOrder((set) => (set[param] = event.target.value)); //{ ...order, order[parem]: event.target.value });
+    setOrder({ ...order, [param]: event.target.value });
   };
 
   useEffect(() => {
