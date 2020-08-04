@@ -3,6 +3,9 @@ import React from "react";
 const ReturnError = (props) => {
 
   const errorAuth = (errorCode) => {
+    if (errorCode === "") {
+      return ""
+    }
     switch (errorCode) {
       case "auth/email-already-exists":
       case "auth/email-already-in-use":
@@ -16,7 +19,7 @@ const ReturnError = (props) => {
       case "auth/weak-password":
         return "A senha deve ter mais de seis caracteres."
       default:
-        return ""
+        return "Ocorreu um erro no sistema"
     }
   };
 

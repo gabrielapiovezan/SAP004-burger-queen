@@ -1,0 +1,25 @@
+.btn-kitchen{
+
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.img-kitchen {
+  margin-right: 150px;
+  width: 150px;
+}
+
+.kitchen{
+  display: flex;
+  align-items: center;
+}
+
+.request{
+  display: flex;
+  margin-top: 20px;
+}
