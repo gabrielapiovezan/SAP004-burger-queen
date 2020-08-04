@@ -31,13 +31,13 @@ td {
   font-weight: 700;
 }
 .menu-value {
-  width: 25%;
+  width: 15%;
 }
 .menu-item {
-  width: 25%;
+  width: 10%;
 }
 .menu-button {
-  width: 20%;
+  width: 25%;
 }
 .resume {
   padding: 2px;
@@ -45,17 +45,34 @@ td {
   border-bottom: 0.5px solid #eeeeee44;
 }
 .input-options {
-  width: 100%;
+  margin: 10px;
+  width: 130px;
+  border: solid 1px #eeeeee;
+  padding: 5px;
+  border-radius: 5px;
+  /* width: 400px; */
+  /* height: 25px; */
+  display: inline-flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.option {
   display: flex;
-  /* align-items: center; */
   justify-content: space-around;
 }
-.options {
-  width: 100%;
-  background-color: #434242;
+/* .button-options {
+  border: solid;
   border-radius: 5px;
+  height: auto;
+  padding: 10px;
+  margin: 5px;
+} */
+.del {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-
-.options > form {
-  margin-top: 5px;
+.option-item {
+  width: 20px;
 }
