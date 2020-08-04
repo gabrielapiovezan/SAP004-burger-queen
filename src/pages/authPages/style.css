@@ -20,21 +20,21 @@
   color: #d97308;
 }
 
-.sector{
+.sector {
   display: flex;
-  align-items: flex-end;  
+  align-items: flex-end;
   border-radius: 10px;
-  margin: 15px 55px;
+  /* margin: 15px 55px; */
   padding: 15px;
   color: #eeeeee;
-} 
+}
 
-.icon{
+.icon {
   width: 30px;
   height: 30px;
   margin-right: 5px;
 }
 
-.oi{
+.oi {
   display: flex;
 }

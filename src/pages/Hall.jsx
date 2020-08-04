@@ -53,7 +53,7 @@ const Hall = () => {
       array[result].amount = amount;
       if (menuChoice[index].category === "Hambúrgueres") {
         array[result].burguer = [...array[result].burguer, "Carne Bovina"];
-        array[result].burguer = [...array[result].option, ""];
+        array[result].option = [...array[result].option, ""];
       }
     }
     setValue(array);

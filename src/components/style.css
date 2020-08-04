@@ -78,7 +78,7 @@
 }
 .button-icon {
   width: 25px;
-  border-radius: 5px;
+  margin: 0;
 }
 .button-icon-div {
   background-color: transparent;

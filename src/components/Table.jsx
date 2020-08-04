@@ -24,17 +24,15 @@ const Table = (props) => {
   };
 
   const imgBurguer = (burguers, options) => {
-    let type;
-    let result = " - ";
+    let result = "";
 
     burguers.forEach((a, i) => {
-      result += i + 1 + "º" + " " + a + " ";
-      options.forEach((op) => {
-        result += "+" + op;
-      });
+      result += "\n\n\n\n\n" + a;
+      result += options[i];
     });
 
-    return result.replace(",", " e ");
+    //  var newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
+    return result;
   };
 
   const resultOptions = (product) => {
@@ -58,8 +56,12 @@ const Table = (props) => {
           {props.className === "table-total" ? (
             <>
               <td colSpan="2">
+                {product.amount + " "}
                 {product.item}
-                {product.burguer && imgBurguer(product.burguer, product.option)}
+                <div className="info-order">
+                  {product.burguer &&
+                    imgBurguer(product.burguer, product.option)}
+                </div>
               </td>
               <td align="center">
                 R$
@@ -67,8 +69,7 @@ const Table = (props) => {
                   .toFixed(2)
                   .replace(".", ",")}
               </td>
-              <td align="center" className="del">
-                {product.amount}x
+              <td className="del">
                 <ButtonIcon
                   func={props.func[0]}
                   product={product.item}
@@ -96,12 +97,14 @@ const Table = (props) => {
             </>
           )}
         </tr>
-        <tr>
-          <td className="price" valign="top">
-            R$
-            {product.price.toFixed(2).replace(".", ",")}
-          </td>
-        </tr>
+        {product.category !== "Total" && (
+          <tr>
+            <td className="info-order" valign="top">
+              R$
+              {product.price.toFixed(2).replace(".", ",")}
+            </td>
+          </tr>
+        )}
       </>
     );
   };
@@ -121,7 +124,7 @@ const Table = (props) => {
             ></td>
           )}
         </tr>
-        <tr key={product.category + product.item}>
+        <tr>
           {/* <th align="start" className="menu-item">
           Item
         </th> */}
@@ -317,15 +320,16 @@ const Table = (props) => {
         </tr>
         <tr>
           <td colSpan="2">Total</td>
-          <td align="center">{props.total.toFixed(2).replace(".", ",")}</td>
-          <td align="center" className="del">
-            {props.menu.reduce((acc, att) => acc + att.amount, 0)}
-            x
+          <td align="center">R${props.total.toFixed(2).replace(".", ",")}</td>
+          <td className="del">
+            {/* align="right"> */}
+            {/* className="del"> */}
+            {/* {props.menu.reduce((acc, att) => acc + att.amount, 0)} */}
             <ButtonIcon
               func={props.func[1]}
               name="delete"
               img={Lixo}
-              alt="deleteca"
+              alt="delete"
             />
           </td>
         </tr>
