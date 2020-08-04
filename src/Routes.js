@@ -3,10 +3,12 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall";
+
 import Delivery from "./pages/Delivery/Index";
 import OrderHistory from "./pages/OrderHistory/Index";
 import Kitchen from "./pages/Kitchen/Index"
 import { useAuth } from "./contexts/auth"
+
 
 
 
@@ -23,11 +25,13 @@ const RouteDisconnected = () => (
 
 const RouteKitchen = () => (
   <Switch>
+
     <Route path="/orderHistory">
       <OrderHistory />
+
     </Route>
     <Route exact path="/">
-      <Kitchen />
+      <h1>Kitchen</h1>
     </Route>
   </Switch>
 );

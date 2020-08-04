@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import logo from "../../img/logo2.png";
-import "./style.css"
+import "./style.css";
 
 import { useAuth } from "../../contexts/auth";
 import { Link } from "react-router-dom";
-
 
 const Header = () => {
   const { signOut, signed } = useAuth();
@@ -29,14 +28,16 @@ const Header = () => {
               <span></span>
               <span></span>
               <ul id="menu">
+
                 <Link href="#"><li>Perfil</li></Link>
                 <Link to="/orderHistory"><li>Histórico</li></Link>
                 <a onClick={handleLogout}><li>Sair</li></a>
+
               </ul>
             </div>
           </nav>
           <div className="logo-header">
-            <span>Burguer Queem</span>
+            <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
         </div>
