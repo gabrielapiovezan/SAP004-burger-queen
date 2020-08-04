@@ -4,8 +4,8 @@
   border: solid 2px #eeeeee;
   color: #eeeeee;
   background-color: transparent;
-  height: 45px;
-  border-radius: 50px;  
+  height: 40px;
+  border-radius: 50px;
   margin-top: 20px;
   transition: border 20ms;
 }
@@ -22,7 +22,7 @@
   background-color: #363535;
   border: solid 2px #d97308;
 }
-.button{
+.button {
   width: 350px;
   margin-bottom: 20px;
 }
@@ -47,34 +47,32 @@
   background-color: #d97308;
 }
 
-
-.container-command{
+.container-command {
   width: 280px;
-  height: 250px; 
+  height: 250px;
   background: white;
   box-sizing: border-box;
-  border-radius: 20px; 
+  border-radius: 20px;
   margin: 20px;
 }
-.container-command ul{
+.container-command ul {
   background-color: rgb(218, 56, 34);
   margin: 10px;
   padding: 60px;
-  border-radius: 10px; 
+  border-radius: 10px;
 }
-.container-command li{
-  display: flex; 
+.container-command li {
+  display: flex;
   align-items: flex-start;
-  
 }
 
-.data-command{
+.data-command {
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
 }
 
-.data-calendar{
+.data-calendar {
   display: flex;
   justify-content: space-around;
 }
@@ -87,23 +85,21 @@
   margin: 3px;
   font-size: 10px;
   width: 35px;
-  padding: 1px;
+  padding: 3px;
   height: 35px;
   border: solid 1px #eeeeee;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .button-icon-div:hover {
-  border: 1px #d97308;
   cursor: pointer;
   background-color: #d97308;
 }
 .checked {
   background-color: #d97308;
-  border: #d97308;
 }
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -115,4 +111,3 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-

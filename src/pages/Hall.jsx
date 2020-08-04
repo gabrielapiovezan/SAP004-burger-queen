@@ -37,7 +37,7 @@ const Hall = () => {
         name: order.name,
         table: order.table,
         id: value.length,
-        category: "Resumo",
+        category: "Total",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,

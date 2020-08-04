@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import logo from "../../img/logo2.png";
-import "./style.css"
+import "./style.css";
 
 import { useAuth } from "../../contexts/auth";
-
 
 const Header = () => {
   const { signOut, signed } = useAuth();
@@ -28,14 +27,20 @@ const Header = () => {
               <span></span>
               <span></span>
               <ul id="menu">
-                <a href="#"><li>Perfil</li></a>
-                <a href="#"><li>Pedidos</li></a>
-                <a onClick={handleLogout}><li>Sair</li></a>
+                <a href="#">
+                  <li>Perfil</li>
+                </a>
+                <a href="#">
+                  <li>Pedidos</li>
+                </a>
+                <a onClick={handleLogout}>
+                  <li>Sair</li>
+                </a>
               </ul>
             </div>
           </nav>
           <div className="logo-header">
-            <span>Burguer Queem</span>
+            <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
         </div>
