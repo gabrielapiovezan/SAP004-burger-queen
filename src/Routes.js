@@ -3,7 +3,14 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall";
-import { useAuth } from "./contexts/auth";
+
+import Delivery from "./pages/Delivery/Index";
+import OrderHistory from "./pages/OrderHistory/Index";
+import Kitchen from "./pages/Kitchen/Index"
+import { useAuth } from "./contexts/auth"
+
+
+
 
 const RouteDisconnected = () => (
   <Switch>
@@ -18,8 +25,10 @@ const RouteDisconnected = () => (
 
 const RouteKitchen = () => (
   <Switch>
-    <Route path="/register">
-      <h1>register</h1>
+
+    <Route path="/orderHistory">
+      <OrderHistory />
+
     </Route>
     <Route exact path="/">
       <h1>Kitchen</h1>
@@ -29,8 +38,11 @@ const RouteKitchen = () => (
 
 const RouteService = () => (
   <Switch>
-    <Route path="/register">
-      <h1>register</h1>
+    <Route path="/orderHistory">
+      <OrderHistory />
+    </Route>
+    <Route path="/delivery">
+      <Delivery />
     </Route>
     <Route path="/">
       <Hall />

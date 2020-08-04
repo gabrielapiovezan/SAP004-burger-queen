@@ -23,7 +23,7 @@ const Register = () => {
 
   const onClickRegister = async () => {
     if (password !== confirmPassword) {
-      alert("email e senhao não sao iguis")
+      alert("email e senha não são iguais")
     }
     else {
       try {

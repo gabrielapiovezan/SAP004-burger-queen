@@ -3,6 +3,7 @@ import logo from "../../img/logo2.png";
 import "./style.css";
 
 import { useAuth } from "../../contexts/auth";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { signOut, signed } = useAuth();
@@ -27,15 +28,11 @@ const Header = () => {
               <span></span>
               <span></span>
               <ul id="menu">
-                <a href="#">
-                  <li>Perfil</li>
-                </a>
-                <a href="#">
-                  <li>Pedidos</li>
-                </a>
-                <a onClick={handleLogout}>
-                  <li>Sair</li>
-                </a>
+
+                <Link href="#"><li>Perfil</li></Link>
+                <Link to="/orderHistory"><li>Histórico</li></Link>
+                <a onClick={handleLogout}><li>Sair</li></a>
+
               </ul>
             </div>
           </nav>
