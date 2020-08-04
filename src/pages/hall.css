@@ -1,21 +1,24 @@
 .hall {
-  width: 500px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 30px;
+  /* padding: 30px; */
 }
-
+.input {
+  width: 80%;
+}
 .img-hall {
   width: 150px;
 }
 .data {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .data-table {
+  width: 100%;
   display: flex;
   /* align-items: flex-end; */
   align-items: center;
@@ -29,7 +32,7 @@
 .breack-fast,
 .dinner {
   outline: none;
-  width: 115px;
+  width: 150px;
   height: 35px;
   margin: 0;
   border: none;
@@ -45,11 +48,39 @@
   background-color: #272626;
 }
 .buttons-menu {
-  width: 500px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 .button-menu:hover {
   cursor: pointer;
+}
+.name-input {
+  width: 95%;
+}
+.container-table {
+  width: 100%;
+}
+.button {
+  width: 100%;
+}
+.box-data {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media only screen and (min-width: 1000px) {
+  .hall {
+    width: 100%;
+    display: flex;
+
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .container-table {
+    margin: 20px;
+    width: 40%;
+  }
 }

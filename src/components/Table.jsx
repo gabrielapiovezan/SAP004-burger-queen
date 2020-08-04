@@ -24,17 +24,15 @@ const Table = (props) => {
   };
 
   const imgBurguer = (burguers, options) => {
-    let type;
-    let result = " - ";
+    let result = "";
 
     burguers.forEach((a, i) => {
-      result += i + 1 + "º" + " " + a + " ";
-      options.forEach((op) => {
-        result += "+" + op;
-      });
+      result += "\n\n\n\n\n" + a;
+      result += options[i];
     });
 
-    return result.replace(",", " e ");
+    //  var newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
+    return result;
   };
 
   const resultOptions = (product) => {
@@ -53,60 +51,110 @@ const Table = (props) => {
 
   const creatProduct = (product, i) => {
     return (
-      <tr key={product.item + i + product.category}>
-        {props.className === "table-total" ? (
-          <>
-            {" "}
-            <td colSpan="2">
-              {product.item}
-              {product.burguer && imgBurguer(product.burguer, product.option)}
+      <>
+        <tr key={product.item + i + product.category}>
+          {props.className === "table-total" ? (
+            <>
+              <td colSpan="2">
+                {product.amount + " "}
+                {product.item}
+                <div className="info-order">
+                  {product.burguer &&
+                    imgBurguer(product.burguer, product.option)}
+                </div>
+              </td>
+              <td align="center">
+                R$
+                {(product.amount * product.price + resultOptions(product))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </td>
+              <td className="del">
+                <ButtonIcon
+                  func={props.func[0]}
+                  product={product.item}
+                  name="Delete"
+                  img={Lixo}
+                  alt="delete"
+                />
+              </td>
+            </>
+          ) : (
+            <>
+              <td colSpan="3" valign="bottom">
+                {product.item}
+              </td>
+              <td align="right" rowSpan="2" className="line-table">
+                <ButtonSelector
+                  className={props.selector}
+                  index={i}
+                  menu={props.menu}
+                  func={[...props.func, typeBurguer]}
+                  product={product}
+                  total={props.total}
+                />
+              </td>
+            </>
+          )}
+        </tr>
+        {product.category !== "Total" && (
+          <tr>
+            <td className="info-order" valign="top">
+              R$
+              {product.price.toFixed(2).replace(".", ",")}
             </td>
-            <td align="center">
-              {(product.amount * product.price + resultOptions(product))
-                .toFixed(2)
-                .replace(".", ",")}
-            </td>
-            <td align="center" className="del">
-              {product.amount}x
-              <ButtonIcon
-                func={props.func[0]}
-                product={product.item}
-                name="Delete"
-                img={Lixo}
-                alt="delete"
-              />
-            </td>
-          </>
-        ) : (
-          <>
-            <td colSpan="2">{product.item}</td>
-            <td align="center">{product.price.toFixed(2).replace(".", ",")}</td>
-            <td align="center">
-              <ButtonSelector
-                className={props.selector}
-                index={i}
-                menu={props.menu}
-                func={[...props.func, typeBurguer]}
-                product={product}
-                total={props.total}
-              />
-            </td>
-          </>
+          </tr>
         )}
-      </tr>
+      </>
     );
   };
 
-  const creatCategory = (category) => {
+  const creatCategory = (product, i) => {
     return (
-      <tr key={category}>
-        <th align="start" className="menu-item">
+      <>
+        <tr>
+          {i > 0 && (
+            <td
+              colSpan="4"
+              className={
+                product.category === "Café da Manhã"
+                  ? "resume-breackfast"
+                  : "resume"
+              }
+            ></td>
+          )}
+        </tr>
+        <tr>
+          {/* <th align="start" className="menu-item">
           Item
-        </th>
-        <th className="menu-type">{category}</th>
-        <th className="menu-value">Valor</th>
-        <th className="menu-button"></th>
-      </tr>
+        </th> */}
+
+          <th
+            // className="menu-type"
+            align="left"
+            colSpan="3"
+            className={
+              product.category === "Café da Manhã"
+                ? "menu-type-breackfast"
+                : "menu-type"
+            }
+          >
+            {product.category.toUpperCase()}
+          </th>
+          {/* <th className="menu-value">Valor</th> */}
+          <th className="menu-button"></th>
+        </tr>
+        <tr>
+          <td
+            colSpan="4"
+            className={
+              product.category === "Café da Manhã"
+                ? "resume-breackfast"
+                : "resume"
+            }
+          ></td>
+        </tr>
+      </>
     );
   };
 
@@ -115,7 +163,7 @@ const Table = (props) => {
     let lastCategory = null;
     props.menu.forEach((product, i) => {
       if (product.category !== lastCategory) {
-        rows.push(creatCategory(product.category));
+        rows.push(creatCategory(product, i));
       }
       rows.push(creatProduct(product, i));
       if (product.category === "Hambúrgueres") {
@@ -174,86 +222,93 @@ const Table = (props) => {
     const result = searchIndex(product.item);
 
     return (
-      <tr key={product.item + product.category + index}>
-        <td className="option-item">{index + 1}º</td>
-        <td colSpan="3" className="options" align="center">
-          <div className="buttons-box">
-            <div className="box-buttons">
-              <span className="type-option-burguer">Hamburguer</span>
-              <span className="input-options">
-                <ButtonIcon
-                  img={Ox}
-                  name="Bovina"
-                  func={props.func[2]}
-                  product={product}
-                  type={"Carne Bovina"}
-                  index={index}
-                  colorButton={funcRadio}
-                  className={
-                    burguer[result].typeBurguer[index] === "Carne Bovina" &&
-                    "checked"
-                  }
-                />
-                <ButtonIcon
-                  img={Chicken}
-                  name="Frango"
-                  func={props.func[2]}
-                  product={product}
-                  type={"Frango"}
-                  index={index}
-                  colorButton={funcRadio}
-                  className={
-                    burguer[result].typeBurguer[index] === "Frango" && "checked"
-                  }
-                />
-                <ButtonIcon
-                  img={Plant}
-                  name="Veg"
-                  func={props.func[2]}
-                  product={product}
-                  type={"Vegetariano"}
-                  index={index}
-                  colorButton={funcRadio}
-                  className={
-                    burguer[result].typeBurguer[index] === "Vegetariano" &&
-                    "checked"
-                  }
-                />
-              </span>
+      <>
+        <tr key={product.item + product.category + index}>
+          {/* <td className="option-item">{index + 1}º</td> */}
+          <td colSpan="4" className="options">
+            <div className="buttons-box">
+              <div className="box-buttons">
+                <span className="type-option-burguer">Hamburguer</span>
+                <span className="input-options">
+                  <ButtonIcon
+                    img={Ox}
+                    name="Bovina"
+                    func={props.func[2]}
+                    product={product}
+                    type={"Carne Bovina"}
+                    index={index}
+                    colorButton={funcRadio}
+                    className={
+                      burguer[result].typeBurguer[index] === "Carne Bovina" &&
+                      "checked"
+                    }
+                  />
+                  <ButtonIcon
+                    img={Chicken}
+                    name="Frango"
+                    func={props.func[2]}
+                    product={product}
+                    type={"Frango"}
+                    index={index}
+                    colorButton={funcRadio}
+                    className={
+                      burguer[result].typeBurguer[index] === "Frango" &&
+                      "checked"
+                    }
+                  />
+                  <ButtonIcon
+                    img={Plant}
+                    name="Veg"
+                    func={props.func[2]}
+                    product={product}
+                    type={"Vegetariano"}
+                    index={index}
+                    colorButton={funcRadio}
+                    className={
+                      burguer[result].typeBurguer[index] === "Vegetariano" &&
+                      "checked"
+                    }
+                  />
+                </span>
+              </div>
+              <div className="box-buttons">
+                <span className="type-option-burguer">Add +R$1,00</span>
+                <span className="input-options">
+                  <ButtonIcon
+                    img={Chease}
+                    name="Queijo"
+                    func={props.func[3]}
+                    product={product}
+                    type={"Queijo"}
+                    index={index}
+                    colorButton={funcCheck}
+                    className={
+                      burguer[result].sideSish[index].includes("Queijo") &&
+                      "checked"
+                    }
+                  />
+                  <ButtonIcon
+                    img={Egg}
+                    name="Ovo"
+                    func={props.func[3]}
+                    product={product}
+                    type={"Ovo"}
+                    index={index}
+                    colorButton={funcCheck}
+                    className={
+                      burguer[result].sideSish[index].includes("Ovo") &&
+                      "checked"
+                    }
+                  />
+                </span>
+              </div>
             </div>
-            <div className="box-buttons">
-              <span className="type-option-burguer">Acompanhamentos</span>
-              <span className="input-options">
-                <ButtonIcon
-                  img={Chease}
-                  name="Queijo"
-                  func={props.func[3]}
-                  product={product}
-                  type={"Queijo"}
-                  index={index}
-                  colorButton={funcCheck}
-                  className={
-                    burguer[result].sideSish[index].includes("Queijo") &&
-                    "checked"
-                  }
-                />
-                <ButtonIcon
-                  img={Egg}
-                  name="Ovo"
-                  func={props.func[3]}
-                  product={product}
-                  type={"Ovo"}
-                  index={index}
-                  colorButton={funcCheck}
-                  className={
-                    burguer[result].sideSish[index].includes("Ovo") && "checked"
-                  }
-                />
-              </span>
-            </div>
-          </div>
-        </td>
-      </tr>
+          </td>
+        </tr>
+        <tr>
+          <td colSpan="4" className="resume"></td>
+        </tr>
+      </>
     );
   };
 
@@ -265,15 +320,16 @@ const Table = (props) => {
         </tr>
         <tr>
           <td colSpan="2">Total</td>
-          <td align="center">{props.total.toFixed(2).replace(".", ",")}</td>
-          <td align="center" className="del">
-            {props.menu.reduce((acc, att) => acc + att.amount, 0)}
-            x
+          <td align="center">R${props.total.toFixed(2).replace(".", ",")}</td>
+          <td className="del">
+            {/* align="right"> */}
+            {/* className="del"> */}
+            {/* {props.menu.reduce((acc, att) => acc + att.amount, 0)} */}
             <ButtonIcon
               func={props.func[1]}
               name="delete"
               img={Lixo}
-              alt="deleteca"
+              alt="delete"
             />
           </td>
         </tr>
@@ -282,7 +338,7 @@ const Table = (props) => {
   };
 
   return (
-    <table className={props.className}>
+    <table key={props.className} className={props.className}>
       <tbody>{creatTable()}</tbody>
       {props.className === "table-total" && resume()}
     </table>

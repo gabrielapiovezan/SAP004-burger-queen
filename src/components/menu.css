@@ -1,6 +1,6 @@
 table {
-  padding: 10px;
-  width: 500px;
+  padding: 6%;
+  width: 100%;
   border-radius: 5px 0 5px 5px;
 }
 .table-breackfast {
@@ -19,16 +19,24 @@ table {
   border: solid 2px #eeeeee;
 }
 
-th {
+/* th {
   color: #d97308;
-}
-td {
-  padding: 4px;
-}
+} */
+/* td,
+th {
+  padding: 0 5%;
+} */
 .menu-type {
+  padding-top: 20px;
   width: 30%;
   color: #eeeeee;
-  font-weight: 700;
+  font-weight: 900;
+}
+.menu-type-breackfast {
+  padding-top: 20px;
+  width: 30%;
+  color: #272626;
+  font-weight: 900;
 }
 .menu-value {
   width: 15%;
@@ -37,16 +45,21 @@ td {
   width: 10%;
 }
 .menu-button {
-  width: 25%;
+  width: 15%;
 }
 .resume {
   padding: 2px;
   height: 0.7px;
   border-bottom: 0.5px solid #eeeeee44;
 }
+.resume-breackfast {
+  padding: 2px;
+  height: 0.7px;
+  border-bottom: 0.5px solid #27262644;
+}
 .input-options {
-  margin: 10px;
-  width: 100%;
+  /* margin: 10px; */
+  /* width: 100%; */
   border: solid 1px #eeeeee;
   padding: 8px;
   border-radius: 5px;
@@ -62,31 +75,51 @@ td {
 }
 
 .del {
+  /* width: 10%; */
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
+  /* align-items: flex-end; */
+  /* justify-content: space-around; */
 }
 .option-item {
   width: 20px;
 }
 .type-option-burguer {
-  height: auto;
   padding: 3px;
-  font-size: 8px;
+  font-size: 9px;
   position: relative;
-  right: 0px;
-  top: 20px;
+  right: -10px;
+  top: 10px;
   color: #eeeeee;
   background-color: #272626;
 }
 .box-buttons {
-  margin: 0;
-  padding: 0;
-  width: 40%;
-  align-items: center;
+  margin-right: 20px;
+  padding: 0px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
 }
 .buttons-box {
-  width: 80%;
+  /* width: 80%; */
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+
+  /* justify-content: center; */
+}
+/* .price {
+  margin-bottom: 5px;
+  font-size: 16px;
+} */
+
+.line-table {
+  height: 60px;
+  margin: 20px;
+}
+.info-order {
+  font-size: 16px;
 }

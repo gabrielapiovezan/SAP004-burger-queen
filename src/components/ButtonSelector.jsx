@@ -34,6 +34,7 @@ const ButtonSelector = (props) => {
         type="number"
         value={value}
         onChange={(e) => {}}
+        disabled
       />
       <button
         onClick={() => setValue(value < 20 ? value + 1 : 20)}
