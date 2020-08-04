@@ -5,8 +5,15 @@ const ButtonSelector = (props) => {
   const [value, setValue] = useState(props.product.amount);
 
   useEffect(() => {
-    console.log(value);
-    console.log(value);
+    const result = props.total
+      .map((a) => {
+        return a.item;
+      })
+      .indexOf(props.product.item);
+    result === -1 && setValue(0);
+  }, [props.total]);
+
+  useEffect(() => {
     value
       ? props.func[0](props.index, props.menu, value)
       : props.func[1](props.product.item);
@@ -22,7 +29,12 @@ const ButtonSelector = (props) => {
       >
         -
       </button>
-      <input className="input-button-selector" type="number" value={value} />
+      <input
+        className="input-button-selector"
+        type="number"
+        value={value}
+        onChange={(e) => {}}
+      />
       <button
         onClick={() => setValue(value < 20 ? value + 1 : 20)}
         className="button-change"

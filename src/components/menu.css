@@ -46,28 +46,21 @@ td {
 }
 .input-options {
   margin: 10px;
-  width: 130px;
+  width: 100%;
   border: solid 1px #eeeeee;
-  padding: 5px;
+  padding: 8px;
   border-radius: 5px;
-  /* width: 400px; */
-  /* height: 25px; */
   display: inline-flex;
-  align-self: center;
   align-items: center;
-  justify-content: center;
-}
-.option {
-  display: flex;
   justify-content: space-around;
 }
-/* .button-options {
-  border: solid;
-  border-radius: 5px;
-  height: auto;
-  padding: 10px;
-  margin: 5px;
-} */
+.option {
+  display: inline-flex;
+
+  justify-content: space-around;
+  align-items: center;
+}
+
 .del {
   display: flex;
   align-items: center;
@@ -75,4 +68,25 @@ td {
 }
 .option-item {
   width: 20px;
+}
+.type-option-burguer {
+  height: auto;
+  padding: 3px;
+  font-size: 8px;
+  position: relative;
+  right: 0px;
+  top: 20px;
+  color: #eeeeee;
+  background-color: #272626;
+}
+.box-buttons {
+  margin: 0;
+  padding: 0;
+  width: 40%;
+  align-items: center;
+}
+.buttons-box {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
 }
