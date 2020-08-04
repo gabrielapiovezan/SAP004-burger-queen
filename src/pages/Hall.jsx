@@ -140,63 +140,72 @@ const Hall = () => {
 
   return (
     <div className="hall">
-      <div className="data">
-        <img className="img-hall" src={logo} alt="logo" />
-        <div className="box-data">
-          <Input
-            type="text"
-            placeholder="Nome"
-            className="input name-input"
-            onChange={(e) => updateData(e, "name")}
-          />
-          <div className="data-table">
-            <h1 className="text">MESA</h1>
-            <Input
-              placeholder="Mesa"
-              className="input table-input"
-              type="number"
-              onChange={(e) => updateData(e, "table")}
-            />
+      <div className="container-table">
+        <div>
+          <div className="data">
+            <img className="img-hall" src={logo} alt="logo" />
+            <div className="box-data">
+              <Input
+                type="text"
+                placeholder="Nome"
+                className="input name-input"
+                onChange={(e) => updateData(e, "name")}
+              />
+              <div className="data-table">
+                <h1 className="text">MESA</h1>
+                <Input
+                  placeholder="Mesa"
+                  className="input table-input"
+                  type="number"
+                  onChange={(e) => updateData(e, "table")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="buttons-menu">
+            <button
+              className="button-menu breack-fast"
+              onClick={() => setData()}
+            >
+              Café da manha
+            </button>
+            <button className="button-menu dinner" onClick={() => setData()}>
+              Almoço e jantar
+            </button>
           </div>
         </div>
-      </div>
-      <div className="buttons-menu">
-        <button className="button-menu breack-fast" onClick={() => setData()}>
-          Café da manha
-        </button>
-        <button className="button-menu dinner" onClick={() => setData()}>
-          Almoço e jantar
-        </button>
-      </div>
-      {menu ? (
-        <Table
-          className="table-breackfast"
-          menu={MenuBreackfast}
-          selector="button-selector-breackfast"
-          func={[createTotal, deleteItem]}
-          total={value}
-        />
-      ) : (
-        <Table
-          className="table-dinner"
-          menu={MenuDinner}
-          selector="button-selector-dinner"
-          func={[createTotal, deleteItem, setBurguer, setOptions]}
-          total={value}
-        />
-      )}
-      {value[0] && (
-        <>
+        {menu ? (
           <Table
-            className="table-total"
-            menu={value}
-            selector="button-selector-dinner"
-            func={[deleteItem, deleteAll]}
-            total={total}
+            className="table-breackfast"
+            menu={MenuBreackfast}
+            selector="button-selector-breackfast"
+            func={[createTotal, deleteItem]}
+            total={value}
           />
-          <Button value="Enviar" onClick={() => saveOrder()} />
-        </>
-      )}
+        ) : (
+          <Table
+            className="table-dinner"
+            menu={MenuDinner}
+            selector="button-selector-dinner"
+            func={[createTotal, deleteItem, setBurguer, setOptions]}
+            total={value}
+          />
+        )}
+      </div>
+      <div className="container-table">
+        {value[0] && (
+          <>
+            <Table
+              className="table-total"
+              menu={value}
+              selector="button-selector-dinner"
+              func={[deleteItem, deleteAll]}
+              total={total}
+            />
+            <Button value="Enviar" onClick={() => saveOrder()} />
+          </>
+        )}
+      </div>
     </div>
   );
 };
