@@ -42,6 +42,7 @@ const Hall = () => {
         price: menuChoice[index].price,
         amount: 1,
         total: total,
+        date: new Date().getTime(),
       });
       if (menuChoice[index].category === "Hambúrgueres")
         array[array.length - 1] = {

@@ -7,11 +7,13 @@
 }
 .input {
   width: 80%;
+  padding-left: 5%;
 }
 .img-hall {
   width: 150px;
 }
 .data {
+  /* padding: 20px; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -83,4 +85,7 @@
     margin: 20px;
     width: 40%;
   }
+  /* .data {
+    padding: 10px;
+  } */
 }
