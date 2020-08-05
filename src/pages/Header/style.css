@@ -12,7 +12,7 @@
 .logo-header{
   display: flex;
   align-items: center;
-  margin-left: 40%;
+  margin: 0 30% 5px;
 }
 
 .logo-header span{
@@ -115,3 +115,9 @@
  #menuToggle input:checked ~ ul {
    transform: none;
  }
+
+ @media only screen and (min-width: 1000px) {
+  .logo-header{
+    margin-left: 40%;
+  }
+}

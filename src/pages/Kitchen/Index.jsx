@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../img/logo1.png";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
 import Command from "../../components/Command/Index";
@@ -36,10 +35,6 @@ const Kitchen = () => {
 
   return (
     <div className="container">
-      <div className="kitchen">
-        <img className="img-kitchen" src={logo} alt="logo" />
-        <Button value="Voltar" />
-      </div>
       <div className="request" >
         {requests.map(request =>
           <Command key={request.id} request={request} onClick={() => handleModal(request)} />
