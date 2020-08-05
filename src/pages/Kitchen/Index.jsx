@@ -38,7 +38,7 @@ const Kitchen = () => {
     <div className="container">
       <div className="kitchen">
         <img className="img-kitchen" src={logo} alt="logo" />
-        <Button value="Pedidos" />
+        <Button value="Voltar" />
       </div>
       <div className="request" >
         {requests.map(request =>
