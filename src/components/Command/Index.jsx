@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 
-
 const Command = ({ request, onClick }) => {
   const dateAndHour = (date) => {
     if (!date) {
@@ -24,6 +23,7 @@ const Command = ({ request, onClick }) => {
           <span> Quant.</span>
           <span> Produto</span>
           <span> Adic.</span>
+          <span> Valor</span>
           <ul>
             {request.value.map((prod, index) =>
               <li key={index}>
@@ -33,7 +33,6 @@ const Command = ({ request, onClick }) => {
                     return burguerPreview += ` ${burguerNext} ${prod.option[index]}`
                   }, "") : ""}
                 </span>
-                <span>Valor</span>
                 <span>
                   {prod.price}
                 </span>
