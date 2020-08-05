@@ -34,7 +34,7 @@
 }
 .button-auth,
 .input-auth {
-  max-width: 470px;
+  /* max-width: 470px; */
   min-width: 237.5px;
 }
 
