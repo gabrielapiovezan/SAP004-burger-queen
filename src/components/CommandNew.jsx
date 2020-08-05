@@ -27,7 +27,7 @@ const Command = ({ request, onClick }) => {
           <ul>
             {request.value.map((prod, index) =>
               <li key={index}>
-                <span>
+                <span >
                   {prod.amount} {prod.item}
                   {prod.burguer ? prod.burguer.reduce((burguerPreview, burguerNext, index) => {
                     return burguerPreview += ` ${burguerNext} ${prod.option[index]}`

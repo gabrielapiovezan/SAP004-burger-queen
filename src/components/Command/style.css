@@ -1,5 +1,5 @@
 .container-command {
-  width: 280px;
+  width: 400px;
   height: 250px;
   background: white;
   box-sizing: border-box;
@@ -7,14 +7,18 @@
   margin: 20px;
 }
 .command  {
-  background-color: rgb(218, 56, 34);
+  background-color: #eeeeee;
   margin: 10px;
-  padding: 60px;
+  padding: 10px 20px;
   border-radius: 10px;
+  font-size: 15px;
 }
 .container-command li {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #434242;
 }
 
 .data-command {
@@ -26,4 +30,10 @@
 .data-calendar {
   display: flex;
   justify-content: space-around;
+}
+
+.result{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
