@@ -25,13 +25,11 @@ const RouteDisconnected = () => (
 
 const RouteKitchen = () => (
   <Switch>
-
     <Route path="/orderHistory">
       <OrderHistory />
-
     </Route>
     <Route exact path="/">
-      <h1>Kitchen</h1>
+      <Kitchen />
     </Route>
   </Switch>
 );
