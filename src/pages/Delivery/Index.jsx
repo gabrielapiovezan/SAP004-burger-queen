@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../../img/logo1.png";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
-import Command from "../../components/Command";
+import Command from "../../components/CommandNew";
 import { getDataByStatus, updateData } from "../../firebase/firebaseService";
 import "./style.css";
 
@@ -38,7 +38,7 @@ const Delivery = () => {
     <div className="container">
       <div className="kitchen">
         <img className="img-kitchen" src={logo} alt="logo" />
-        <Button value="Pedidos" />
+        <Button value="Voltar" />
       </div>
       <div className="request" >
         {requests.map(request =>

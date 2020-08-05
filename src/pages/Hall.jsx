@@ -131,7 +131,7 @@ const Hall = () => {
   };
 
   const saveOrder = async () => {
-    const obj = { value };
+    const obj = { value, requestDate: new Date(), status: 1 };
 
     await firebase.firestore().collection("orders").add(obj);
 
@@ -183,14 +183,14 @@ const Hall = () => {
             total={value}
           />
         ) : (
-          <Table
-            className="table-dinner"
-            menu={MenuDinner}
-            selector="button-selector-dinner"
-            func={[createTotal, deleteItem, setBurguer, setOptions]}
-            total={value}
-          />
-        )}
+            <Table
+              className="table-dinner"
+              menu={MenuDinner}
+              selector="button-selector-dinner"
+              func={[createTotal, deleteItem, setBurguer, setOptions]}
+              total={value}
+            />
+          )}
       </div>
       <div className="container-table">
         {value[0] && (
