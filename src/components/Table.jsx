@@ -25,8 +25,9 @@ const Table = (props) => {
 
   const imgBurguer = (burguers, options) => {
     let result = "";
-
+    const rows = [];
     burguers.forEach((a, i) => {
+      // rows.push
       result += "\n\n\n\n\n" + a;
       result += options[i];
     });
@@ -65,9 +66,10 @@ const Table = (props) => {
               </td>
               <td align="center">
                 R$
-                {(product.amount * product.price + resultOptions(product))
-                  .toFixed(2)
-                  .replace(".", ",")}
+                {" " +
+                  (product.amount * product.price + resultOptions(product))
+                    .toFixed(2)
+                    .replace(".", ",")}
               </td>
               <td className="del">
                 <ButtonIcon
@@ -100,8 +102,7 @@ const Table = (props) => {
         {product.category !== "Total" && (
           <tr>
             <td className="info-order" valign="top">
-              R$
-              {product.price.toFixed(2).replace(".", ",")}
+              R${" " + product.price.toFixed(2).replace(".", ",")}
             </td>
           </tr>
         )}
@@ -272,7 +273,7 @@ const Table = (props) => {
                 </span>
               </div>
               <div className="box-buttons">
-                <span className="type-option-burguer">Add +R$1,00</span>
+                <span className="type-option-burguer">Add +R$ 1,00</span>
                 <span className="input-options">
                   <ButtonIcon
                     img={Chease}
@@ -320,7 +321,9 @@ const Table = (props) => {
         </tr>
         <tr>
           <td colSpan="2">Total</td>
-          <td align="center">R${props.total.toFixed(2).replace(".", ",")}</td>
+          <td align="center">
+            R$ {" " + props.total.toFixed(2).replace(".", ",")}
+          </td>
           <td className="del">
             {/* align="right"> */}
             {/* className="del"> */}

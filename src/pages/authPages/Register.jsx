@@ -23,44 +23,82 @@ const Register = () => {
 
   const onClickRegister = async () => {
     if (password !== confirmPassword) {
-      alert("email e senha não são iguais")
-    }
-    else {
+      alert("email e senha não são iguais");
+    } else {
       try {
         const response = await authRegister({ name, email, password, type });
-        alert("cadastro realizado com sucesso")
-        history.push("/login")
+        alert("cadastro realizado com sucesso");
+        history.push("/login");
       } catch (error) {
         setError(error.code);
       }
     }
   };
 
-
   return (
     <div className="templateAuth">
       <img className="img-auth" src={logo} alt="logo" />
-      <h2>Cadastro</h2>
-      <Input type="text" placeholder="Nome*" onChange={(e) => setName(e.target.value)} required />
-      <Input type="text" placeholder="Email*" onChange={(e) => setEmail(e.target.value)} required />
-      <Input type="password" placeholder="Senha*" onChange={(e) => setPassword(e.target.value)} required />
-      <Input type="password" placeholder="Confirmar Senha*" onChange={(e) => setConfirmPassword(e.target.value)} required />
-      <div className="oi">
-        <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("kitchen")} >
-          <img src={type === "kitchen" ? chapeu2 : chapeu1} className="icon" />
-        Cozinha
-      </span>
-        <span className="sector" onChange={(e) => setType(e.target.value)} onClick={() => setType("service")}  >
-          <img src={type === "service" ? cozinha2 : cozinha1} className="icon" />
-        Salão
-      </span>
+      <div className="form-auth">
+        <h1>Cadastro</h1>
+        <div className="radio-button">
+          <span
+            className="sector"
+            onChange={(e) => setType(e.target.value)}
+            onClick={() => setType("kitchen")}
+          >
+            <img
+              src={type === "kitchen" ? chapeu2 : chapeu1}
+              className="icon"
+            />
+            Cozinha
+          </span>
+          <span
+            className="sector"
+            onChange={(e) => setType(e.target.value)}
+            onClick={() => setType("service")}
+          >
+            <img
+              src={type === "service" ? cozinha2 : cozinha1}
+              className="icon"
+            />
+            Salão
+          </span>
+        </div>
+        <Input
+          type="text"
+          placeholder="Nome*"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <Input
+          type="text"
+          placeholder="Email*"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Input
+          type="password"
+          placeholder="Senha*"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <Input
+          type="password"
+          placeholder="Confirmar Senha*"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+
+        <ReturnError error={error} />
+        <Button value="Entrar" onClick={onClickRegister} />
+        <span>
+          Possui Cadastro?{" "}
+          <Link className="link" to="/login">
+            {" "}
+            Login{" "}
+          </Link>
+        </span>
       </div>
-      <ReturnError error={error} />
-      <Button value="Entrar" onClick={onClickRegister} />
-      <span>
-        Possui Cadastro?{" "}
-        <Link className="link" to="/login"> Login </Link>
-      </span>
     </div>
   );
 };

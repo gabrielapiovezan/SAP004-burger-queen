@@ -13,12 +13,14 @@
   text-align: center;
   outline: none;
   border: none;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   background-color: transparent;
   /* color: #272626; */
 }
-
+.button-change:hover {
+  color: #d97308;
+}
 .button-selector {
   border-radius: 2px;
   width: 150px;
@@ -31,7 +33,7 @@
 
 .button-selector-breackfast {
   border-radius: 3px;
-  width: 90px;
+  width: 108px;
   border: solid 1px #434242;
 }
 .button-selector-breackfast > input {
@@ -40,7 +42,7 @@
 .button-selector-dinner {
   color: #eeeeee;
   border-radius: 3px;
-  width: 90px;
+  width: 108px;
   border: solid 1px #eeeeee;
 }
 .button-selector-dinner > button,

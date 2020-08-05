@@ -28,11 +28,15 @@ const Header = () => {
               <span></span>
               <span></span>
               <ul id="menu">
-
-                <Link href="#"><li>Perfil</li></Link>
-                <Link to="/orderHistory"><li>Histórico</li></Link>
-                <a onClick={handleLogout}><li>Sair</li></a>
-
+                <Link href="#">
+                  <li>Perfil</li>
+                </Link>
+                <Link to="/orderHistory">
+                  <li>Histórico</li>
+                </Link>
+                <a onClick={handleLogout}>
+                  <li>Sair</li>
+                </a>
               </ul>
             </div>
           </nav>
