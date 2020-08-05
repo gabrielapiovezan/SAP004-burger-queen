@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../../img/logo1.png";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
-import Command from "../../components/CommandNew";
+import Command from "../../components/Command/Index";
 import { getDataByStatus, updateData } from "../../firebase/firebaseService";
 import "./style.css";
 
