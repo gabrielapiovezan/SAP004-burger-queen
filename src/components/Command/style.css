@@ -1,0 +1,45 @@
+.container-command {
+  width: 300px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin: 20px;
+}
+.command  {
+  background-color: #eeeeee;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.container-command li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #434242;
+}
+
+.data-command {
+  margin-top: 10px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.data-calendar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.result{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .container-command{
+
+  }
+}

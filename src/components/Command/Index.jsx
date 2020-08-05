@@ -1,6 +1,5 @@
 import React from "react";
-// import "./style.css";
-
+import "./style.css";
 
 const Command = ({ request, onClick }) => {
   const dateAndHour = (date) => {
@@ -21,26 +20,24 @@ const Command = ({ request, onClick }) => {
           <span>{dateAndHour(request.requestDate)}</span>
         </div>
         <div className="command">
-          <span> Quant.</span>
-          <span> Produto</span>
-          <span> Adic.</span>
           <ul>
             {request.value.map((prod, index) =>
               <li key={index}>
-                <span >
-                  {prod.amount} {prod.item}
+                <span className="item-command">
+                  {prod.amount} {prod.item} <br></br>
                   {prod.burguer ? prod.burguer.reduce((burguerPreview, burguerNext, index) => {
                     return burguerPreview += ` ${burguerNext} ${prod.option[index]}`
                   }, "") : ""}
                 </span>
-                <span>Valor</span>
                 <span>
-                  {prod.price}
+                  R${prod.price}
                 </span>
               </li>
             )}
           </ul>
-          <span>Total: {request.value[0].total}</span>
+          <div className="result">
+            <span>Total:  R${request.value[0].total}</span>
+          </div>
         </div>
       </div>
     </>

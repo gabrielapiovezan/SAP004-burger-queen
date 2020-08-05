@@ -8,7 +8,7 @@ const Modal = ({ show, onCancel, onFinish }) => {
     <div className={`modal ${show === true ? "" : "hide"}`}>
       <div className="modal-content">
         <span className="close close-modal" onClick={onCancel} >&times;</span>
-        <h2>Deseja Finalizar se?</h2>
+        <h2>Deseja Finalizar?</h2>
         <Button value="Cancelar" onClick={onCancel} />
         <Button value="Finalizar" onClick={onFinish} />
       </div>
