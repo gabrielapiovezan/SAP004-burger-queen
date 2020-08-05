@@ -37,11 +37,12 @@ const Hall = () => {
         name: order.name,
         table: order.table,
         id: value.length,
-        category: "Total",
+        category: "Resumo",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
         total: total,
+        date: new Date().getTime(),
       });
       if (menuChoice[index].category === "Hambúrgueres")
         array[array.length - 1] = {
@@ -162,18 +163,16 @@ const Hall = () => {
               </div>
             </div>
           </div>
-          <div className="buttons-menu">
-            <button
-              className="button-menu breack-fast"
-              onClick={() => setData()}
-            >
-              Café da manha
-            </button>
-            <button className="button-menu dinner" onClick={() => setData()}>
-              Almoço e jantar
-            </button>
-          </div>
         </div>
+        <div className="buttons-menu">
+          <button className="button-menu breack-fast" onClick={() => setData()}>
+            Café da manha
+          </button>
+          <button className="button-menu dinner" onClick={() => setData()}>
+            Almoço e jantar
+          </button>
+        </div>
+
         {menu ? (
           <Table
             className="table-breackfast"

@@ -1,4 +1,7 @@
 .hall {
+  background-color: #434242;
+  /* margin-top: 40px; */
+  padding-top: 40px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -6,16 +9,19 @@
   /* padding: 30px; */
 }
 .input {
-  width: 80%;
+  width: 95%;
+  padding-left: 5%;
 }
 .img-hall {
   width: 150px;
 }
 .data {
-  width: 100%;
+  padding: 20px;
+  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 .data-table {
   width: 100%;
@@ -33,11 +39,11 @@
 .dinner {
   outline: none;
   width: 150px;
-  height: 35px;
+  height: 40px;
   margin: 0;
   border: none;
   border-radius: 5px 5px 0px 0px;
-  font-size: 15px;
+  font-size: 17px;
 }
 .breack-fast {
   color: #272626;
@@ -83,4 +89,7 @@
     margin: 20px;
     width: 40%;
   }
+  /* .data {
+    padding: 10px;
+  } */
 }
