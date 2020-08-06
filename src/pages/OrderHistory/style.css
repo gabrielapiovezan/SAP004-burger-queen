@@ -1,5 +1,6 @@
 .container{
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: red;
   width: 100%;
   height: 200%;
   display: flex;
@@ -7,4 +8,12 @@
   flex-direction: column;
   margin-top: 30px;
   padding: 30px;
+}
+.container-history{
+display: flex;
+justify-content: end;
+}
+
+.img-history{
+  width: 100px;
 }
