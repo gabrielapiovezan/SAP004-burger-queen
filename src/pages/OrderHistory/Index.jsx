@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../img/logo1.png";
-import Button from "../../components/Button";
-import Command from "../../components/CommandNew";
+import Command from "../../components/Command/Index";
 import { getData } from "../../firebase/firebaseService";
 import "./style.css";
 
