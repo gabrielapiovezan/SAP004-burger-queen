@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../img/logo1.png";
 import Button from "../../components/Button";
-import Command from "../../components/CommandNew";
+import logo from "../../img/logo1.png";
+import Command from "../../components/Command/Index";
 import { getData } from "../../firebase/firebaseService";
 import "./style.css";
 
@@ -15,11 +15,16 @@ const OrderHistory = () => {
     getData(get)
   }, []);
 
+  const onClickBack = async () => {
+
+  };
 
   return (
     <div className="container">
-      <div className="kitchen">
-        <img className="img-kitchen" src={logo} alt="logo" />
+      <Button className="button button-history" value="Voltar" onClick={onClickBack} />
+      <div className="container-history">
+        {/* <img className="img-history" src={logo} alt="logo" /> */}
+        {/* <span>Calendario</span> */}
       </div>
       <div className="request" >
         {requests.map(request =>

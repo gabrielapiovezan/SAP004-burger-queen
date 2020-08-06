@@ -10,6 +10,7 @@
   transition: border 20ms;
 }
 .input {
+  font-size: 18px;
   padding-left: 5%;
   width: 60%;
   outline: none;
@@ -23,6 +24,7 @@
   border: solid 2px #d97308;
 }
 .button {
+  font-size: 18px;
   width: 350px;
   margin-bottom: 20px;
 }

@@ -46,6 +46,9 @@ const Header = () => {
                   (<Link to="/delivery"><li>Pedidos</li></Link>) : null
                 }
                 <Link to="/orderHistory"><li>Histórico</li></Link>
+                <a onClick={handleLogout}>
+                  <li>Sair</li>
+                </a>
               </ul>
             </div>
           </nav>
