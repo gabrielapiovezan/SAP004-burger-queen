@@ -21,9 +21,10 @@ const OrderHistory = () => {
 
   return (
     <div className="container">
+      <Button className="button button-history" value="Voltar" onClick={onClickBack} />
       <div className="container-history">
-        <img className="img-history" src={logo} alt="logo" />
-        <Button className="button button-history" value="Voltar" onClick={onClickBack} />
+        {/* <img className="img-history" src={logo} alt="logo" /> */}
+        {/* <span>Calendario</span> */}
       </div>
       <div className="request" >
         {requests.map(request =>
