@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
 import Command from "../../components/CommandNew";
 import { getDataByStatus, updateData } from "../../firebase/firebaseService";
-import "./style.css";
+
 
 const Delivery = () => {
   const [itemSelected, setitemSelected] = useState(false)
