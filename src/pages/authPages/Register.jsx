@@ -27,7 +27,12 @@ const Register = () => {
     } else {
       try {
         const response = await authRegister({ name, email, password, type });
-        alert("cadastro realizado com sucesso");
+        window.setTimeout(function () {
+          alert("cadastro realizado com sucesso").fadeTo(500, 0).slideUp(500, function () {
+            this.remove();
+          });
+        }, 4000);
+        // alert("cadastro realizado com sucesso");
         history.push("/login");
       } catch (error) {
         setError(error.code);

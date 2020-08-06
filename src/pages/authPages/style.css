@@ -11,6 +11,9 @@
   margin-bottom: 5px;
   width: 200px;
 }
+.error{
+  margin-top: 5px;
+}
 
 .link {
   color: #eeeeee;
@@ -29,7 +32,9 @@
   /* padding: 15px; */
   color: #eeeeee;
 }
-
+.input-password{
+ margin-bottom: 5px;
+}
 .icon {
   width: 30px;
   height: 30px;

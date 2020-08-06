@@ -35,14 +35,12 @@ const App = () => {
       <div className="form-auth">
         <h2>Bem Vindo(a)!</h2>
         <Input
-          className="input input-auth"
           type="email"
           placeholder="Email*"
           onChange={(e) => onChangeEmail(e)}
           required
         />
         <Input
-          className="input input-auth"
           type="password"
           placeholder="Senha*"
           onChange={(e) => onChangePassword(e)}
