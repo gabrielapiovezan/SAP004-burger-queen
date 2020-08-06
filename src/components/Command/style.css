@@ -1,6 +1,6 @@
 .container-command {
   width: 300px;
-  background: white;
+  background:  #434242;
   box-sizing: border-box;
   border-radius: 20px;
   margin: 20px;
@@ -21,6 +21,7 @@
 }
 
 .data-command {
+  color: #eeeeee;
   margin-top: 10px;
   padding: 10px 20px;
   display: flex;
@@ -28,6 +29,7 @@
 }
 
 .data-calendar {
+  color: #eeeeee;
   display: flex;
   justify-content: space-around;
 }

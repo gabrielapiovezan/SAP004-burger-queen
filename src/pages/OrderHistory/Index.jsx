@@ -18,9 +18,6 @@ const OrderHistory = () => {
 
   return (
     <div className="container">
-      <div className="kitchen">
-        <img className="img-kitchen" src={logo} alt="logo" />
-      </div>
       <div className="request" >
         {requests.map(request =>
           <Command request={request} />
