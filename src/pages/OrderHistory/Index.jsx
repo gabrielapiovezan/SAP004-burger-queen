@@ -15,7 +15,7 @@ const OrderHistory = () => {
     getData(get)
   }, []);
 
-  const onClickBack = async () => {
+  const onClickBack = () => {
 
   };
 
