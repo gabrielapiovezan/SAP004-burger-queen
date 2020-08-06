@@ -1,6 +1,5 @@
 .templateAuth {
-  background-color: #434242;
- 
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

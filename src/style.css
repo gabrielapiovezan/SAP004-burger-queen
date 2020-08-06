@@ -1,4 +1,4 @@
-* {
+ * {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -13,8 +13,8 @@ html {
 body,
 html, 
 .root {
-  /* width: 100%;
-  height: 100%; */
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
