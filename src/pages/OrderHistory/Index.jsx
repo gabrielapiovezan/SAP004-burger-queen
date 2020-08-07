@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../../components/Button";
 import logo from "../../img/logo1.png";
 import Command from "../../components/Command/Index";
@@ -6,6 +7,7 @@ import { getData } from "../../firebase/firebaseService";
 import "./style.css";
 
 const OrderHistory = () => {
+  const history = useHistory();
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const OrderHistory = () => {
   }, []);
 
   const onClickBack = () => {
-
+    history.push("/");
   };
 
   return (

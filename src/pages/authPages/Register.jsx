@@ -4,6 +4,7 @@ import { authRegister } from "../../firebase/authService";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import ReturnError from "./authError";
+import Notify from "../../components/Notify/Index";
 import logo from "../../img/logo1.png";
 import chapeu1 from "../../img/chapeu-1.png";
 import chapeu2 from "../../img/chapeu-2.png";
@@ -27,13 +28,9 @@ const Register = () => {
     } else {
       try {
         const response = await authRegister({ name, email, password, type });
-        window.setTimeout(function () {
-          alert("cadastro realizado com sucesso").fadeTo(500, 0).slideUp(500, function () {
-            this.remove();
-          });
-        }, 4000);
+
         // alert("cadastro realizado com sucesso");
-        history.push("/login");
+        // history.push("/login");
       } catch (error) {
         setError(error.code);
       }
