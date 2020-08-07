@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import logo from "../img/logo1.png";
-import Input from "../components/Input";
-import Table from "../components/Table";
-import Button from "../components/Button";
-import MenuBreackfast from "../components/MenuBreackfast";
-import MenuDinner from "../components/MenuDinner";
+import logo from "../../img/logo1.png";
+import Input from "../../components/Input";
+import Table from "../../components/Table";
+import Button from "../../components/Button";
+import MenuBreackfast from "../../components/MenuBreackfast";
+import MenuDinner from "../../components/MenuDinner";
 import "./hall.css";
-import firebase from "../firebase/firebase";
+import firebase from "../../firebase/firebase";
 
 const Hall = () => {
   const [menu, setMenu] = useState(true);
@@ -98,12 +98,6 @@ const Hall = () => {
   };
 
   const updateData = (event, param) => {
-    // const array = [...value];
-    // array.forEach((a) => {
-    //   a[param] = event.target.value;
-    // });
-    // setValue(array);
-    //  setOrder((set) => (set[param] = event.target.value)); //{ ...order, order[parem]: event.target.value });
     setOrder({ ...order, [param]: event.target.value });
   };
 
