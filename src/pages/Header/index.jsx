@@ -12,9 +12,9 @@ const Header = () => {
 
   useEffect(() => {
     function get(data) {
-      setRequests(data.length)
+      setRequests(data.length);
     }
-    getDataByStatus(get, 2)
+    getDataByStatus(get, 2);
   }, []);
 
   const handleLogout = async () => {
@@ -25,14 +25,11 @@ const Header = () => {
     }
   };
 
-
   if (signed === true) {
     return (
       <>
         <div className="header">
-          {user.type === "service" ?
-            (<span>{requests}</span>) : null
-          }
+          {user.type === "service" ? <span>{requests}</span> : null}
           <nav>
             <div id="menuToggle">
               <input type="checkbox" />
@@ -40,12 +37,18 @@ const Header = () => {
               <span></span>
               <span></span>
               <ul id="menu">
-                <Link to="/"><li>Home</li></Link>
-                <Link href="#"><li>Perfil</li></Link>
-                {user.type === "service" ?
-                  (<Link to="/delivery"><li>Pedidos</li></Link>) : null
-                }
-                <Link to="/orderHistory"><li>Histórico</li></Link>
+                <Link to="/">
+                  <li>Home</li>
+                </Link>
+                {/* <Link href="#"><li>Perfil</li></Link> */}
+                {user.type === "service" ? (
+                  <Link to="/delivery">
+                    <li>Pedidos</li>
+                  </Link>
+                ) : null}
+                <Link to="/orderHistory">
+                  <li>Histórico</li>
+                </Link>
                 <a onClick={handleLogout}>
                   <li>Sair</li>
                 </a>

@@ -23,17 +23,22 @@ const Table = (props) => {
       .indexOf(item);
   };
 
-  const imgBurguer = (burguers, options) => {
-    let result = "";
-    const rows = [];
-    burguers.forEach((a, i) => {
-      // rows.push
-      result += "\n\n\n\n\n" + a;
-      result += options[i];
-    });
+  const imgBurguer = (product, i) => {
+    return (
+      <div className="info">
+        <p className="info-order info-burguer">
+          {i + 1 + " " + product.burguer[i]}
+        </p>
+        <p className="info-order info-burguer">
+          {product.option && product.option[i]}
+        </p>
+      </div>
+    );
+    // )
+    //});
 
     //  var newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
-    return result;
+    //  return result;
   };
 
   const resultOptions = (product) => {
@@ -51,6 +56,11 @@ const Table = (props) => {
   };
 
   const creatProduct = (product, i) => {
+    const rows = [];
+    product.burguer &&
+      product.burguer.forEach((a, i) => {
+        rows.push(imgBurguer(product, i));
+      });
     return (
       <>
         <tr key={product.item + i + product.category}>
@@ -59,10 +69,7 @@ const Table = (props) => {
               <td colSpan="2">
                 {product.amount + " "}
                 {product.item}
-                <div className="info-order">
-                  {product.burguer &&
-                    imgBurguer(product.burguer, product.option)}
-                </div>
+                {rows}
               </td>
               <td align="center">
                 R$
@@ -99,7 +106,7 @@ const Table = (props) => {
             </>
           )}
         </tr>
-        {product.category !== "Total" && (
+        {product.category !== "Resumo" && (
           <tr>
             <td className="info-order" valign="top">
               R${" " + product.price.toFixed(2).replace(".", ",")}

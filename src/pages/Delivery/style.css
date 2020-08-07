@@ -1,0 +1,16 @@
+.container-delivery {
+  width: 100%;
+  background-color: #424343;
+}
+.img-kitchen {
+  width: 150px;
+}
+.kitchen {
+  width: 70%;
+  margin-top: 50px;
+  padding: 20px;
+  display: flex;
+}
+.button-kitchen {
+  width: 400px;
+}

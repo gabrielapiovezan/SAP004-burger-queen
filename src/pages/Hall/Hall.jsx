@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import logo from "../img/logo1.png";
-import Input from "../components/Input";
-import Table from "../components/Table";
-import Button from "../components/Button";
-import MenuBreackfast from "../components/MenuBreackfast";
-import MenuDinner from "../components/MenuDinner";
+import logo from "../../img/logo1.png";
+import Input from "../../components/Input";
+import Table from "../../components/Table";
+import Button from "../../components/Button";
+import MenuBreackfast from "../../components/MenuBreackfast";
+import MenuDinner from "../../components/MenuDinner";
 import "./hall.css";
-import firebase from "../firebase/firebase";
+import firebase from "../../firebase/firebase";
 
 const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
   const [total, setTotal] = useState(0);
   const [order, setOrder] = useState({ name: "", table: "" });
+  const [error, setError] = useState("");
 
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
@@ -97,12 +98,6 @@ const Hall = () => {
   };
 
   const updateData = (event, param) => {
-    // const array = [...value];
-    // array.forEach((a) => {
-    //   a[param] = event.target.value;
-    // });
-    // setValue(array);
-    //  setOrder((set) => (set[param] = event.target.value)); //{ ...order, order[parem]: event.target.value });
     setOrder({ ...order, [param]: event.target.value });
   };
 
@@ -132,11 +127,16 @@ const Hall = () => {
   };
 
   const saveOrder = async () => {
-    const obj = { value, requestDate: new Date(), status: 1 };
+    if (order.name && order.table) {
+      const obj = { value, requestDate: new Date(), status: 1 };
 
-    await firebase.firestore().collection("orders").add(obj);
+      await firebase.firestore().collection("orders").add(obj);
 
-    deleteAll();
+      deleteAll();
+      setError("");
+    } else {
+      setError("Por favor, digite as informações sobre o pedido.");
+    }
   };
 
   return (
@@ -182,14 +182,14 @@ const Hall = () => {
             total={value}
           />
         ) : (
-            <Table
-              className="table-dinner"
-              menu={MenuDinner}
-              selector="button-selector-dinner"
-              func={[createTotal, deleteItem, setBurguer, setOptions]}
-              total={value}
-            />
-          )}
+          <Table
+            className="table-dinner"
+            menu={MenuDinner}
+            selector="button-selector-dinner"
+            func={[createTotal, deleteItem, setBurguer, setOptions]}
+            total={value}
+          />
+        )}
       </div>
       <div className="container-table">
         {value[0] && (
@@ -201,6 +201,7 @@ const Hall = () => {
               func={[deleteItem, deleteAll]}
               total={total}
             />
+            <div className="error">{error}</div>
             <Button value="Enviar" onClick={() => saveOrder()} />
           </>
         )}

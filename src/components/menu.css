@@ -121,5 +121,11 @@ th {
   margin: 20px;
 }
 .info-order {
-  font-size: 16px;
+  font-size: 15px;
+}
+.info-burguer {
+  color: #c4c2c2;
+}
+.info {
+  margin-bottom: 5px;
 }

@@ -76,6 +76,11 @@
   flex-direction: column;
   align-items: flex-end;
 }
+.error {
+  margin-top: 20px;
+  color: #eeeeee;
+  text-align: center;
+}
 @media only screen and (min-width: 1000px) {
   .hall {
     width: 100%;
@@ -92,4 +97,9 @@
   /* .data {
     padding: 10px;
   } */
+}
+@media only screen and (max-width: 400px) {
+  .text {
+    display: none;
+  }
 }
