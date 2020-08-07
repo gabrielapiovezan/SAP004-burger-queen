@@ -12,7 +12,8 @@
   width: 200px;
 }
 .error{
-  margin-top: 5px;
+  color: #d97308; 
+  margin-top: 10px;
 }
 
 .link {

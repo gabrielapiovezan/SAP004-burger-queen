@@ -23,7 +23,7 @@ const ReturnError = (props) => {
     }
   };
 
-  return <div>{errorAuth(props.error)}</div>;
+  return <div className="error">{errorAuth(props.error)}</div>;
 };
 export default ReturnError;
 
