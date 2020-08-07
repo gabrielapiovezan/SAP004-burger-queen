@@ -1,7 +1,7 @@
 .hall {
   background-color: #434242;
   /* margin-top: 40px; */
-  padding-top: 40px;
+  padding: 40px;
   width: 100%;
   display: flex;
   align-items: center;

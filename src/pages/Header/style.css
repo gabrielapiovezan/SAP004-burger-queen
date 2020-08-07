@@ -1,7 +1,8 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  top: 0%;
   background-color: #272626;
   padding: 7px 0;
   width: 100%;
@@ -118,4 +119,3 @@
 #menuToggle input:checked ~ ul {
   transform: none;
 }
-
