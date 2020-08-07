@@ -13,6 +13,7 @@ const Hall = () => {
   const [value, setValue] = useState([]);
   const [total, setTotal] = useState(0);
   const [order, setOrder] = useState({ name: "", table: "" });
+  const [error, setError] = useState("");
 
   const deleteItem = (item) => {
     const newArray = value.filter((a) => {
@@ -132,11 +133,16 @@ const Hall = () => {
   };
 
   const saveOrder = async () => {
-    const obj = { value, requestDate: new Date(), status: 1 };
+    if (order.name && order.table) {
+      const obj = { value, requestDate: new Date(), status: 1 };
 
-    await firebase.firestore().collection("orders").add(obj);
+      await firebase.firestore().collection("orders").add(obj);
 
-    deleteAll();
+      deleteAll();
+      setError("");
+    } else {
+      setError("Por favor, digite as informações sobre o pedido.");
+    }
   };
 
   return (
@@ -182,14 +188,14 @@ const Hall = () => {
             total={value}
           />
         ) : (
-            <Table
-              className="table-dinner"
-              menu={MenuDinner}
-              selector="button-selector-dinner"
-              func={[createTotal, deleteItem, setBurguer, setOptions]}
-              total={value}
-            />
-          )}
+          <Table
+            className="table-dinner"
+            menu={MenuDinner}
+            selector="button-selector-dinner"
+            func={[createTotal, deleteItem, setBurguer, setOptions]}
+            total={value}
+          />
+        )}
       </div>
       <div className="container-table">
         {value[0] && (
@@ -201,6 +207,7 @@ const Hall = () => {
               func={[deleteItem, deleteAll]}
               total={total}
             />
+            <div className="error">{error}</div>
             <Button value="Enviar" onClick={() => saveOrder()} />
           </>
         )}
