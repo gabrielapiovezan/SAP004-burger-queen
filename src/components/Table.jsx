@@ -320,10 +320,10 @@ const Table = (props) => {
     );
   };
 
-  const resume = () => {
+  const resume = (menu) => {
     return (
       <>
-        <tr>
+        <tr key={menu.category + menu.id}>
           <td colSpan="4" className="resume"></td>
         </tr>
         <tr>
@@ -343,14 +343,27 @@ const Table = (props) => {
             />
           </td>
         </tr>
+        <tr>
+          <td colSpan="4" align="center">
+            <textarea
+              className="note"
+              name=""
+              maxlength="140"
+              placeholder="Observações:"
+              id=""
+              onChange={(event) => props.note(event.target.value)}
+              // onChange={(e) => func[2](e)}
+            ></textarea>
+          </td>
+        </tr>
       </>
     );
   };
 
   return (
-    <table key={props.className} className={props.className}>
+    <table key={props.className + props.menu} className={props.className}>
       <tbody>{creatTable()}</tbody>
-      {props.className === "table-total" && resume()}
+      {props.className === "table-total" && resume(props.menu)}
     </table>
   );
 };

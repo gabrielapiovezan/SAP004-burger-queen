@@ -1,0 +1,7 @@
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  bottom: 0;
+  background-color: tomato;
+}

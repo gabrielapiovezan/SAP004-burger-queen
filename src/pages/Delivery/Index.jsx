@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
 import Command from "../../components/Command/Index";
 import { getDataByStatus, updateData } from "../../firebase/firebaseService";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const Delivery = () => {
@@ -39,6 +40,9 @@ const Delivery = () => {
       <div className="kitchen">
         <img className="img-kitchen" src={logo} alt="logo" />
         <Button value="Novo pedido" className="button button-kitchen" />
+        {/* <Link className="button button-kitchen" to="/delivery">
+          Novo pedido
+        </Link> */}
       </div>
 
       <div className="request">

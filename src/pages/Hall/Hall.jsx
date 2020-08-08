@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import logo from "../../img/logo1.png";
 import Input from "../../components/Input";
 import Table from "../../components/Table";
@@ -12,7 +13,7 @@ const Hall = () => {
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
   const [total, setTotal] = useState(0);
-  const [order, setOrder] = useState({ name: "", table: "" });
+  const [order, setOrder] = useState({ name: "", table: "", note: "" });
   const [error, setError] = useState("");
 
   const deleteItem = (item) => {
@@ -128,15 +129,27 @@ const Hall = () => {
 
   const saveOrder = async () => {
     if (order.name && order.table) {
-      const obj = { value, requestDate: new Date(), status: 1 };
+      const obj = {
+        value,
+        requestDate: new Date(),
+        status: 1,
+        note: order.note,
+        name: order.name,
+        table: order.table,
+      };
 
       await firebase.firestore().collection("orders").add(obj);
 
       deleteAll();
       setError("");
+      // history.push("./delivery");
     } else {
       setError("Por favor, digite as informações sobre o pedido.");
     }
+  };
+
+  const note = (valueNote) => {
+    setOrder({ ...order, note: valueNote });
   };
 
   return (
@@ -200,6 +213,7 @@ const Hall = () => {
               selector="button-selector-dinner"
               func={[deleteItem, deleteAll]}
               total={total}
+              note={note}
             />
             <div className="error">{error}</div>
             <Button value="Enviar" onClick={() => saveOrder()} />

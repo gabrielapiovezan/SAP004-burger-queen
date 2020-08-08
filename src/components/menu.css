@@ -129,3 +129,15 @@ th {
 .info {
   margin-bottom: 5px;
 }
+.note {
+  margin-top: 20px;
+  outline: none;
+  font-size: 16px;
+  width: 95%;
+  height: 70px;
+  align-self: center;
+  background-color: transparent;
+  color: #eeeeee;
+  border-radius: 5px;
+  padding: 2.5%;
+}
