@@ -21,7 +21,7 @@ const Header = () => {
   useEffect(() => {
     function get(data) {
       if (data)
-        toast.success(`O Pedido do Cliente: ${data.value[0].name} da Mesa: ${data.value[0].table} está pronto`);
+        toast.warn(`O Pedido do Cliente: ${data.value[0].name} da Mesa: ${data.value[0].table} está pronto`);
     }
     if (user && user.type === "service") {
       notifyHall(get);

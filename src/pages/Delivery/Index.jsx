@@ -4,7 +4,6 @@ import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
 import Command from "../../components/Command/Index";
 import { getDataByStatus, updateData } from "../../firebase/firebaseService";
-import { Link } from "react-router-dom";
 import "./style.css";
 
 const Delivery = () => {
@@ -27,7 +26,6 @@ const Delivery = () => {
     setShowModal(false);
   };
   const handleFinish = () => {
-    console.log(itemSelected);
     updateData(itemSelected.id, {
       status: 3,
       dateDelivery: new Date(),
