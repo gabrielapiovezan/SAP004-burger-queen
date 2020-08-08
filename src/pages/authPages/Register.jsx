@@ -23,17 +23,33 @@ const Register = () => {
   const [type, setType] = useState("");
 
   const onClickRegister = async () => {
+    if (type === "") {
+      setError("Insira o tipo de serviço em que trabalha Cozinha/Salão")
+      return
+    }
+    if (name === "") {
+      setError("Insira seu nome")
+      return
+    }
+    if (email === "") {
+      setError("Insira seu e-mail")
+      return
+    }
+    if (password === "") {
+      setError("Crie uma senha com mais de 6 digitos")
+      return
+    }
     if (password !== confirmPassword) {
-      alert("email e senha não são iguais");
-    } else {
-      try {
-        const response = await authRegister({ name, email, password, type });
-        toast.success("Cadastro realizado com sucesso!");
-        // alert("cadastro realizado com sucesso");
-        history.push("/login");
-      } catch (error) {
-        setError(error.code);
-      }
+      setError("Confirme sua senha")
+      return
+    }
+
+    try {
+      const response = await authRegister({ name, email, password, type });
+      toast.success("Cadastro realizado com sucesso!");
+      history.push("/login");
+    } catch (error) {
+      setError(error.code);
     }
   };
 

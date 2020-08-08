@@ -13,21 +13,26 @@ import "./style.css";
 const App = () => {
   const { signIn } = useAuth();
   const [error, setError] = useState("");
-  const [data, setData] = useState({ email: "", password: "" });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onClickLogin = async () => {
+    if (email === "") {
+      setError("Insira seu e-mail")
+      return
+    }
+    if (password === "") {
+      setError("Insira sua senha")
+      return
+    }
+
     try {
-      await signIn(data.email, data.password);
+      await signIn(email, password);
     } catch (error) {
       setError(error.code);
     }
   };
 
-  const onChangeEmail = (event) =>
-    setData({ ...data, email: event.target.value });
-
-  const onChangePassword = (event) =>
-    setData({ ...data, password: event.target.value });
 
   return (
     <div className="templateAuth">
@@ -37,13 +42,13 @@ const App = () => {
         <Input
           type="email"
           placeholder="Email*"
-          onChange={(e) => onChangeEmail(e)}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <Input
           type="password"
           placeholder="Senha*"
-          onChange={(e) => onChangePassword(e)}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <ReturnError error={error} />

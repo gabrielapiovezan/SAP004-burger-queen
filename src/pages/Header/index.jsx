@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../img/logo2.png";
 import "./style.css";
-import { getDataByStatus } from "../../firebase/firebaseService";
+import { getDataByStatus, notifyHall } from "../../firebase/firebaseService";
 import { useAuth } from "../../contexts/auth";
+import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -16,6 +17,16 @@ const Header = () => {
     }
     getDataByStatus(get, 2);
   }, []);
+
+  useEffect(() => {
+    function get(data) {
+      if (data)
+        toast.warn(`O Pedido do Cliente: ${data.value[0].name} da Mesa: ${data.value[0].table} está pronto`);
+    }
+    if (user && user.type === "service") {
+      notifyHall(get);
+    }
+  }, [user]);
 
   const handleLogout = async () => {
     try {

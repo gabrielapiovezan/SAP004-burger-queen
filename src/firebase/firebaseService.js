@@ -31,4 +31,17 @@ export const updateData = (id, data) => {
   firebase.firestore().collection('orders').doc(id).update(data);
 };
 
-
+export const notifyHall = (calback) => {
+  firebase.firestore().collection("orders")
+    .where("dateDelivery", ">", firebase.firestore.Timestamp.fromDate(new Date()))
+    .orderBy("dateDelivery", "desc")
+    .limit(1)
+    .onSnapshot((querySnapshot) => {
+      let item;
+      querySnapshot.forEach(function (doc) {
+        item = doc.data();
+        item.id = doc.id;
+      });
+      calback(item)
+    })
+}
