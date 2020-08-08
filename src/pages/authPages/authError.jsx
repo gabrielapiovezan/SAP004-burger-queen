@@ -19,11 +19,11 @@ const ReturnError = (props) => {
       case "auth/weak-password":
         return "A senha deve ter mais de seis caracteres."
       default:
-        return "Ocorreu um erro no sistema"
+        return errorCode;
     }
   };
 
-  return <div className="error">{errorAuth(props.error)}</div>;
+  return <div className="error-auth">{errorAuth(props.error)}</div>;
 };
 export default ReturnError;
 
