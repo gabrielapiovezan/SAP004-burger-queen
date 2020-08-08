@@ -1,7 +1,10 @@
 .footer {
-  position: absolute;
+  position: fixed;
+  font-size: 13px;
   width: 100%;
-  height: 20px;
+  height: 15px;
   bottom: 0;
-  background-color: tomato;
+  background-color: #272626fb;
+  color: #eeeeee;
+  text-align: center;
 }
