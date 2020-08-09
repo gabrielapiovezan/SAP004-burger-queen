@@ -65,8 +65,7 @@
 .command-box > .data-command {
   color: #eeeeee;
 }
-.note {
-  /* border: solid 0.5px #807d7d; */
+.note-command {
   background-color: #4342420c;
   border-radius: 5px;
   height: auto;
@@ -74,12 +73,15 @@
   color: #434242;
   font-size: 13px;
 }
-/* .box-command,
-.box-command > span {
-  color: #434242;
-  background-color: #eeeeee;
-} */
-/* .box-command > .result {
-  padding-top: 5px;
-  border-top: solid 0.5px #eeeeee;
-} */
+
+.start {
+  border: solid 2px red;
+}
+
+.progress {
+  border: solid 2px #d97308;
+}
+
+.finished {
+  border: solid 2px green;
+}

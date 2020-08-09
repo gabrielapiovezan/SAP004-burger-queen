@@ -23,9 +23,17 @@ const Command = (props) => {
     );
   };
   const rows = [];
+
+  let statusOrder = "";
+  props.request.status === 1
+    ? (statusOrder = "start")
+    : props.request.status === 2
+    ? (statusOrder = "progress")
+    : (statusOrder = "finished");
+
   return (
     <div
-      className={"container-command " + props.command}
+      className={"container-command " + props.command + " " + statusOrder}
       onClick={props.onClick}
     >
       <div className={"data-command"}>
@@ -64,7 +72,9 @@ const Command = (props) => {
             </li>
           ))}
         </ul>
-        {props.request.note && <p className="note">{props.request.note}</p>}
+        {props.request.note && (
+          <p className="note-command">{props.request.note}</p>
+        )}
         <div className="result">
           <span>Total: R${props.request.total}</span>
         </div>
