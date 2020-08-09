@@ -21,7 +21,13 @@ const OrderHistory = () => {
   const onClickBack = () => {
     history.push("/");
   };
+  const orderByDate = (a, b) => {
+    return a.requestDate - b.requestDate;
+  };
+  let array = requests;
+  array.sort(orderByDate);
 
+  console.log(array);
   return (
     <div className="container">
       <Button
@@ -34,7 +40,7 @@ const OrderHistory = () => {
         {/* <span>Calendario</span> */}
       </div>
       <div className="request">
-        {requests.map((request) => (
+        {array.map((request) => (
           <Command request={request} />
         ))}
       </div>
