@@ -13,12 +13,8 @@ const Command = (props) => {
   const imgBurguer = (product, i) => {
     return (
       <div className="info">
-        <p className="info-order info-burguer">
-          {i + 1 + " " + product.burguer[i]}
-        </p>
-        <p className="info-order info-burguer">
-          {product.option && product.option[i]}
-        </p>
+        <p className="info-b">{i + 1 + " " + product.burguer[i]}</p>
+        <p className="info-b">{product.option && product.option[i]}</p>
       </div>
     );
   };
@@ -37,10 +33,8 @@ const Command = (props) => {
       onClick={props.onClick}
     >
       <div className={"data-command"}>
-        {/* <span>Nome: {props.request.value[0].name}</span>
-        <span>Mesa: {props.request.value[0].table}</span> */}
-        <span>Nome: {props.request.name}</span>
-        <span>Mesa: {props.request.table}</span>
+        <span>{props.request.name}</span>
+        <span>{props.request.table}</span>
       </div>
       <div className="data-calendar">
         <span>{dateAndHour(props.request.requestDate)}</span>
@@ -59,14 +53,6 @@ const Command = (props) => {
                     })}
                   {prod.burguer && rows}
                 </p>
-                {/* {prod.burguer
-                  ? prod.burguer.reduce(
-                      (burguerPreview, burguerNext, index) => {
-                        return (burguerPreview += ` ${burguerNext} ${prod.option[index]}`);
-                      },
-                      ""
-                    )
-                  : ""} */}
               </span>
               <span>R${prod.price}</span>
             </li>

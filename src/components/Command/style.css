@@ -1,5 +1,4 @@
 .container-command {
-  /* z-index: 1; */
   width: 280px;
   background: #434242;
   box-sizing: border-box;
@@ -26,6 +25,8 @@
 }
 
 .data-command {
+  font-size: 18px;
+  font-weight: 700;
   color: #eeeeee;
   margin-top: 10px;
   padding: 5px 20px;
@@ -49,7 +50,7 @@
   padding-top: 10px;
   border-top: solid 1px #434242;
 }
-.info-order {
+.info-b {
   color: #434242;
   font-size: 13px;
 }
@@ -75,13 +76,14 @@
 }
 
 .start {
-  border: solid 2px red;
+  box-shadow: 2px 1.5px 1.5px red;
+  /* border: solid 1px red; */
 }
 
 .progress {
-  border: solid 2px #d97308;
+  box-shadow: 2px 1.5px 1.5px #d97308;
 }
 
 .finished {
-  border: solid 2px green;
+  box-shadow: 2px 1.5px 1.5px green;
 }

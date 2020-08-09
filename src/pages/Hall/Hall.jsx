@@ -4,7 +4,6 @@ import logo from "../../img/logo1.png";
 import Input from "../../components/Input";
 import Table from "../../components/Table";
 import Button from "../../components/Button";
-import Burguer from "../../img/queijo.png";
 import MenuBreackfast from "../../components/MenuBreackfast";
 import MenuDinner from "../../components/MenuDinner";
 import "./hall.css";
@@ -37,15 +36,11 @@ const Hall = () => {
 
     if (result === -1 && amount !== 0) {
       array.push({
-        // name: order.name,
-        // table: order.table,
         id: value.length,
         category: "Resumo",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-        // total: total,
-        // date: new Date().getTime(),
       });
       if (menuChoice[index].category === "Hambúrgueres")
         array[array.length - 1] = {
@@ -105,7 +100,6 @@ const Hall = () => {
 
   useEffect(() => {
     totalOrder();
-    console.log(value);
   }, [value]);
 
   const totalOrder = () => {
@@ -122,10 +116,6 @@ const Hall = () => {
     setTotal(
       value.reduce((acc, att) => acc + att.price * att.amount, 0) + cont
     );
-    // const array = [...value];
-    // array.forEach((a) => {
-    //   a.total = total;
-    // });
   };
 
   const saveOrder = async () => {
@@ -144,7 +134,6 @@ const Hall = () => {
 
       deleteAll();
       setError("");
-      // history.push("./delivery");
     } else {
       setError("Por favor, digite as informações sobre o pedido.");
     }
@@ -156,8 +145,6 @@ const Hall = () => {
 
   return (
     <div className="hall">
-      {/* <div className="container-table"> */}
-
       <div className="data">
         <img className="img-hall" src={logo} alt="logo" />
         <div className="box-data">

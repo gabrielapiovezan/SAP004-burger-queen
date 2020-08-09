@@ -3,8 +3,9 @@ import logo from "../../img/logo2.png";
 import "./style.css";
 import { getDataByStatus, notifyHall } from "../../firebase/firebaseService";
 import { useAuth } from "../../contexts/auth";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Bag from "../../img/bag.png";
 
 const Header = () => {
   const { signOut, signed, user } = useAuth();
@@ -21,7 +22,9 @@ const Header = () => {
   useEffect(() => {
     function get(data) {
       if (data)
-        toast.warn(`O Pedido do Cliente: ${data.value[0].name} da Mesa: ${data.value[0].table} está pronto`);
+        toast.warn(
+          `O Pedido do Cliente: ${data.value[0].name} da Mesa: ${data.value[0].table} está pronto`
+        );
     }
     if (user && user.type === "service") {
       notifyHall(get);
@@ -40,7 +43,6 @@ const Header = () => {
     return (
       <>
         <div className="header">
-          {user.type === "service" ? <span>{requests}</span> : null}
           <nav>
             <div id="menuToggle">
               <input type="checkbox" />
@@ -69,6 +71,12 @@ const Header = () => {
           <div className="logo-header">
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
+          </div>
+          <div className="box-bag">
+            <img src={Bag} className="bag" />
+            {user.type === "service" ? (
+              <span className="orders">{requests}</span>
+            ) : null}
           </div>
         </div>
       </>

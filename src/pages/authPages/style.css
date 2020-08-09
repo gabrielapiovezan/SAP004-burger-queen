@@ -11,7 +11,7 @@
   margin-bottom: 5px;
   width: 200px;
 }
-.error-auth{
+.error-auth {
   color: #d97308;
   margin-top: 10px;
 }
@@ -33,8 +33,8 @@
   /* padding: 15px; */
   color: #eeeeee;
 }
-.input-password{
- margin-bottom: 5px;
+.input-password {
+  margin-bottom: 5px;
 }
 .icon {
   width: 30px;
@@ -47,11 +47,9 @@
 .radio-button {
   padding: 10px 0;
   margin-top: 20px;
-  /* margin-bottom: 20px; */
-  /* border-radius: 15px; */
+
   display: flex;
   justify-content: space-around;
-  /* border: solid 1px #eeeeee20; */
 }
 @media only screen and (min-width: 1000px) {
   .templateAuth {

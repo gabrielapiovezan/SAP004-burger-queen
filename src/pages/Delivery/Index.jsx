@@ -42,9 +42,6 @@ const Delivery = () => {
       <div className="kitchen">
         <img className="img-kitchen" src={logo} alt="logo" />
         <Button value="Novo pedido" className="button button-kitchen" />
-        {/* <Link className="button button-kitchen" to="/delivery">
-          Novo pedido
-        </Link> */}
       </div>
 
       <div className="request">
@@ -52,7 +49,6 @@ const Delivery = () => {
           <Command
             request={request}
             onClick={() => handleModal(request)}
-            // boxCommand="box-command"
             command={"command-box"}
           />
         ))}

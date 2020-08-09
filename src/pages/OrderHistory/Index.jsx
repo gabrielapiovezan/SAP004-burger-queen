@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/Button";
 import logo from "../../img/logo1.png";
-import Onion from "../../img/cebola.png";
+
 import Command from "../../components/Command/Index";
 import { getData } from "../../firebase/firebaseService";
 import "./style.css";
