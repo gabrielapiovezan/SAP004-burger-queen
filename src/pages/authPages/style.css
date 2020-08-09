@@ -28,9 +28,7 @@
   display: flex;
   align-items: flex-end;
   border-radius: 10px;
-  /* margin-top: 20px; */
-  /* margin: 15px 55px; */
-  /* padding: 15px; */
+
   color: #eeeeee;
 }
 .input-password {
@@ -51,6 +49,65 @@
   display: flex;
   justify-content: space-around;
 }
+
+.box-imgs {
+  width: 250px;
+  height: 288.03px;
+}
+.box-imgs > img {
+  width: 250px;
+  opacity: 0;
+  z-index: 0;
+  width: 250px;
+  animation: imageAnimation 1.5s linear infinite 0s;
+}
+.box-imgs > :nth-child(1) {
+  /* background-color: lightcoral; */
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.box-imgs > :nth-child(2) {
+  position: relative;
+  top: -288.03px;
+  left: 0;
+}
+.box-imgs > :nth-child(3) {
+  position: relative;
+  top: -576.06px;
+  left: 0;
+}
+
+.box-imgs > img:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.box-imgs > img:nth-child(3) {
+  animation-delay: 1s;
+}
+.box-imgs > img:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  8% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  17% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @media only screen and (min-width: 1000px) {
   .templateAuth {
     height: 100%;
