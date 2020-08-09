@@ -45,7 +45,12 @@ const Delivery = () => {
 
       <div className="request">
         {requests.map((request) => (
-          <Command request={request} onClick={() => handleModal(request)} />
+          <Command
+            request={request}
+            onClick={() => handleModal(request)}
+            // boxCommand="box-command"
+            command={"command-box"}
+          />
         ))}
       </div>
       <Modal show={showModal} onCancel={handleCancel} onFinish={handleFinish} />

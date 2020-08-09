@@ -14,9 +14,9 @@ const App = () => {
         <AuthProvider>
           <Header />
           <Routes />
-          <Footer />
         </AuthProvider>
         <ToastContainer position="top-center" />
+        <Footer />
       </Router>
     </>
   );

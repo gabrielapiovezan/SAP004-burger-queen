@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import logo from "../../img/logo1.png";
 import Input from "../../components/Input";
 import Table from "../../components/Table";
 import Button from "../../components/Button";
+import Burguer from "../../img/queijo.png";
 import MenuBreackfast from "../../components/MenuBreackfast";
 import MenuDinner from "../../components/MenuDinner";
 import "./hall.css";
@@ -36,15 +37,15 @@ const Hall = () => {
 
     if (result === -1 && amount !== 0) {
       array.push({
-        name: order.name,
-        table: order.table,
+        // name: order.name,
+        // table: order.table,
         id: value.length,
         category: "Resumo",
         item: menuChoice[index].item,
         price: menuChoice[index].price,
         amount: 1,
-        total: total,
-        date: new Date().getTime(),
+        // total: total,
+        // date: new Date().getTime(),
       });
       if (menuChoice[index].category === "Hambúrgueres")
         array[array.length - 1] = {
@@ -121,10 +122,10 @@ const Hall = () => {
     setTotal(
       value.reduce((acc, att) => acc + att.price * att.amount, 0) + cont
     );
-    const array = [...value];
-    array.forEach((a) => {
-      a.total = total;
-    });
+    // const array = [...value];
+    // array.forEach((a) => {
+    //   a.total = total;
+    // });
   };
 
   const saveOrder = async () => {
@@ -136,6 +137,7 @@ const Hall = () => {
         note: order.note,
         name: order.name,
         table: order.table,
+        total: total,
       };
 
       await firebase.firestore().collection("orders").add(obj);
@@ -154,71 +156,76 @@ const Hall = () => {
 
   return (
     <div className="hall">
-      <div className="container-table">
-        <div>
-          <div className="data">
-            <img className="img-hall" src={logo} alt="logo" />
-            <div className="box-data">
-              <Input
-                type="text"
-                placeholder="Nome"
-                className="input name-input"
-                onChange={(e) => updateData(e, "name")}
-              />
-              <div className="data-table">
-                <h1 className="text">MESA</h1>
-                <Input
-                  placeholder="Mesa"
-                  className="input table-input"
-                  type="number"
-                  onChange={(e) => updateData(e, "table")}
-                />
-              </div>
-            </div>
+      {/* <div className="container-table"> */}
+
+      <div className="data">
+        <img className="img-hall" src={logo} alt="logo" />
+        <div className="box-data">
+          <Input
+            type="text"
+            placeholder="Nome"
+            className="input name-input"
+            onChange={(e) => updateData(e, "name")}
+          />
+          <div className="data-table">
+            <h1 className="text">MESA</h1>
+            <Input
+              placeholder="Mesa"
+              className="input table-input"
+              type="number"
+              onChange={(e) => updateData(e, "table")}
+            />
           </div>
         </div>
-        <div className="buttons-menu">
-          <button className="button-menu breack-fast" onClick={() => setData()}>
-            Café da manha
-          </button>
-          <button className="button-menu dinner" onClick={() => setData()}>
-            Almoço e jantar
-          </button>
-        </div>
-
-        {menu ? (
-          <Table
-            className="table-breackfast"
-            menu={MenuBreackfast}
-            selector="button-selector-breackfast"
-            func={[createTotal, deleteItem]}
-            total={value}
-          />
-        ) : (
-          <Table
-            className="table-dinner"
-            menu={MenuDinner}
-            selector="button-selector-dinner"
-            func={[createTotal, deleteItem, setBurguer, setOptions]}
-            total={value}
-          />
-        )}
       </div>
-      <div className="container-table">
-        {value[0] && (
-          <>
+      <div className="table">
+        <div className="container-table">
+          <div className="buttons-menu">
+            <button
+              className="button-menu breack-fast"
+              onClick={() => setData()}
+            >
+              Café da manha
+            </button>
+            <button className="button-menu dinner" onClick={() => setData()}>
+              Almoço e jantar
+            </button>
+          </div>
+
+          {menu ? (
             <Table
-              className="table-total"
-              menu={value}
-              selector="button-selector-dinner"
-              func={[deleteItem, deleteAll]}
-              total={total}
-              note={note}
+              className="table-breackfast"
+              menu={MenuBreackfast}
+              selector="button-selector-breackfast"
+              func={[createTotal, deleteItem]}
+              total={value}
             />
-            <div className="error">{error}</div>
-            <Button value="Enviar" onClick={() => saveOrder()} />
-          </>
-        )}
+          ) : (
+            <Table
+              className="table-dinner"
+              menu={MenuDinner}
+              selector="button-selector-dinner"
+              func={[createTotal, deleteItem, setBurguer, setOptions]}
+              total={value}
+            />
+          )}
+        </div>
+        <span className="container-table-total">
+          {value[0] && (
+            <>
+              <Table
+                className="table-total"
+                menu={value}
+                selector="button-selector-dinner"
+                func={[deleteItem, deleteAll]}
+                total={total}
+                note={note}
+              />
+              <div className="error">{error}</div>
+              <Button value="Enviar" onClick={() => saveOrder()} />
+            </>
+          )}
+        </span>
       </div>
     </div>
   );
