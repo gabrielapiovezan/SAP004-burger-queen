@@ -20,12 +20,26 @@ const Command = (props) => {
   };
   const rows = [];
 
+  const resultOptions = (product) => {
+    let cont = 0;
+
+    product.option &&
+      product.option.forEach((b) => {
+        if (b.length) {
+          b.includes(",") ? (cont += 2) : (cont += 1);
+        } else {
+        }
+      });
+
+    return cont;
+  };
+
   let statusOrder = "";
   props.request.status === 1
     ? (statusOrder = "start")
     : props.request.status === 2
-      ? (statusOrder = "progress")
-      : (statusOrder = "finished");
+    ? (statusOrder = "progress")
+    : (statusOrder = "finished");
 
   return (
     <div
@@ -54,7 +68,14 @@ const Command = (props) => {
                   {prod.burguer && rows}
                 </p>
               </span>
-              <span>R${prod.price}</span>
+              {/* <span>R${prod.price}</span> */}
+              <span>
+                {" "}
+                R$
+                {(prod.amount * prod.price + resultOptions(prod))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </span>
             </li>
           ))}
         </ul>
