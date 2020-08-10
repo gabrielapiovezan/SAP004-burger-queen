@@ -19,3 +19,9 @@
   justify-content: end;
   width: 100px;
 }
+
+.calendar{
+  background-color: #434242;
+  border: solid 2px #d97308;
+  color: #eeeeee;
+}
