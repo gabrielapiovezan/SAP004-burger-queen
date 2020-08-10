@@ -43,6 +43,7 @@ const Kitchen = () => {
           <Command
             key={request.id}
             request={request}
+            data={request.requestDate}
             onClick={() => handleModal(request)}
           />
         ))}

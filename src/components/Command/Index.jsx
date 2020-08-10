@@ -24,8 +24,8 @@ const Command = (props) => {
   props.request.status === 1
     ? (statusOrder = "start")
     : props.request.status === 2
-    ? (statusOrder = "progress")
-    : (statusOrder = "finished");
+      ? (statusOrder = "progress")
+      : (statusOrder = "finished");
 
   return (
     <div
@@ -37,7 +37,7 @@ const Command = (props) => {
         <span>{props.request.table}</span>
       </div>
       <div className="data-calendar">
-        <span>{dateAndHour(props.request.requestDate)}</span>
+        <span>{dateAndHour(props.data)}</span>
       </div>
       <div className={"command"}>
         <ul>

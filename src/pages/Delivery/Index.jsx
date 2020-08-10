@@ -48,6 +48,7 @@ const Delivery = () => {
         {array.map((request) => (
           <Command
             request={request}
+            data={request.dateDelivery}
             onClick={() => handleModal(request)}
             command={"command-box"}
           />
