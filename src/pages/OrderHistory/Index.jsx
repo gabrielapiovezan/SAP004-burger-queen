@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Button from "../../components/Button";
 import Command from "../../components/Command/Index";
 import { getData } from "../../firebase/firebaseService";
+import Flatpickr from 'react-flatpickr'
 import "./style.css";
 
 const OrderHistory = () => {
@@ -35,8 +36,11 @@ const OrderHistory = () => {
         onClick={onClickBack}
       />
       <div className="container-history">
-        {/* <img className="img-history" src={logo} alt="logo" /> */}
-        {/* <span>Calendario</span> */}
+        <Flatpickr className="input calendar"
+          onChange={(e) => setCalendar(e[0])}
+          // onChange={ item setCalendar}
+          value={calendar}
+        />
       </div>
       <div className="request">
         {array.map((request) => (
