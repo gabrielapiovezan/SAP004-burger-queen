@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/Button";
-import logo from "../../img/logo1.png";
-
 import Command from "../../components/Command/Index";
 import { getData } from "../../firebase/firebaseService";
 import "./style.css";
@@ -10,13 +8,14 @@ import "./style.css";
 const OrderHistory = () => {
   const history = useHistory();
   const [requests, setRequests] = useState([]);
+  const [calendar, setCalendar] = useState(new Date());
 
   useEffect(() => {
     function get(data) {
-      setRequests(data);
+      setRequests(data)
     }
-    getData(get);
-  }, []);
+    getData(calendar, get)
+  }, [calendar]);
 
   const onClickBack = () => {
     history.push("/");
