@@ -13,19 +13,19 @@ export const getDataByStatus = (calback, status) => {
     })
 }
 
-export const getData = (calback) => {
-  firebase.firestore().collection("orders")
-    .onSnapshot((querySnapshot) => {
-      let itens = [];
-      querySnapshot.forEach(function (doc) {
-        let item = doc.data();
-        console.log(item)
-        item.id = doc.id;
-        itens.push(item);
-      });
-      calback(itens)
-    })
-}
+// export const getData = (calback) => {
+//   firebase.firestore().collection("orders")
+//     .onSnapshot((querySnapshot) => {
+//       let itens = [];
+//       querySnapshot.forEach(function (doc) {
+//         let item = doc.data();
+//         console.log(item)
+//         item.id = doc.id;
+//         itens.push(item);
+//       });
+//       calback(itens)
+//     })
+// }
 
 export const getData = (calendar, calback) => {
   firebase.firestore().collection("orders")
