@@ -32,20 +32,25 @@ const Delivery = () => {
     });
     setShowModal(false);
   };
-
+  const orderByDate = (a, b) => {
+    return a.requestDate - b.requestDate;
+  };
+  let array = requests;
+  array.sort(orderByDate);
   return (
     <div className="container-delivery">
       <div className="kitchen">
         <img className="img-kitchen" src={logo} alt="logo" />
         <Button value="Novo pedido" className="button button-kitchen" />
-        {/* <Link className="button button-kitchen" to="/delivery">
-          Novo pedido
-        </Link> */}
       </div>
 
       <div className="request">
-        {requests.map((request) => (
-          <Command request={request} onClick={() => handleModal(request)} />
+        {array.map((request) => (
+          <Command
+            request={request}
+            onClick={() => handleModal(request)}
+            command={"command-box"}
+          />
         ))}
       </div>
       <Modal show={showModal} onCancel={handleCancel} onFinish={handleFinish} />

@@ -1,10 +1,10 @@
-.button-history{
-  background-color:#434242;
+.button-history {
+  background-color: #434242;
   margin: 15px 60px 0 90%;
   width: 100px;
 }
-.container{
-  background-color: #eeeeee;  
+.container {
+  background-color: #eeeeee;
   width: 100%;
   height: fit-content;
   display: flex;
@@ -14,7 +14,7 @@
   padding: 30px;
 }
 
-.img-history{
+.img-history {
   display: flex;
   justify-content: end;
   width: 100px;

@@ -1,12 +1,12 @@
 .hall {
   background-color: #434242;
-  /* margin-top: 40px; */
-  padding: 40px;
   width: 100%;
+  height: fit-content;
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* padding: 30px; */
+  margin-top: 30px;
+  padding: 30px;
 }
 .input {
   width: 95%;
@@ -17,7 +17,6 @@
 }
 .data {
   padding: 20px;
-  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +25,6 @@
 .data-table {
   width: 100%;
   display: flex;
-  /* align-items: flex-end; */
   align-items: center;
   justify-content: space-between;
 }
@@ -81,22 +79,39 @@
   color: #eeeeee;
   text-align: center;
 }
+.table {
+  width: 100%;
+}
 @media only screen and (min-width: 1000px) {
-  .hall {
-    width: 100%;
+  .table {
     display: flex;
+    justify-content: space-around;
+  }
 
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-  }
   .container-table {
-    margin: 20px;
-    width: 40%;
+    width: 45%;
+    min-width: 450px;
   }
-  /* .data {
-    padding: 10px;
-  } */
+
+  .data {
+    width: 70%;
+  }
+  .table-total {
+    margin: 0;
+  }
+  .container-table-total {
+    width: 45%;
+    display: flex;
+    justify-content: right;
+    flex-direction: column;
+  }
+  .table-total {
+    min-width: 450px;
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 400px) {
   .text {

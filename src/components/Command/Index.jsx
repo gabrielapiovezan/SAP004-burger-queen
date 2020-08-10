@@ -1,48 +1,72 @@
 import React from "react";
 import "./style.css";
 
-const Command = ({ request, onClick }) => {
+const Command = (props) => {
   const dateAndHour = (date) => {
     if (!date) {
-      return ""
+      return "";
     }
-    const options = { dateStyle: 'short', timeStyle: 'short' };
-    return date.toDate().toLocaleDateString('pt-BR', options);
+    const options = { dateStyle: "short", timeStyle: "short" };
+    return date.toDate().toLocaleDateString("pt-BR", options);
   };
-  return (
 
-    <div className="container-command" onClick={onClick}>
-      <div className="data-command">
-        <span>Nome: {request.value[0].name}</span>
-        <span>Mesa: {request.value[0].table}</span>
+  const imgBurguer = (product, i) => {
+    return (
+      <div className="info">
+        <p className="info-b">{i + 1 + " " + product.burguer[i]}</p>
+        <p className="info-b">{product.option && product.option[i]}</p>
+      </div>
+    );
+  };
+  const rows = [];
+
+  let statusOrder = "";
+  props.request.status === 1
+    ? (statusOrder = "start")
+    : props.request.status === 2
+    ? (statusOrder = "progress")
+    : (statusOrder = "finished");
+
+  return (
+    <div
+      className={"container-command " + props.command + " " + statusOrder}
+      onClick={props.onClick}
+    >
+      <div className={"data-command"}>
+        <span>{props.request.name}</span>
+        <span>{props.request.table}</span>
       </div>
       <div className="data-calendar">
-        <span>{dateAndHour(request.requestDate)}</span>
+        <span>{dateAndHour(props.request.requestDate)}</span>
       </div>
-      <div className="command">
+      <div className={"command"}>
         <ul>
-          {request.value.map((prod, index) =>
+          {props.request.value.map((prod, index) => (
             <li key={index}>
-              <span className="item-command">
-                {prod.amount} {prod.item} <br></br>
-                {prod.burguer ? prod.burguer.reduce((burguerPreview, burguerNext, index) => {
-                  return burguerPreview += ` ${burguerNext} ${prod.option[index]}`
-                }, "") : ""}
-              </span>
               <span>
-                R${prod.price}
+                {prod.amount} {prod.item}
+                <p>
+                  {" "}
+                  {prod.burguer &&
+                    prod.burguer.forEach((a, i) => {
+                      rows.push(imgBurguer(prod, i));
+                    })}
+                  {prod.burguer && rows}
+                </p>
               </span>
+              <span>R${prod.price}</span>
             </li>
-          )}
+          ))}
         </ul>
+        {props.request.note && (
+          <p className="note-command">{props.request.note}</p>
+        )}
         <div className="result">
-          <span>Total:  R${request.value[0].total}</span>
+          <span>Total: R${props.request.total}</span>
         </div>
       </div>
     </div>
-
   );
 };
-
 
 export default Command;

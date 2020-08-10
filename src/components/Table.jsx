@@ -34,11 +34,6 @@ const Table = (props) => {
         </p>
       </div>
     );
-    // )
-    //});
-
-    //  var newString = "abc12345#$*%".replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
-    //  return result;
   };
 
   const resultOptions = (product) => {
@@ -133,12 +128,7 @@ const Table = (props) => {
           )}
         </tr>
         <tr>
-          {/* <th align="start" className="menu-item">
-          Item
-        </th> */}
-
           <th
-            // className="menu-type"
             align="left"
             colSpan="3"
             className={
@@ -149,7 +139,6 @@ const Table = (props) => {
           >
             {product.category.toUpperCase()}
           </th>
-          {/* <th className="menu-value">Valor</th> */}
           <th className="menu-button"></th>
         </tr>
         <tr>
@@ -332,9 +321,6 @@ const Table = (props) => {
             R$ {" " + props.total.toFixed(2).replace(".", ",")}
           </td>
           <td className="del">
-            {/* align="right"> */}
-            {/* className="del"> */}
-            {/* {props.menu.reduce((acc, att) => acc + att.amount, 0)} */}
             <ButtonIcon
               func={props.func[1]}
               name="delete"

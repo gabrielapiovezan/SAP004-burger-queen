@@ -6,7 +6,7 @@
   width: 150px;
 }
 .kitchen {
-  width: 100%;
+  /* width: 100%; */
   margin-top: 50px;
   padding: 20px;
   display: flex;
@@ -14,5 +14,5 @@
   justify-content: space-around;
 }
 .button-kitchen {
-  width: 400px;
+  width: 200px;
 }
