@@ -41,7 +41,9 @@ const OrderHistory = () => {
       </div>
       <div className="request">
         {array.map((request) => (
-          <Command request={request} />
+          <Command
+            request={request}
+            data={request.dateDelivery} />
         ))}
       </div>
       {/* <img src={Onion} className="onion" /> */}

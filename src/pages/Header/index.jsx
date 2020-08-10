@@ -23,7 +23,7 @@ const Header = () => {
     function get(data) {
       if (data)
         toast.warn(
-          `O Pedido do Cliente: ${data.value[0].name} da Mesa: ${data.value[0].table} está pronto`
+          `O Pedido do Cliente: ${data.name} da Mesa: ${data.table} está pronto`
         );
     }
     if (user && user.type === "service") {
