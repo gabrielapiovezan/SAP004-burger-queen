@@ -1,4 +1,5 @@
 import React from "react";
+import firebase from "../../firebase/firebase";
 import "./style.css";
 
 const Command = (props) => {
@@ -52,6 +53,7 @@ const Command = (props) => {
       </div>
       <div className="data-calendar">
         <span>{dateAndHour(props.data)}</span>
+        <span>{firebase.auth().currentUser.displayName}</span>
       </div>
       <div className={"command"}>
         <ul>

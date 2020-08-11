@@ -1,8 +1,5 @@
 .header {
   position: absolute;
-  /* z-index: 2; */
-  /* top: 0;
-  left: 0; */
   top: 0%;
   background-color: #272626;
   padding: 7px 0;
@@ -19,13 +16,12 @@
   justify-content: center;
   display: flex;
   align-items: center;
-  /* margin-left: 40%; */
   width: 100%;
 }
 .logo-header span {
   margin-top: 15px;
-  color: #ffffff;
   font-size: 20px;
+  color: #eeeeee;
 }
 
 #menuToggle {

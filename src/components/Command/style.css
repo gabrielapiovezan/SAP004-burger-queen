@@ -36,12 +36,14 @@
 
 .data-calendar {
   color: #eeeeee;
-  width: 300px;
-  margin: 0 20px;
+  padding: 0 20px;
+  /* margin: 0 20px; */
   /* display: flex;
   justify-content: space-around; */
   text-align: left;
   font-size: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .result {
