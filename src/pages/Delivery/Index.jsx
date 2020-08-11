@@ -32,11 +32,11 @@ const Delivery = () => {
     });
     setShowModal(false);
   };
-  const orderByDate = (a, b) => {
-    return a.requestDate - b.requestDate;
-  };
-  let array = requests;
-  array.sort(orderByDate);
+  // const orderByDate = (a, b) => {
+  //   return a.requestDate - b.requestDate;
+  // };
+  // let array = requests;
+  // array.sort(orderByDate);
   return (
     <div className="container-delivery">
       <div className="kitchen">
@@ -45,7 +45,7 @@ const Delivery = () => {
       </div>
 
       <div className="request">
-        {array.map((request) => (
+        {requests.map((request) => (
           <Command
             request={request}
             data={request.dateDelivery}

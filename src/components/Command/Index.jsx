@@ -1,5 +1,6 @@
 import React from "react";
 import firebase from "../../firebase/firebase";
+import Tempo from "../../img/tempo.png";
 import "./style.css";
 
 const Command = (props) => {
@@ -11,11 +12,28 @@ const Command = (props) => {
     return date.toDate().toLocaleDateString("pt-BR", options);
   };
 
+  const averageTime = () => {
+    // const end = props.request.filter((a) => a.dateDelivery);
+    console.log(props.request);
+  };
+  averageTime();
+  const hour = (start, end) => {
+    if (!start || !end) {
+      return "";
+    }
+
+    const timeMs = end.toDate().getTime() - start.toDate().getTime();
+
+    const hours = parseInt(timeMs / 3600000);
+    const min = parseInt((timeMs % 3600000) / 60000);
+    return (hours ? `${hours}h` : "") + `${min}min`;
+  };
+
   const imgBurguer = (product, i) => {
     return (
       <div className="info">
-        <p className="info-b">{i + 1 + " " + product.burguer[i]}</p>
-        <p className="info-b">{product.option && product.option[i]}</p>
+        <span className="info-b">{i + 1 + " " + product.burguer[i]}</span>
+        <span className="info-b">{product.option && product.option[i]}</span>
       </div>
     );
   };
@@ -52,7 +70,15 @@ const Command = (props) => {
         <span>{props.request.table}</span>
       </div>
       <div className="data-calendar">
-        <span>{dateAndHour(props.data)}</span>
+        <div>
+          <span>{dateAndHour(props.request.requestDate)}</span>
+          {props.request.dateDelivery && (
+            <span>
+              <img className="timer" src={Tempo} alt="tempo" />
+              {hour(props.request.requestDate, props.request.dateDelivery)}
+            </span>
+          )}
+        </div>
         <span>{firebase.auth().currentUser.displayName}</span>
       </div>
       <div className={"command"}>
@@ -70,7 +96,6 @@ const Command = (props) => {
                   {prod.burguer && rows}
                 </p>
               </span>
-              {/* <span>R${prod.price}</span> */}
               <span>
                 {" "}
                 R$
