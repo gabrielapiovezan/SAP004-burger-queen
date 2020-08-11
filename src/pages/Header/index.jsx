@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../img/logo2.png";
 import "./style.css";
-import { getDataByStatus, notifyHall } from "../../firebase/firebaseService";
+import {
+  getDataByStatus,
+  notifyHall,
+  getDataAll,
+} from "../../firebase/firebaseService";
 import { useAuth } from "../../contexts/auth";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -11,13 +15,33 @@ const Header = () => {
   const { signOut, signed, user } = useAuth();
   const [setError] = useState("");
   const [requests, setRequests] = useState(0);
-
+  // const [averageTime, setAverageTime] = useState([]);
   useEffect(() => {
     function get(data) {
       setRequests(data.length);
     }
     getDataByStatus(get, 2);
+    // getDataAll(time);
   }, []);
+
+  // const time = (itens) => {
+  //   const array = itens.filter((a) => a.dateDelivery);
+  //   if (array.length) {
+  //     const average =
+  //       array.reduce((accum, curr) => {
+  //         return (
+  //           accum +
+  //           curr.dateDelivery.toDate().getTime() -
+  //           curr.requestDate.toDate().getTime()
+  //         );
+  //       }, 0) / array.length;
+
+  //     const hours = parseInt(average / 3600000);
+  //     const min = parseInt((average % 3600000) / 60000);
+  //     console.log((hours ? `${hours}h` : "") + `${min}min`);
+  //   }
+  //   setAverageTime(array);
+  // };
 
   useEffect(() => {
     function get(data) {

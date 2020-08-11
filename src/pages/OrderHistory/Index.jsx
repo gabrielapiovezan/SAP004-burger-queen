@@ -15,6 +15,7 @@ const OrderHistory = () => {
     function get(data) {
       setRequests(data);
     }
+
     getData(calendar, get);
   }, [calendar]);
 
@@ -44,7 +45,11 @@ const OrderHistory = () => {
       </div>
       <div className="request">
         {requests.map((request) => (
-          <Command request={request} data={request.dateDelivery} />
+          <Command
+            requests={requests}
+            request={request}
+            data={request.requestDate}
+          />
         ))}
       </div>
       {/* <img src={Onion} className="onion" /> */}

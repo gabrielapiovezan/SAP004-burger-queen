@@ -41,6 +41,7 @@ const Kitchen = () => {
       <div className="request">
         {requests.map((request) => (
           <Command
+            requests={requests}
             key={request.id}
             request={request}
             data={request.requestDate}

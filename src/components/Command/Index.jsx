@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../../firebase/firebase";
+import { getData, getDataAll } from "../../firebase/firebaseService";
 import Tempo from "../../img/tempo.png";
 import "./style.css";
 
 const Command = (props) => {
+  const [averageTime, setAverageTime] = useState([]);
+
+  useEffect(() => {
+    getDataAll(time);
+  }, []);
+
+  const time = (itens) => {
+    const array = itens.filter((a) => a.dateDelivery);
+    if (array.length) {
+      const average =
+        array.reduce((accum, curr) => {
+          return (
+            accum +
+            curr.dateDelivery.toDate().getTime() -
+            curr.requestDate.toDate().getTime()
+          );
+        }, 0) / array.length;
+
+      const hours = parseInt(average / 3600000);
+      const min = parseInt((average % 3600000) / 60000);
+      setAverageTime((hours ? `${hours}h` : "") + `${min}min`);
+    }
+  };
+
   const dateAndHour = (date) => {
     if (!date) {
       return "";
@@ -12,11 +37,6 @@ const Command = (props) => {
     return date.toDate().toLocaleDateString("pt-BR", options);
   };
 
-  const averageTime = () => {
-    // const end = props.request.filter((a) => a.dateDelivery);
-    console.log(props.request);
-  };
-  averageTime();
   const hour = (start, end) => {
     if (!start || !end) {
       return "";
@@ -71,13 +91,15 @@ const Command = (props) => {
       </div>
       <div className="data-calendar">
         <div>
-          <span>{dateAndHour(props.request.requestDate)}</span>
-          {props.request.dateDelivery && (
+          <span>{dateAndHour(props.date)}</span>
+          {
             <span>
               <img className="timer" src={Tempo} alt="tempo" />
-              {hour(props.request.requestDate, props.request.dateDelivery)}
+              {props.request.dateDelivery
+                ? hour(props.request.requestDate, props.request.dateDelivery)
+                : averageTime}
             </span>
-          )}
+          }
         </div>
         <span>{firebase.auth().currentUser.displayName}</span>
       </div>

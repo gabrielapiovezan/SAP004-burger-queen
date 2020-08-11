@@ -47,6 +47,7 @@ const Delivery = () => {
       <div className="request">
         {requests.map((request) => (
           <Command
+            requests={requests}
             request={request}
             data={request.dateDelivery}
             onClick={() => handleModal(request)}
