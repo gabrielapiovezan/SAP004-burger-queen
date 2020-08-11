@@ -15,6 +15,7 @@
 }
 .button-kitchen {
   width: 200px;
+  min-width: 150px;
 }
 .request {
   padding-bottom: 30px;
