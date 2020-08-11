@@ -31,16 +31,17 @@ const Kitchen = () => {
     });
     setShowModal(false);
   };
-  const orderByDate = (a, b) => {
-    return a.requestDate - b.requestDate;
-  };
-  let array = requests;
-  array.sort(orderByDate);
+  // const orderByDate = (a, b) => {
+  //   return a.requestDate - b.requestDate;
+  // };
+  // let array = requests;
+  // array.sort(orderByDate);
   return (
     <div className="container">
       <div className="request">
-        {array.map((request) => (
+        {requests.map((request) => (
           <Command
+            requests={requests}
             key={request.id}
             request={request}
             data={request.requestDate}

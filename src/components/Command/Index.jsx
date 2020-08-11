@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import firebase from "../../firebase/firebase";
+import { getData, getDataAll } from "../../firebase/firebaseService";
+import Tempo from "../../img/tempo.png";
 import "./style.css";
 
 const Command = (props) => {
+  const [averageTime, setAverageTime] = useState([]);
+
+  useEffect(() => {
+    getDataAll(time);
+  }, []);
+
+  const time = (itens) => {
+    const array = itens.filter((a) => a.dateDelivery);
+    if (array.length) {
+      const average =
+        array.reduce((accum, curr) => {
+          return (
+            accum +
+            curr.dateDelivery.toDate().getTime() -
+            curr.requestDate.toDate().getTime()
+          );
+        }, 0) / array.length;
+
+      // const hours = parseInt(average / 3600000);
+      // const min = parseInt((average % 3600000) / 60000);
+      setAverageTime(transformTime(average));
+    }
+  };
+
   const dateAndHour = (date) => {
     if (!date) {
       return "";
@@ -10,11 +37,29 @@ const Command = (props) => {
     return date.toDate().toLocaleDateString("pt-BR", options);
   };
 
+  const hour = (start, end) => {
+    if (!start || !end) {
+      return "";
+    }
+
+    const timeMs = end.toDate().getTime() - start.toDate().getTime();
+    return transformTime(timeMs);
+    // const hours = parseInt(timeMs / 3600000);
+    // const min = parseInt((timeMs % 3600000) / 60000);
+    // return (hours ? `${hours}h` : "") + `${min}min`;
+  };
+
+  const transformTime = (value) => {
+    const hours = parseInt(value / 3600000);
+    const min = parseInt((value % 3600000) / 60000);
+    return (hours ? `${hours}h` : "") + `${min}min`;
+  };
+
   const imgBurguer = (product, i) => {
     return (
       <div className="info">
-        <p className="info-b">{i + 1 + " " + product.burguer[i]}</p>
-        <p className="info-b">{product.option && product.option[i]}</p>
+        <span className="info-b">{i + 1 + " " + product.burguer[i]}</span>
+        <span className="info-b">{product.option && product.option[i]}</span>
       </div>
     );
   };
@@ -51,7 +96,18 @@ const Command = (props) => {
         <span>{props.request.table}</span>
       </div>
       <div className="data-calendar">
-        <span>{dateAndHour(props.data)}</span>
+        <div>
+          <span>{dateAndHour(props.date)}</span>
+          {
+            <span>
+              <img className="timer" src={Tempo} alt="tempo" />
+              {props.request.dateDelivery
+                ? hour(props.request.requestDate, props.request.dateDelivery)
+                : averageTime}
+            </span>
+          }
+        </div>
+        <span>{firebase.auth().currentUser.displayName}</span>
       </div>
       <div className={"command"}>
         <ul>
@@ -68,7 +124,6 @@ const Command = (props) => {
                   {prod.burguer && rows}
                 </p>
               </span>
-              {/* <span>R${prod.price}</span> */}
               <span>
                 {" "}
                 R$

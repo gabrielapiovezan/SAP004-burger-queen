@@ -35,7 +35,7 @@ const App = () => {
       await signIn(email, password);
     } catch (error) {
       setError(error.code);
-      Animation();
+      setAnimation(0);
     }
   };
 

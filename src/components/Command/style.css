@@ -36,14 +36,17 @@
 
 .data-calendar {
   color: #eeeeee;
-  width: 300px;
-  margin: 0 20px;
-  /* display: flex;
-  justify-content: space-around; */
+  padding: 0 20px;
   text-align: left;
   font-size: 15px;
+  display: flex;
+  flex-direction: column;
 }
-
+.data-calendar > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .result {
   display: flex;
   justify-content: flex-end;
@@ -85,4 +88,7 @@
 
 .finished {
   box-shadow: 3px 2px 2px green;
+}
+.timer {
+  width: 18px;
 }
