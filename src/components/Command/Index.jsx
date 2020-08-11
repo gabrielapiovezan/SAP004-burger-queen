@@ -23,9 +23,9 @@ const Command = (props) => {
           );
         }, 0) / array.length;
 
-      const hours = parseInt(average / 3600000);
-      const min = parseInt((average % 3600000) / 60000);
-      setAverageTime((hours ? `${hours}h` : "") + `${min}min`);
+      // const hours = parseInt(average / 3600000);
+      // const min = parseInt((average % 3600000) / 60000);
+      setAverageTime(transformTime(average));
     }
   };
 
@@ -43,9 +43,15 @@ const Command = (props) => {
     }
 
     const timeMs = end.toDate().getTime() - start.toDate().getTime();
+    return transformTime(timeMs);
+    // const hours = parseInt(timeMs / 3600000);
+    // const min = parseInt((timeMs % 3600000) / 60000);
+    // return (hours ? `${hours}h` : "") + `${min}min`;
+  };
 
-    const hours = parseInt(timeMs / 3600000);
-    const min = parseInt((timeMs % 3600000) / 60000);
+  const transformTime = (value) => {
+    const hours = parseInt(value / 3600000);
+    const min = parseInt((value % 3600000) / 60000);
     return (hours ? `${hours}h` : "") + `${min}min`;
   };
 
