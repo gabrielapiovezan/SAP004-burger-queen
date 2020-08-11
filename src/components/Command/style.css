@@ -76,14 +76,13 @@
 }
 
 .start {
-  box-shadow: 2px 1.5px 1.5px red;
-  /* border: solid 1px red; */
+  box-shadow: 3px 2px 2px red;
 }
 
 .progress {
-  box-shadow: 2px 1.5px 1.5px #d97308;
+  box-shadow: 3px 2px 2px #d97308;
 }
 
 .finished {
-  box-shadow: 2px 1.5px 1.5px green;
+  box-shadow: 3px 2px 2px green;
 }
