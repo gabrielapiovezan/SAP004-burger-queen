@@ -49,7 +49,7 @@ const Delivery = () => {
           <Command
             requests={requests}
             request={request}
-            data={request.dateDelivery}
+            date={request.requestDate}
             onClick={() => handleModal(request)}
             command={"command-box"}
           />
