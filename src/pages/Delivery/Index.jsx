@@ -3,10 +3,12 @@ import logo from "../../img/logo1.png";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal/Index";
 import Command from "../../components/Command/Index";
+import { useHistory } from "react-router-dom";
 import { getDataByStatus, updateData } from "../../firebase/firebaseService";
 import "./style.css";
 
 const Delivery = () => {
+  const history = useHistory();
   const [itemSelected, setitemSelected] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [requests, setRequests] = useState([]);
@@ -32,6 +34,10 @@ const Delivery = () => {
     });
     setShowModal(false);
   };
+
+  const onClickHall = () => {
+    history.push("/hall");
+  }
   // const orderByDate = (a, b) => {
   //   return a.requestDate - b.requestDate;
   // };
@@ -41,7 +47,7 @@ const Delivery = () => {
     <div className="container-delivery">
       <div className="kitchen">
         <img className="img-kitchen" src={logo} alt="logo" />
-        <Button value="Novo pedido" className="button button-kitchen" />
+        <Button value="Novo pedido" className="button button-kitchen" onClick={onClickHall} />
       </div>
 
       <div className="request">

@@ -3,6 +3,14 @@
   margin: 15px 60px 0 90%;
   width: 100px;
 }
+.button-filter{
+  background-color: #434242;
+  width: 20%;
+}
+.button-filtro{
+display: flex;
+}
+
 .container {
   background-color: #eeeeee;
   width: 100%;
@@ -24,4 +32,37 @@
   background-color: #434242;
   border: solid 2px #d97308;
   color: #eeeeee;
+  width: 120px;
+  padding: 0;
+  text-align: center;
+}
+
+.history{
+display: flex;
+justify-content: space-between;
+width: 75%;
+}
+
+.history-style{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.style{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.style-button{
+width: 150px;
+}
+
+@media only screen and (max-width: 800px){
+  .img-history{
+    display: none;
+    
+  }
 }

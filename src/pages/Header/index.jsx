@@ -8,21 +8,33 @@ import {
 } from "../../firebase/firebaseService";
 import { useAuth } from "../../contexts/auth";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Bag from "../../img/bag.png";
 
 const Header = () => {
+  const history = useHistory();
   const { signOut, signed, user } = useAuth();
-  const [setError] = useState("");
+  const [open, setOpen] = useState(false);
   const [requests, setRequests] = useState(0);
   // const [averageTime, setAverageTime] = useState([]);
+
+  const togleOpen = () => {
+    setOpen(!open);
+  }
+
   useEffect(() => {
     function get(data) {
       setRequests(data.length);
     }
     getDataByStatus(get, 2);
     // getDataAll(time);
+    document.addEventListener('click', togleOpen, false);
   }, []);
+
+  const onClickDelivery = () => {
+    history.push("/delivery");
+  }
+
 
   // const time = (itens) => {
   //   const array = itens.filter((a) => a.dateDelivery);
@@ -59,7 +71,7 @@ const Header = () => {
     try {
       await signOut();
     } catch (error) {
-      setError(error);
+
     }
   };
 
@@ -73,15 +85,19 @@ const Header = () => {
               <span></span>
               <span></span>
               <span></span>
-              <ul id="menu">
-                <Link to="/">
+              <ul id="menu" className={open ? "tras" : ""}>
+                {/* <Link to="/">
                   <li>Home</li>
-                </Link>
-                {/* <Link href="#"><li>Perfil</li></Link> */}
+                </Link> */}
                 {user.type === "service" ? (
-                  <Link to="/delivery">
-                    <li>Pedidos</li>
-                  </Link>
+                  <>
+                    <Link to="/delivery">
+                      <li>Entrega</li>
+                    </Link>
+                    <Link to="/hall">
+                      <li>Pedido</li>
+                    </Link>
+                  </>
                 ) : null}
                 <Link to="/orderHistory">
                   <li>Histórico</li>
@@ -96,7 +112,7 @@ const Header = () => {
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
-          <div className="box-bag">
+          <div className="box-bag" onClick={onClickDelivery}>
             <img src={Bag} className="bag" />
             {user.type === "service" ? (
               <span className="orders">{requests}</span>
