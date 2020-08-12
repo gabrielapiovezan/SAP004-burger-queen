@@ -89,8 +89,10 @@ const OrderHistory = () => {
           <Command
             requests={requests}
             request={request}
+
             data={request.requestDate}
             command={"command-box"}
+
           />
         ))}
       </div>

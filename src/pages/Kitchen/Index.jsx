@@ -44,7 +44,7 @@ const Kitchen = () => {
             requests={requests}
             key={request.id}
             request={request}
-            data={request.requestDate}
+            date={request.requestDate}
             onClick={() => handleModal(request)}
             command={"command-box"}
           />
