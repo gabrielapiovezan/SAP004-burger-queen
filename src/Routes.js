@@ -36,11 +36,11 @@ const RouteService = () => (
     <Route path="/orderHistory">
       <OrderHistory />
     </Route>
-    <Route path="/delivery">
-      <Delivery />
+    <Route path="/hall">
+      <Hall />
     </Route>
     <Route path="/">
-      <Hall />
+      <Delivery />
     </Route>
   </Switch>
 );

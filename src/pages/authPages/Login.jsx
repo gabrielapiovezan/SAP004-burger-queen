@@ -20,6 +20,7 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [animation, setAnimation] = useState(0);
+
   const onClickLogin = async () => {
     if (email === "") {
       setError("Insira seu e-mail");
@@ -48,8 +49,8 @@ const App = () => {
           <img src={Img3} alt="logo" />
         </div>
       ) : (
-        <img className="img-auth" src={logo} alt="logo" />
-      )}
+          <img className="img-auth" src={logo} alt="logo" />
+        )}
       {/* <img className="img-auth" src={gif ? Burguer : logo} alt="logo" /> */}
       <div className="form-auth">
         <h2>Bem Vindo(a)!</h2>

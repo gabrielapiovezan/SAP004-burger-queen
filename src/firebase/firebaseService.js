@@ -32,35 +32,37 @@ export const getDataAll = (calback) => {
     });
 };
 
-export const getData = (calendar, calback) => {
-  firebase
-    .firestore()
-    .collection("orders")
-    .orderBy("requestDate", "desc")
-    .where(
-      "requestDate",
-      "<=",
-      firebase.firestore.Timestamp.fromDate(
-        new Date(
-          calendar.getFullYear(),
-          calendar.getMonth(),
-          calendar.getDate(),
-          23,
-          59,
-          59
-        )
-      )
-    )
-    .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(calendar))
-    .onSnapshot((querySnapshot) => {
-      let itens = [];
-      querySnapshot.forEach(function (doc) {
-        let item = doc.data();
-        item.id = doc.id;
-        itens.push(item);
-      });
-      calback(itens);
+export const getData = (calendarStart, calendarFinish, status, calback) => {
+  let filter;
+
+  if (status === null) {
+    filter = firebase
+      .firestore()
+      .collection("orders")
+      .orderBy("requestDate", "desc")
+      .where("requestDate", "<=", firebase.firestore.Timestamp.fromDate(new Date(
+        calendarFinish.getFullYear(), calendarFinish.getMonth(), calendarFinish.getDate(), 23, 59, 59)))
+      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(calendarStart))
+  } else {
+    filter = firebase
+      .firestore()
+      .collection("orders")
+      .orderBy("requestDate", "desc")
+      .where("requestDate", "<=", firebase.firestore.Timestamp.fromDate(new Date(
+        calendarFinish.getFullYear(), calendarFinish.getMonth(), calendarFinish.getDate(), 23, 59, 59)))
+      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(calendarStart))
+      .where("status", "==", status)
+  }
+
+  filter.onSnapshot((querySnapshot) => {
+    let itens = [];
+    querySnapshot.forEach(function (doc) {
+      let item = doc.data();
+      item.id = doc.id;
+      itens.push(item);
     });
+    calback(itens);
+  });
 };
 export const updateData = (id, data) => {
   firebase.firestore().collection("orders").doc(id).update(data);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import logo from "../../img/logo1.png";
 import Input from "../../components/Input";
 import Table from "../../components/Table";
@@ -10,6 +10,7 @@ import "./hall.css";
 import firebase from "../../firebase/firebase";
 
 const Hall = () => {
+  const history = useHistory();
   const [menu, setMenu] = useState(true);
   const [value, setValue] = useState([]);
   const [total, setTotal] = useState(0);
@@ -131,9 +132,9 @@ const Hall = () => {
       };
 
       await firebase.firestore().collection("orders").add(obj);
-
       deleteAll();
       setError("");
+      history.push("/delivery");
     } else {
       setError("Por favor, digite as informações sobre o pedido.");
     }
@@ -188,14 +189,14 @@ const Hall = () => {
               total={value}
             />
           ) : (
-            <Table
-              className="table-dinner"
-              menu={MenuDinner}
-              selector="button-selector-dinner"
-              func={[createTotal, deleteItem, setBurguer, setOptions]}
-              total={value}
-            />
-          )}
+              <Table
+                className="table-dinner"
+                menu={MenuDinner}
+                selector="button-selector-dinner"
+                func={[createTotal, deleteItem, setBurguer, setOptions]}
+                total={value}
+              />
+            )}
         </div>
         <span className="container-table-total">
           {value[0] && (
