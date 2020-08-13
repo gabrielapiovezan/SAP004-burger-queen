@@ -20,3 +20,14 @@
 .request {
   padding-bottom: 30px;
 }
+@media only screen and (max-width: 679px) {
+  .img-kitchen {
+    display: none;
+  }
+  .box-data {
+    width: 100%;
+  }
+  .button-kitchen {
+    width: 280px;
+  }
+}

@@ -3,12 +3,12 @@
   margin: 15px 60px 0 90%;
   width: 100px;
 }
-.button-filter{
+.button-filter {
   background-color: #434242;
   width: 20%;
 }
-.button-filtro{
-display: flex;
+.button-filtro {
+  display: flex;
 }
 
 .container {
@@ -23,46 +23,100 @@ display: flex;
 }
 
 .img-history {
-  display: flex;
+  width: 150px;
+  /* display: flex;
   justify-content: end;
-  width: 200px;
- }
+  width: 100px; */
+}
 
-.calendar{
+.calendar {
+  outline: none;
   background-color: #434242;
   border: solid 2px #d97308;
   color: #eeeeee;
-  width: 120px;
-  padding: 0;
+  width: 150px;
+  padding: 0 20px;
+  text-align: center;
+  margin: 0;
+  height: 40px;
+  border-radius: 30px;
+  font-size: 18px;
   text-align: center;
 }
 
-.history{
-  display: flex;
+.history {
+  width: 100%;
   justify-content: space-between;
-  width: 75%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.history-style{
+.history-style {
+  width: 60%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* flex-direction: column;
+  align-items: flex-end; */
+}
+
+.history-style > span {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  width: 70%;
 }
 
-.style{
+.style {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.style-button{
-width: 150px;
+.style-button {
+  width: 150px;
 }
 
-@media only screen and (max-width: 800px){
-  .img-history{
-    display: none;    
+select {
+  height: 44px;
+  padding: 6px;
+}
+
+input[type="date" i] {
+  display: -webkit-inline-flex;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-inline-start: 0px;
+  cursor: default;
+  overflow: hidden;
+  padding: 0px;
+}
+@media only screen and (max-width: 800px) {
+  .history-style {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .img-history {
+    display: none;
+  }
+}
+@media only screen and (max-width: 679px) {
+  .history-style {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .history-style > div,
+  .history-style > select {
+    margin-top: 20px;
+  }
+  .calendar,
+  .history-style,
+  .history-style > div {
+    width: 100%;
+  }
+  .history {
+    justify-content: center;
   }
 }
