@@ -51,7 +51,7 @@ const OrderHistory = () => {
           <div>
             Data inicio
             <Flatpickr
-              className="input calendar"
+              className="calendar"
               onChange={(e) => setCalendarStart(e[0])}
               value={calendarStart}
             />
@@ -59,7 +59,7 @@ const OrderHistory = () => {
           <div>
             Data final
             <Flatpickr
-              className="input calendar"
+              className="calendar"
               onChange={(e) => setCalendarFinish(e[0])}
               value={calendarFinish}
             />
