@@ -48,26 +48,26 @@ const OrderHistory = () => {
         <img className="img-history" src={logo} alt="logo" />
         <div className="history-style">
           {/* <div className="style container-history"> */}
-          <span>
+          <div>
             Data inicio
             <Flatpickr
               className="input calendar"
               onChange={(e) => setCalendarStart(e[0])}
               value={calendarStart}
             />
-          </span>
-          <span>
+          </div>
+          <div>
             Data final
             <Flatpickr
               className="input calendar"
               onChange={(e) => setCalendarFinish(e[0])}
               value={calendarFinish}
             />
-          </span>
+          </div>
           {/* </div> */}
           {/* <div className="style"> */}
           <select
-            className="calendar"
+            className="calendar select"
             name="select"
             onChange={(e) => setStatus(Number(e.target.value) || null)}
           >

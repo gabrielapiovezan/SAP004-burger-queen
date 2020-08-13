@@ -93,13 +93,9 @@ O artigo [Dark UIs: the dos and don’ts.](https://uxdesign.cc/dark-uis-the-good
 
 _A fadiga ocular digital é uma condição comum que afeta milhões de pessoas diariamente. Causando, desde o uso excessivo do computador até a exposição regular à luz forte, pode causar dores de cabeça, dores no pescoço, visão turva e queimação / ardência nos olhos._
 
-Tentando minimizar a fadiga do usuário que trabalha no salão, onde passará horas anotando pedidos, foram projetadas telas com tema escuro.
+A fim minimizar a fadiga do usuário que trabalha no salão, onde passará horas anotando pedidos, foram projetadas telas com tema escuro.
 
-Bauer e Cavonius (1980) diz:
-
-\*...Descobriram que os participantes eram 26% mais precisos ao ler um texto quando o liam com caracteres escuros em um fundo claro.
-
-- Referência: Bauer, D., & Cavonius, C., R. (1980)\*
+Segundo Bauer, D., & Cavonius, C., R. (1980), em um ensaio proposto foi constatado que os textos escuros no fundo claro possui maior legibilidade, os participantes do estudo eram 26% mais precisos ao ler um texto nessas condiçoes.
 
 Tentando facilitar a compreensão dos pedidos que serão lidos pelo usuário que trabalha na cozinha onde precisará olhar para tela o suficiente para ler o pedido, as telas foram projetadas com tema claro por oferecer melhor legibilidade.
 
@@ -170,6 +166,8 @@ Modal de verificação
 - [x] Status atual do pedido sempre visível enquanto fazemos um pedido.
 
 ## 4. Estrutura e funcionalidades
+
+A estrutura possui
 
 A aplicação possui 4 telas: login, registro, linha do tempo e perfil, onde:
 
