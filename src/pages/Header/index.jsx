@@ -18,9 +18,16 @@ const Header = () => {
   const [requests, setRequests] = useState(0);
   // const [averageTime, setAverageTime] = useState([]);
 
-  const togleOpen = () => {
-    setOpen(!open);
+  const togleOpen = (e) => {
+    //e.preventDefault();
+    if (open)
+      setOpen(false);
+    console.log(open)
   }
+  useEffect(() => {
+    window.addEventListener('click', togleOpen, false);
+    return () => window.removeEventListener('click', togleOpen);
+  }, [open]);
 
   useEffect(() => {
     function get(data) {
@@ -28,7 +35,6 @@ const Header = () => {
     }
     getDataByStatus(get, 2);
     // getDataAll(time);
-    document.addEventListener('click', togleOpen, false);
   }, []);
 
   const onClickDelivery = () => {
@@ -74,14 +80,18 @@ const Header = () => {
 
     }
   };
-
+  const openMenu = () => {
+    //e.preventDefault();
+    setOpen(true);
+    console.log(open)
+  }
   if (signed === true) {
     return (
       <>
         <div className="header">
           <nav>
             <div id="menuToggle">
-              <input type="checkbox" />
+              <input type="checkbox" onClick={() => openMenu()} />
               <span></span>
               <span></span>
               <span></span>

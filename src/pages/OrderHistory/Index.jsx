@@ -4,10 +4,15 @@ import Button from "../../components/Button";
 import Command from "../../components/Command/Index";
 import { getData } from "../../firebase/firebaseService";
 import Flatpickr from "react-flatpickr";
+import flatpickr from "flatpickr"
+import { Portuguese } from "flatpickr/dist/l10n/pt"
+
 import logo from "../../img/logo3.png";
 import "./style.css";
 
+flatpickr.localize(Portuguese)
 const OrderHistory = () => {
+
   const history = useHistory();
   const [requests, setRequests] = useState([]);
   const [status, setStatus] = useState(null);
@@ -45,18 +50,20 @@ const OrderHistory = () => {
         <img className="img-history" src={logo} alt="logo" />
         <div className="history-style">
           <div className="style container-history">
-            <span>Data inicio
+            <span>Data Inicio
             <Flatpickr
                 className="input calendar"
                 onChange={(e) => setCalendarStart(e[0])}
                 value={calendarStart}
+                options={{ dateFormat: "d-m-Y" }}
               />
             </span>
-            <span>Data final
+            <span>Data Final
             <Flatpickr
                 className="input calendar"
                 onChange={(e) => setCalendarFinish(e[0])}
                 value={calendarFinish}
+                options={{ dateFormat: "d-m-Y" }}
               />
             </span>
           </div>
