@@ -3,12 +3,12 @@
   margin: 15px 60px 0 90%;
   width: 100px;
 }
-.button-filter{
+.button-filter {
   background-color: #434242;
   width: 20%;
 }
-.button-filtro{
-display: flex;
+.button-filtro {
+  display: flex;
 }
 
 .container {
@@ -23,46 +23,80 @@ display: flex;
 }
 
 .img-history {
-  display: flex;
+  width: 150px;
+  /* display: flex;
   justify-content: end;
-  width: 100px;
+  width: 100px; */
 }
 
-.calendar{
+.calendar {
+  outline: none;
   background-color: #434242;
   border: solid 2px #d97308;
   color: #eeeeee;
-  width: 120px;
-  padding: 0;
+  width: 150px;
+  padding: 0 20px;
+  text-align: center;
+  margin: 0;
+  height: 40px;
+  border-radius: 30px;
+  font-size: 18px;
   text-align: center;
 }
 
-.history{
-display: flex;
-justify-content: space-between;
-width: 75%;
+.history {
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.history-style{
+.history-style {
+  width: 60%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* flex-direction: column;
+  align-items: flex-end; */
+}
+
+.history-style > span {
   display: flex;
   flex-direction: column;
-  width: 60%;
 }
 
-.style{
+.style {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.style-button{
-width: 150px;
+.style-button {
+  width: 150px;
 }
 
-@media only screen and (max-width: 800px){
-  .img-history{
+@media only screen and (max-width: 800px) {
+  .history-style {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .img-history {
     display: none;
-    
+  }
+}
+@media only screen and (max-width: 679px) {
+  .history-style {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .calendar,
+  .history-style,
+  .history-style > span {
+    width: 100%;
   }
 }

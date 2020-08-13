@@ -22,11 +22,9 @@ const OrderHistory = () => {
     getData(calendarStart, calendarFinish, status, getCalback);
   }, [calendarStart, calendarFinish, status]);
 
-
   const onClickBack = () => {
     history.push("/");
   };
-
 
   // const orderByDate = (a, b) => {
   //   return a.requestDate - b.requestDate;
@@ -34,6 +32,11 @@ const OrderHistory = () => {
   // let array = requests;
   // array.sort(orderByDate);
 
+  // const setStatusSelect = (event) => {
+  //   setStatus(Number(event.target.value) || null);
+  // };
+
+  console.log(status);
   return (
     <div className="container">
       <Button
@@ -44,24 +47,39 @@ const OrderHistory = () => {
       <div className="history">
         <img className="img-history" src={logo} alt="logo" />
         <div className="history-style">
-          <div className="style container-history">
-            <span>Data inicio
+          {/* <div className="style container-history"> */}
+          <span>
+            Data inicio
             <Flatpickr
-                className="input calendar"
-                onChange={(e) => setCalendarStart(e[0])}
-                value={calendarStart}
-              />
-            </span>
-            <span>Data final
+              className="input calendar"
+              onChange={(e) => setCalendarStart(e[0])}
+              value={calendarStart}
+            />
+          </span>
+          <span>
+            Data final
             <Flatpickr
-                className="input calendar"
-                onChange={(e) => setCalendarFinish(e[0])}
-                value={calendarFinish}
-              />
-            </span>
-          </div>
-          <div className="style">
-            <Button
+              className="input calendar"
+              onChange={(e) => setCalendarFinish(e[0])}
+              value={calendarFinish}
+            />
+          </span>
+          {/* </div> */}
+          {/* <div className="style"> */}
+          <select
+            className="calendar"
+            name="select"
+            onChange={(e) => setStatus(Number(e.target.value) || null)}
+          >
+            <option value={2}>Para Entrega</option>
+            <option value={1}>Em Preparo</option>
+            <option value={3}>Finalizado</option>
+            <option value={""} selected>
+              Todos
+            </option>
+          </select>
+
+          {/* <Button
               className="button button-filter style-button"
               value="Para Entrega"
               onClick={() => setStatus(2)}
@@ -80,8 +98,8 @@ const OrderHistory = () => {
               className="button button-filter style-button"
               value="Todos"
               onClick={() => setStatus(null)}
-            />
-          </div>
+            /> */}
+          {/* </div> */}
         </div>
       </div>
       <div className="request">
@@ -89,14 +107,12 @@ const OrderHistory = () => {
           <Command
             requests={requests}
             request={request}
-
             data={request.requestDate}
             command={"command-box"}
-
           />
         ))}
       </div>
-    </div >
+    </div>
   );
 };
 
