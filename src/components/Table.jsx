@@ -221,7 +221,6 @@ const Table = (props) => {
     return (
       <>
         <tr key={product.item + product.category + index}>
-          {/* <td className="option-item">{index + 1}º</td> */}
           <td colSpan="4" className="options">
             <div className="buttons-box">
               <div className="box-buttons">
@@ -338,7 +337,6 @@ const Table = (props) => {
               placeholder="Observações:"
               id=""
               onChange={(event) => props.note(event.target.value)}
-              // onChange={(e) => func[2](e)}
             ></textarea>
           </td>
         </tr>

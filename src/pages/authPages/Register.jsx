@@ -62,7 +62,6 @@ const Register = () => {
     <div className="templateAuth">
       {animation ? (
         <div className="box-imgs">
-          {/* <img src={logo} alt="logo" /> */}
           <img src={Img1} alt="logo" />
           <img src={Img2} alt="logo" />
           <img src={Img3} alt="logo" />
