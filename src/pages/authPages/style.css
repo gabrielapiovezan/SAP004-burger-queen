@@ -41,6 +41,7 @@
 }
 .form-auth {
   max-width: 440px;
+  margin-bottom: 70px;
 }
 .radio-button {
   padding: 10px 0;
@@ -61,7 +62,6 @@
   animation: imageAnimation 1.5s linear infinite 0s;
 }
 .box-imgs > :nth-child(1) {
-  /* background-color: lightcoral; */
   position: relative;
   top: 0;
   left: 0;
