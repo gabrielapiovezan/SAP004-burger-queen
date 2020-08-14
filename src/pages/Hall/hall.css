@@ -1,6 +1,6 @@
 .hall {
   background-color: #434242;
-  /* width: 100%; */
+  width: 100%;
   height: fit-content;
   display: flex;
   align-items: center;
@@ -81,6 +81,9 @@
 }
 .table {
   width: 100%;
+}
+.table-input {
+  text-align: center;
 }
 @media only screen and (min-width: 1000px) {
   .table {

@@ -2,8 +2,6 @@
 
 Para acessar a página [clique aqui](https://burgerqueen-004.web.app/).
 
-<!-- IMAGEM -->
-
 ## Índice
 
 - [1. Introdução](#1-introdução)
@@ -251,19 +249,10 @@ http://localhost:3000
 
 Futuramente serão implementadas funcionalidades para melhoria da experiência do usuário:
 
-- Compartilhar as publicações.
-- Salvar publicações.
-- Pesquisar por hashtags e usuários.
-- Curtir comentários.
-- Seguidores e seguir.
-- Implementar a página de perfil.
-- Incluir vídeos nos posts.
-- Implementar stories (vídeos e fotos).
-- Visualizar usuários que curtiram.
-- Visualizar os próprios posts no perfil.
-- Sugestões de amizade e postagens.
-- Marcar usuários nos posts.
-- Explorar posts.
+- Estatísticas de acordo com dia da semana e horário para calcular tempo médio do pedido
+- Estatísticas de funcionários
+- Perfil dos funcionários
+- Alteração de cadastro do funcionário
 
 ## 7. Autoria
 

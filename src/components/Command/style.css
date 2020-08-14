@@ -21,7 +21,6 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 12px;
-  /* border-bottom: 1px solid #434242; */
 }
 
 .data-command {
@@ -57,10 +56,7 @@
   color: #434242;
   font-size: 13px;
 }
-/* .delivery-command {
-  background-color: #434242;
-  color: #eeeeee;
-} */
+
 .command-box {
   background-color: #272626;
 }
@@ -94,4 +90,9 @@
 }
 .time-mediun {
   color: #d97308;
+}
+.total {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

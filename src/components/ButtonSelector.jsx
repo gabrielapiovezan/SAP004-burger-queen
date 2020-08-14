@@ -33,7 +33,6 @@ const ButtonSelector = (props) => {
         className="input-button-selector"
         type="number"
         value={value}
-        onChange={(e) => {}}
         disabled
       />
       <button

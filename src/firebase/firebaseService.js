@@ -4,7 +4,7 @@ export const getDataByStatus = (calback, status) => {
   firebase
     .firestore()
     .collection("orders")
-    .orderBy("requestDate", "desc")
+    .orderBy("requestDate", "asc")
     .where("status", "==", status)
     .onSnapshot((querySnapshot) => {
       let itens = [];
@@ -39,7 +39,7 @@ export const getData = (calendarStart, calendarFinish, status, calback) => {
     filter = firebase
       .firestore()
       .collection("orders")
-      .orderBy("requestDate", "desc")
+      .orderBy("requestDate", "asc")
       .where(
         "requestDate",
         "<=",
@@ -69,7 +69,7 @@ export const getData = (calendarStart, calendarFinish, status, calback) => {
     filter = firebase
       .firestore()
       .collection("orders")
-      .orderBy("requestDate", "desc")
+      .orderBy("requestDate", "asc")
       .where(
         "requestDate",
         "<=",
@@ -121,7 +121,7 @@ export const notifyHall = (calback) => {
       ">",
       firebase.firestore.Timestamp.fromDate(new Date())
     )
-    .orderBy("dateDelivery", "desc")
+    .orderBy("dateDelivery", "asc")
     .limit(1)
     .onSnapshot((querySnapshot) => {
       let item;

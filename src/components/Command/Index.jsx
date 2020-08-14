@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import firebase from "../../firebase/firebase";
-import { getData, getDataAll } from "../../firebase/firebaseService";
+import { getDataAll } from "../../firebase/firebaseService";
 import Tempo from "../../img/tempo.png";
 import "./style.css";
 
 const Command = (props) => {
   const [averageTime, setAverageTime] = useState([]);
-  // console.log(props.request.requestDate);
   useEffect(() => {
     getDataAll(time);
   }, []);
@@ -23,8 +21,6 @@ const Command = (props) => {
           );
         }, 0) / array.length;
 
-      // const hours = parseInt(average / 3600000);
-      // const min = parseInt((average % 3600000) / 60000);
       setAverageTime(transformTime(average));
     }
   };
@@ -44,9 +40,6 @@ const Command = (props) => {
 
     const timeMs = end.toDate().getTime() - start.toDate().getTime();
     return transformTime(timeMs);
-    // const hours = parseInt(timeMs / 3600000);
-    // const min = parseInt((timeMs % 3600000) / 60000);
-    // return (hours ? `${hours}h` : "") + `${min}min`;
   };
 
   const transformTime = (value) => {
@@ -57,9 +50,9 @@ const Command = (props) => {
 
   const imgBurguer = (product, i) => {
     return (
-      <div className="info">
-        <span className="info-b">{i + 1 + " " + product.burguer[i]}</span>
-        <span className="info-b">{product.option && product.option[i]}</span>
+      <div className="info" key={i + product.burguer}>
+        <div className="info-b">{i + 1 + " " + product.burguer[i]}</div>
+        <div className="info-b">{product.option && product.option[i]}</div>
       </div>
     );
   };
@@ -116,17 +109,14 @@ const Command = (props) => {
       <div className={"command"}>
         <ul>
           {props.request.value.map((prod, index) => (
-            <li key={index}>
+            <li key={index + prod}>
               <span>
-                {prod.amount} {prod.item}
-                <p>
-                  {" "}
-                  {prod.burguer &&
-                    prod.burguer.forEach((a, i) => {
-                      rows.push(imgBurguer(prod, i));
-                    })}
-                  {prod.burguer && rows}
-                </p>
+                {prod.amount} {prod.item}{" "}
+                {prod.burguer &&
+                  prod.burguer.forEach((a, i) => {
+                    rows.push(imgBurguer(prod, i));
+                  })}
+                {prod.burguer && rows}
               </span>
               <span>
                 {" "}
@@ -142,7 +132,10 @@ const Command = (props) => {
           <p className="note-command">{props.request.note}</p>
         )}
         <div className="result">
-          <span>Total: R${props.request.total}</span>
+          <span className="total">
+            <div>Total: </div>
+            <div>R${props.request.total.toFixed(2).replace(".", ",")}</div>
+          </span>
         </div>
       </div>
     </div>
