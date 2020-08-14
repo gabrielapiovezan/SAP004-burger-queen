@@ -1,0 +1,140 @@
+.menubar {
+  display: block;
+  height: 60px;
+  background-color: #0027B0;
+  box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.menubar span {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-weight: 300;
+  font-size: 2em;
+  line-height: 60px;
+}
+
+#hambmenu {
+  position: relative;
+  width: 40px;
+  height: 45px;
+  float: left;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+#hambmenu span {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  vertical-align: middle;
+  margin: 20px 0 0 15px;
+  background: white;
+  border-radius: 8px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  padding: 0px;
+}
+
+.hambclicker {
+  content: "";
+  height: 48px;
+  width: 55px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  cursor: pointer;
+  z-index: 9;
+}
+
+#hambmenu span:nth-child(1) {
+  top: 0px;
+}
+
+#hambmenu span:nth-child(2), #hambmenu span:nth-child(3) {
+  top: 10px;
+}
+
+#hambmenu span:nth-child(4) {
+  top: 20px;
+}
+
+#hambmenu.isopen span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+  opacity: 0;
+}
+
+#hambmenu.isopen span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#hambmenu.isopen span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+#hambmenu.isopen span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+  opacity: 0;
+}
+
+#menu {
+  position: absolute;
+  height: calc(100vh - 60px);
+  width: 210px;
+  background-color: white;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 300ms;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
+}
+#menu ul {
+  margin-top: 0px;
+  padding: 0px;
+  color: black;
+  list-style-type: none;
+  text-align: left;
+}
+#menu li {
+  padding: 30px 0 20px 20px;
+  font-size: 1.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+}
+#menu li:last-child {
+  border-bottom: none;
+}
+
+.fa {
+  color: black;
+  padding-right: 8px;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+#menu.isopen {
+  -webkit-transform: none;
+          transform: none;
+}
+
+@media screen and (max-width: 420px) {
+  .menubar span {
+    font-size: 1.2em;
+  }
+}

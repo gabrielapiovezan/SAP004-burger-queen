@@ -42,7 +42,8 @@ export const getData = (calendarStart, calendarFinish, status, calback) => {
       .orderBy("requestDate", "desc")
       .where("requestDate", "<=", firebase.firestore.Timestamp.fromDate(new Date(
         calendarFinish.getFullYear(), calendarFinish.getMonth(), calendarFinish.getDate(), 23, 59, 59)))
-      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(calendarStart))
+      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(new Date(
+        calendarStart.getFullYear(), calendarStart.getMonth(), calendarStart.getDate())))
   } else {
     filter = firebase
       .firestore()
@@ -50,7 +51,8 @@ export const getData = (calendarStart, calendarFinish, status, calback) => {
       .orderBy("requestDate", "desc")
       .where("requestDate", "<=", firebase.firestore.Timestamp.fromDate(new Date(
         calendarFinish.getFullYear(), calendarFinish.getMonth(), calendarFinish.getDate(), 23, 59, 59)))
-      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(calendarStart))
+      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(new Date(
+        calendarStart.getFullYear(), calendarStart.getMonth(), calendarStart.getDate())))
       .where("status", "==", status)
   }
 

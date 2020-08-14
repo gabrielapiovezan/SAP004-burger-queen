@@ -74,14 +74,16 @@ const Header = () => {
               <ul id="menu" className={open ? "tras" : ""}>
                 {user.type === "service" ? (
                   <>
-                    <Link to="/delivery">
+                    <Link to="/">
                       <li>Entrega</li>
                     </Link>
                     <Link to="/hall">
                       <li>Pedido</li>
                     </Link>
                   </>
-                ) : null}
+                ) : <Link to="/">
+                    <li>Cozinha</li>
+                  </Link>}
                 <Link to="/orderHistory">
                   <li>Histórico</li>
                 </Link>
