@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { authRegister } from "../../firebase/authService";
+
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import ReturnError from "./authError";
@@ -49,7 +49,7 @@ const Register = () => {
 
     try {
       setAnimation(1);
-      const response = await authRegister({ name, email, password, type });
+
       toast.success("Cadastro realizado com sucesso!");
       history.push("/login");
     } catch (error) {

@@ -1,7 +1,7 @@
 .menubar {
   display: block;
   height: 60px;
-  background-color: #0027B0;
+  background-color: #0027b0;
   box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.12);
   text-align: center;
 }
@@ -11,7 +11,7 @@
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   font-weight: 300;
   font-size: 2em;
   line-height: 60px;
@@ -37,7 +37,7 @@
   opacity: 1;
   left: 0;
   -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+  transform: rotate(0deg);
   -webkit-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
   padding: 0px;
@@ -58,7 +58,8 @@
   top: 0px;
 }
 
-#hambmenu span:nth-child(2), #hambmenu span:nth-child(3) {
+#hambmenu span:nth-child(2),
+#hambmenu span:nth-child(3) {
   top: 10px;
 }
 
@@ -75,12 +76,12 @@
 
 #hambmenu.isopen span:nth-child(2) {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 #hambmenu.isopen span:nth-child(3) {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 #hambmenu.isopen span:nth-child(4) {
@@ -92,11 +93,10 @@
 
 #menu {
   position: absolute;
-  height: calc(100vh - 60px);
   width: 210px;
   background-color: white;
   -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  transform: translateX(-100%);
   -webkit-transition: -webkit-transform 300ms;
   transition: -webkit-transform 300ms;
   transition: transform 300ms;
@@ -130,7 +130,7 @@ li a {
 
 #menu.isopen {
   -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 @media screen and (max-width: 420px) {

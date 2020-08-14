@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-} from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { authLoginEmail } from "../firebase/authService.js";
 
 const AuthContext = createContext({});
