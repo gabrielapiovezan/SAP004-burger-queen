@@ -36,12 +36,11 @@
   color: #eeeeee;
   width: 150px;
   padding: 0 20px;
-  text-align: center;
   margin: 0;
   height: 40px;
   border-radius: 30px;
   font-size: 18px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .history {
@@ -88,9 +87,10 @@ select > option:hover {
 }
 input[type="date" i] {
   font-family: Arial, Helvetica, sans-serif;
-  padding-inline-start: 0px;
 
   padding: 0px;
+  padding-inline-start: 0px;
+
   margin: 0;
 }
 @media only screen and (max-width: 800px) {

@@ -15,7 +15,6 @@ const Header = () => {
 
   const togleOpen = (e) => {
     if (open) setOpen(false);
-    console.log(open);
   };
   useEffect(() => {
     window.addEventListener("click", togleOpen, false);

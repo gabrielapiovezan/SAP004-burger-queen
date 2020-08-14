@@ -40,7 +40,6 @@ const OrderHistory = () => {
   //   setStatus(Number(event.target.value) || null);
   // };
 
-  console.log(status);
   return (
     <div className="container">
       <Button
@@ -53,7 +52,7 @@ const OrderHistory = () => {
         <div className="history-style">
           {/* <div className="style container-history"> */}
           <div>
-            Data inicio
+            Data inicio:{" "}
             <Flatpickr
               className="calendar"
               onChange={(e) => setCalendarStart(e[0])}
@@ -61,7 +60,7 @@ const OrderHistory = () => {
             />
           </div>
           <div>
-            Data final
+            Data final:{" "}
             <Flatpickr
               className="calendar"
               onChange={(e) => setCalendarFinish(e[0])}
@@ -75,12 +74,10 @@ const OrderHistory = () => {
             name="select"
             onChange={(e) => setStatus(Number(e.target.value) || null)}
           >
+            <option value={""}>Todos</option>
             <option value={2}>Para Entrega</option>
             <option value={1}>Em Preparo</option>
             <option value={3}>Finalizado</option>
-            <option value={""} selected>
-              Todos
-            </option>
           </select>
 
           {/* <Button

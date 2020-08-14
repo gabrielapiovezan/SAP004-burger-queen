@@ -39,7 +39,7 @@ export const getData = (calendarStart, calendarFinish, status, calback) => {
     filter = firebase
       .firestore()
       .collection("orders")
-      .orderBy("requestDate")
+      .orderBy("requestDate", "desc")
       .where(
         "requestDate",
         "<=",
@@ -121,7 +121,7 @@ export const notifyHall = (calback) => {
       ">",
       firebase.firestore.Timestamp.fromDate(new Date())
     )
-    .orderBy("dateDelivery")
+    .orderBy("dateDelivery", "desc")
     .limit(1)
     .onSnapshot((querySnapshot) => {
       let item;

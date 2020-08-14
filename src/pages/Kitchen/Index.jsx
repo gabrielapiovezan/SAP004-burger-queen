@@ -28,7 +28,6 @@ const Kitchen = () => {
     setShowModal(false);
   };
   const handleFinish = () => {
-    console.log(itemSelected);
     updateData(itemSelected.id, {
       status: 2,
       dateDelivery: new Date(),
