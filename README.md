@@ -216,6 +216,7 @@ Histórico de pedidos
 Para a construção do site foi utilizado o software _Visual Studio Code_, utilizando _React_, _NPM_, _Yarn_ e _Git_.  
 Sua estilização foi feita em _CSS3_, suas telas são responsivas mas foram programadas preferencialmente para utilização em tablet, o flexbox foi utilizando para o posicionamento dos elementos.  
 A manipulação e persistência dos dados foi feita com Firebase através de um banco de dados não relacional, em tempo real, implementando operações CRUD (Criação, Leitura, Atualização e Remoção) de dados.
+Foram utilizadas as bibliotecas _react-flatpickr_ e _react-toastify_ para o filtro por data e alertas.
 _[Firebase](https://firebase.google.com/)_ (Hosting, Auth, Database e Firestore).  
 Colaboração e armazenamento com _GitHub_.  
 Organização com _Trello_.  
