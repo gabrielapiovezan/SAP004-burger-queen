@@ -40,20 +40,62 @@ export const getData = (calendarStart, calendarFinish, status, calback) => {
       .firestore()
       .collection("orders")
       .orderBy("requestDate", "desc")
-      .where("requestDate", "<=", firebase.firestore.Timestamp.fromDate(new Date(
-        calendarFinish.getFullYear(), calendarFinish.getMonth(), calendarFinish.getDate(), 23, 59, 59)))
-      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(new Date(
-        calendarStart.getFullYear(), calendarStart.getMonth(), calendarStart.getDate())))
+      .where(
+        "requestDate",
+        "<=",
+        firebase.firestore.Timestamp.fromDate(
+          new Date(
+            calendarFinish.getFullYear(),
+            calendarFinish.getMonth(),
+            calendarFinish.getDate(),
+            23,
+            59,
+            59
+          )
+        )
+      )
+      .where(
+        "requestDate",
+        ">=",
+        firebase.firestore.Timestamp.fromDate(
+          new Date(
+            calendarStart.getFullYear(),
+            calendarStart.getMonth(),
+            calendarStart.getDate()
+          )
+        )
+      );
   } else {
     filter = firebase
       .firestore()
       .collection("orders")
       .orderBy("requestDate", "desc")
-      .where("requestDate", "<=", firebase.firestore.Timestamp.fromDate(new Date(
-        calendarFinish.getFullYear(), calendarFinish.getMonth(), calendarFinish.getDate(), 23, 59, 59)))
-      .where("requestDate", ">=", firebase.firestore.Timestamp.fromDate(new Date(
-        calendarStart.getFullYear(), calendarStart.getMonth(), calendarStart.getDate())))
-      .where("status", "==", status)
+      .where(
+        "requestDate",
+        "<=",
+        firebase.firestore.Timestamp.fromDate(
+          new Date(
+            calendarFinish.getFullYear(),
+            calendarFinish.getMonth(),
+            calendarFinish.getDate(),
+            23,
+            59,
+            59
+          )
+        )
+      )
+      .where(
+        "requestDate",
+        ">=",
+        firebase.firestore.Timestamp.fromDate(
+          new Date(
+            calendarStart.getFullYear(),
+            calendarStart.getMonth(),
+            calendarStart.getDate()
+          )
+        )
+      )
+      .where("status", "==", status);
   }
 
   filter.onSnapshot((querySnapshot) => {
@@ -74,8 +116,11 @@ export const notifyHall = (calback) => {
   firebase
     .firestore()
     .collection("orders")
-    .where("status", "==", 2)
-    .where("dateDelivery", ">", firebase.firestore.Timestamp.fromDate(new Date()))
+    .where(
+      "dateDelivery",
+      ">",
+      firebase.firestore.Timestamp.fromDate(new Date())
+    )
     .orderBy("dateDelivery", "desc")
     .limit(1)
     .onSnapshot((querySnapshot) => {

@@ -32,16 +32,15 @@
 .calendar {
   outline: none;
   background-color: #434242;
-  border: solid 2px #d97308;
+  /* border: solid 2px #d97308; */
   color: #eeeeee;
   width: 150px;
   padding: 0 20px;
-  text-align: center;
   margin: 0;
   height: 40px;
   border-radius: 30px;
   font-size: 18px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .history {
@@ -82,14 +81,17 @@ select {
   height: 44px;
   padding: 6px;
 }
-
+select > option:focus,
+select > option:hover {
+  background-color: #d97308;
+}
 input[type="date" i] {
-  display: -webkit-inline-flex;
   font-family: Arial, Helvetica, sans-serif;
-  padding-inline-start: 0px;
-  cursor: default;
-  overflow: hidden;
+
   padding: 0px;
+  padding-inline-start: 0px;
+
+  margin: 0;
 }
 @media only screen and (max-width: 800px) {
   .history-style {

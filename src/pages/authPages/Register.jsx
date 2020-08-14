@@ -4,8 +4,11 @@ import { authRegister } from "../../firebase/authService";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import ReturnError from "./authError";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import logo from "../../img/logo1.png";
+import Img1 from "../../img/mordida-1.png";
+import Img2 from "../../img/mordida-2.png";
+import Img3 from "../../img/mordida-3.png";
 import chapeu1 from "../../img/chapeu-1.png";
 import chapeu2 from "../../img/chapeu-2.png";
 import cozinha1 from "../../img/cozinha-1.png";
@@ -21,41 +24,52 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [type, setType] = useState("");
-
+  const [animation, setAnimation] = useState(0);
   const onClickRegister = async () => {
     if (type === "") {
-      setError("Insira o tipo de serviço em que trabalha Cozinha/Salão")
-      return
+      setError("Insira o tipo de serviço em que trabalha Cozinha/Salão");
+      return;
     }
     if (name === "") {
-      setError("Insira seu nome")
-      return
+      setError("Insira seu nome");
+      return;
     }
     if (email === "") {
-      setError("Insira seu e-mail")
-      return
+      setError("Insira seu e-mail");
+      return;
     }
     if (password === "") {
-      setError("Crie uma senha com mais de 6 digitos")
-      return
+      setError("Crie uma senha com mais de 6 digitos");
+      return;
     }
     if (password !== confirmPassword) {
-      setError("Confirme sua senha")
-      return
+      setError("Confirme sua senha");
+      return;
     }
 
     try {
+      setAnimation(1);
       const response = await authRegister({ name, email, password, type });
       toast.success("Cadastro realizado com sucesso!");
       history.push("/login");
     } catch (error) {
       setError(error.code);
+      setAnimation(0);
     }
   };
 
   return (
     <div className="templateAuth">
-      <img className="img-auth" src={logo} alt="logo" />
+      {animation ? (
+        <div className="box-imgs">
+          {/* <img src={logo} alt="logo" /> */}
+          <img src={Img1} alt="logo" />
+          <img src={Img2} alt="logo" />
+          <img src={Img3} alt="logo" />
+        </div>
+      ) : (
+        <img className="img-auth" src={logo} alt="logo" />
+      )}
       <div className="form-auth">
         <h1>Cadastro</h1>
         <div className="radio-button">

@@ -129,6 +129,7 @@ const Hall = () => {
         name: order.name,
         table: order.table,
         total: total,
+        waiter: firebase.auth().currentUser.displayName,
       };
 
       await firebase.firestore().collection("orders").add(obj);
@@ -189,14 +190,14 @@ const Hall = () => {
               total={value}
             />
           ) : (
-              <Table
-                className="table-dinner"
-                menu={MenuDinner}
-                selector="button-selector-dinner"
-                func={[createTotal, deleteItem, setBurguer, setOptions]}
-                total={value}
-              />
-            )}
+            <Table
+              className="table-dinner"
+              menu={MenuDinner}
+              selector="button-selector-dinner"
+              func={[createTotal, deleteItem, setBurguer, setOptions]}
+              total={value}
+            />
+          )}
         </div>
         <span className="container-table-total">
           {value[0] && (
