@@ -203,7 +203,7 @@ O resumo do pedido possuí as seguintes informações:
 
 Os pedidos são divididos em três categorias organizadas por cores:
 
-- Vermelha:Pedido sendo preparado
+- Vermelha: Pedido sendo preparado
 - Laranja: Pedido pronto, aguardando entrega
 - Verde: Pedido finalizado
 
@@ -252,10 +252,11 @@ http://localhost:3000
 
 Futuramente serão implementadas funcionalidades para melhoria da experiência do usuário:
 
-- Estatísticas de acordo com dia da semana e horário para calcular tempo médio do pedido
-- Estatísticas de funcionários
-- Perfil dos funcionários
-- Alteração de cadastro do funcionário
+- Estatísticas de acordo com dia da semana e horário para calcular tempo médio do pedido.
+- Estatísticas de funcionários.
+- Perfil dos funcionários.
+- Alteração de cadastro do funcionário.
+- Número do pedido.
 
 ## 7. Autoria
 
