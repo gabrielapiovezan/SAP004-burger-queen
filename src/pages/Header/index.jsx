@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../img/logo2.png";
 import "./style.css";
-import {
-  getDataByStatus,
-  notifyHall,
-} from "../../firebase/firebaseService";
+import { getDataByStatus, notifyHall } from "../../firebase/firebaseService";
 import { useAuth } from "../../contexts/auth";
 import { toast } from "react-toastify";
 import { Link, useHistory } from "react-router-dom";
@@ -17,13 +14,12 @@ const Header = () => {
   const [requests, setRequests] = useState(0);
 
   const togleOpen = (e) => {
-    if (open)
-      setOpen(false);
-    console.log(open)
-  }
+    if (open) setOpen(false);
+    console.log(open);
+  };
   useEffect(() => {
-    window.addEventListener('click', togleOpen, false);
-    return () => window.removeEventListener('click', togleOpen);
+    window.addEventListener("click", togleOpen, false);
+    return () => window.removeEventListener("click", togleOpen);
   }, [open]);
 
   useEffect(() => {
@@ -36,7 +32,7 @@ const Header = () => {
 
   const onClickDelivery = () => {
     history.push("/delivery");
-  }
+  };
 
   useEffect(() => {
     function get(data) {
@@ -53,14 +49,11 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await signOut();
-    } catch (error) {
-
-    }
+    } catch (error) {}
   };
   const openMenu = () => {
     setOpen(true);
-    console.log(open)
-  }
+  };
   if (signed === true) {
     return (
       <>
@@ -81,9 +74,11 @@ const Header = () => {
                       <li>Pedido</li>
                     </Link>
                   </>
-                ) : <Link to="/">
+                ) : (
+                  <Link to="/">
                     <li>Cozinha</li>
-                  </Link>}
+                  </Link>
+                )}
                 <Link to="/orderHistory">
                   <li>Histórico</li>
                 </Link>

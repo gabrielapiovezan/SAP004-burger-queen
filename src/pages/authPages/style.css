@@ -51,14 +51,13 @@
 }
 
 .box-imgs {
-  width: 250px;
-  height: 288.03px;
+  width: 200px;
+  height: 230.77px;
 }
 .box-imgs > img {
-  width: 250px;
+  width: 200px;
   opacity: 0;
   z-index: 0;
-  width: 250px;
   animation: imageAnimation 1.5s linear infinite 0s;
 }
 .box-imgs > :nth-child(1) {
@@ -69,12 +68,12 @@
 }
 .box-imgs > :nth-child(2) {
   position: relative;
-  top: -288.03px;
+  top: -230.77px;
   left: 0;
 }
 .box-imgs > :nth-child(3) {
   position: relative;
-  top: -576.06px;
+  top: -461.54px;
   left: 0;
 }
 

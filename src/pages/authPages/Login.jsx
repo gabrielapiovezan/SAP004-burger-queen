@@ -44,14 +44,15 @@ const App = () => {
     <div className="templateAuth">
       {animation ? (
         <div className="box-imgs">
+          {/* <img src={logo} alt="logo" /> */}
           <img src={Img1} alt="logo" />
           <img src={Img2} alt="logo" />
           <img src={Img3} alt="logo" />
         </div>
       ) : (
-          <img className="img-auth" src={logo} alt="logo" />
-        )}
-      {/* <img className="img-auth" src={gif ? Burguer : logo} alt="logo" /> */}
+        <img className="img-auth" src={logo} alt="logo" />
+      )}
+
       <div className="form-auth">
         <h2>Bem Vindo(a)!</h2>
         <Input
