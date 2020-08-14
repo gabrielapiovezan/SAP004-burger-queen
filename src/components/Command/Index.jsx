@@ -6,7 +6,7 @@ import "./style.css";
 
 const Command = (props) => {
   const [averageTime, setAverageTime] = useState([]);
-
+  console.log(props.request.requestDate);
   useEffect(() => {
     getDataAll(time);
   }, []);
@@ -97,7 +97,11 @@ const Command = (props) => {
       </div>
       <div className="data-calendar">
         <div>
-          <span>{dateAndHour(props.date)}</span>
+          <span>
+            {props.request.requestDate
+              ? dateAndHour(props.request.requestDate)
+              : ""}
+          </span>
           {
             <span>
               <img className="timer" src={Tempo} alt="tempo" />
