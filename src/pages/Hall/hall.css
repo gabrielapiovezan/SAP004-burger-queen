@@ -1,6 +1,6 @@
 .hall {
   background-color: #434242;
-  width: 100%;
+  /* width: 100%; */
   height: fit-content;
   display: flex;
   align-items: center;

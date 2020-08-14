@@ -32,7 +32,7 @@
 .calendar {
   outline: none;
   background-color: #434242;
-  border: solid 2px #d97308;
+  /* border: solid 2px #d97308; */
   color: #eeeeee;
   width: 150px;
   padding: 0 20px;
@@ -82,14 +82,16 @@ select {
   height: 44px;
   padding: 6px;
 }
-
+select > option:focus,
+select > option:hover {
+  background-color: #d97308;
+}
 input[type="date" i] {
-  display: -webkit-inline-flex;
   font-family: Arial, Helvetica, sans-serif;
   padding-inline-start: 0px;
-  cursor: default;
-  overflow: hidden;
+
   padding: 0px;
+  margin: 0;
 }
 @media only screen and (max-width: 800px) {
   .history-style {

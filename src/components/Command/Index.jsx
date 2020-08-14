@@ -6,7 +6,7 @@ import "./style.css";
 
 const Command = (props) => {
   const [averageTime, setAverageTime] = useState([]);
-  console.log(props.request.requestDate);
+  // console.log(props.request.requestDate);
   useEffect(() => {
     getDataAll(time);
   }, []);
@@ -103,7 +103,7 @@ const Command = (props) => {
               : ""}
           </span>
           {
-            <span>
+            <span className={!props.request.dateDelivery && "time-mediun"}>
               <img className="timer" src={Tempo} alt="tempo" />
               {props.request.dateDelivery
                 ? hour(props.request.requestDate, props.request.dateDelivery)
@@ -111,7 +111,7 @@ const Command = (props) => {
             </span>
           }
         </div>
-        <span>{firebase.auth().currentUser.displayName}</span>
+        <span>{props.request.waiter}</span>
       </div>
       <div className={"command"}>
         <ul>
