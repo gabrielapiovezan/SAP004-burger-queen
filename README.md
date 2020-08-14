@@ -75,7 +75,7 @@ Funcionários de uma hamburgueria que fazem atendimento no salão anotando pedid
 
 Criar interfaces visuais para facilitar o sistema de pedidos de uma hamburgueria disponíveis para acesso de acordo com o login do usuário.
 
-O usuário que trabanha no salão pode criar pedidos, os enviar para a cozinha e verificar os pedidos que estão prontos para entrega.
+O usuário que trabalha no salão pode criar pedidos, os enviar para a cozinha e verificar os pedidos que estão prontos para entrega.
 
 Os funcionários da cozinha podem verificar os pedidos em ordem cronológica e enviá-los de volta para o salão quando estiverem finalizados.
 
@@ -93,13 +93,13 @@ _A fadiga ocular digital é uma condição comum que afeta milhões de pessoas d
 
 A fim minimizar a fadiga ocular do usuário que trabalha no salão, onde passará horas anotando pedidos, foram projetadas telas com tema escuro.
 
-Segundo Bauer, D., & Cavonius, C., R. (1980), em um ensaio proposto foi constatado que os textos escuros no fundo claro possui maior legibilidade, os participantes do estudo eram 26% mais precisos ao ler um texto nessas condiçoes.
+Segundo Bauer, D., & Cavonius, C., R. (1980), em um ensaio proposto foi constatado que os textos escuros no fundo claro possui maior legibilidade, os participantes do estudo eram 26% mais precisos ao ler um texto nessas condições.
 
 Para facilitar a compreensão dos pedidos que serão lidos pelo usuário que trabalha na cozinha onde precisará olhar para tela o suficiente para ler o pedido, as telas foram projetadas com tema claro por oferecer melhor legibilidade.
 
 ### Protótipo
 
-Um protótipo de alta fidelidade das telas foi projetado preferencialmenteno no formato para tablet, mas com a possíbilidade de funcionamento em outros formatos, utilidando a plataforma figma.
+Um protótipo de alta fidelidade das telas foi projetado preferencialmente no formato para tablet, mas com a possibilidade de funcionamento em outros formatos, utilizando a plataforma figma.
 
 ![Tela-1](img-readme/figma-1.png)
 
@@ -115,7 +115,7 @@ Tela do menu de jantar
 
 ![Tela-4](img-readme/figma-4.png)
 
-Tela do menu jantar com opções de hamburgueres
+Tela do menu jantar com opções de hambúrgueres
 
 ![Tela-5](img-readme/figma-5.png)
 
@@ -170,7 +170,7 @@ A aplicação possui 5 telas: login, registro, pedidos, histórico e cozinha ond
 - O usuário pode logar com email senha.
 - Também pode se registrar como um novo usuário informando o posto de trabalho.
 
-Como usuário logado o funcionario que trabalha no salão pode:
+Como usuário logado o funcionário que trabalha no salão pode:
 
 - Criar pedidos novos.
 - Visualizar os pedidos finalizados pela cozinha.
@@ -183,23 +183,23 @@ Tela de pedido
 ![Tela-2](img-readme/tela-hall-2.png)
 
 Tela responsiva
-Como usuário logado o funcionario que trabalha na cozinha pode:
+Como usuário logado o funcionário que trabalha na cozinha pode:
 
 - Visualizar os novos pedidos.
-- Finalizar o preparo do pedido após a execulção.
+- Finalizar o preparo do pedido após a execução.
 - Visualizar o histórico de pedidos e fazer uma busca por data e status do pedido.
 
-O resumo do pedido possuí as seguntes informações:
+O resumo do pedido possuí as seguintes informações:
 
 - Nome do cliente
 - Número da mesa
 - Data e hora da criação do pedido
-- Tempo de execulção do pedido
-  (Quando o pedido ainda não foi finalizado, esse valor é estaístico levando em consideração o históco de pedidos anteriores)
+- Tempo de execução do pedido
+  (Quando o pedido ainda não foi finalizado, esse valor é estatístico levando em consideração o histórico de pedidos anteriores)
 - Nome do garçom
 - Itens do pedido
 
-Os pedidos são dividos em três categorias organizadas por cores:
+Os pedidos são divididos em três categorias organizadas por cores:
 
 - Vermelha:Pedido sendo preparado
 - Laranja: Pedido pronto, aguardando entrega
