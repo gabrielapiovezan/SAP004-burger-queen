@@ -76,8 +76,8 @@ const Command = (props) => {
   props.request.status === 1
     ? (statusOrder = "start")
     : props.request.status === 2
-    ? (statusOrder = "progress")
-    : (statusOrder = "finished");
+      ? (statusOrder = "progress")
+      : (statusOrder = "finished");
 
   return (
     <div
