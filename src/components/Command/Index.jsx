@@ -7,7 +7,7 @@ const Command = (props) => {
   const [averageTime, setAverageTime] = useState([]);
   useEffect(() => {
     getDataAll(time);
-  });
+  }, []);
 
   const time = (itens) => {
     const array = itens.filter((a) => a.dateDelivery);
