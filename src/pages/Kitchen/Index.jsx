@@ -46,7 +46,7 @@ const Kitchen = () => {
             request={request}
             date={request.requestDate}
             onClick={() => handleModal(request)}
-            command={"command-box"}
+          // command={"command-box"}
           />
         ))}
       </div>

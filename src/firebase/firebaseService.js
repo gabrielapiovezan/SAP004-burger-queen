@@ -72,11 +72,8 @@ export const notifyHall = (calback) => {
   firebase
     .firestore()
     .collection("orders")
-    .where(
-      "dateDelivery",
-      ">",
-      firebase.firestore.Timestamp.fromDate(new Date())
-    )
+    .where("status", "==", 2)
+    .where("dateDelivery", ">", firebase.firestore.Timestamp.fromDate(new Date()))
     .orderBy("dateDelivery", "desc")
     .limit(1)
     .onSnapshot((querySnapshot) => {

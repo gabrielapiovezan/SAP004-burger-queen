@@ -4,7 +4,6 @@ import "./style.css";
 import {
   getDataByStatus,
   notifyHall,
-  getDataAll,
 } from "../../firebase/firebaseService";
 import { useAuth } from "../../contexts/auth";
 import { toast } from "react-toastify";
@@ -16,10 +15,8 @@ const Header = () => {
   const { signOut, signed, user } = useAuth();
   const [open, setOpen] = useState(false);
   const [requests, setRequests] = useState(0);
-  // const [averageTime, setAverageTime] = useState([]);
 
   const togleOpen = (e) => {
-    //e.preventDefault();
     if (open)
       setOpen(false);
     console.log(open)
@@ -41,26 +38,6 @@ const Header = () => {
     history.push("/delivery");
   }
 
-
-  // const time = (itens) => {
-  //   const array = itens.filter((a) => a.dateDelivery);
-  //   if (array.length) {
-  //     const average =
-  //       array.reduce((accum, curr) => {
-  //         return (
-  //           accum +
-  //           curr.dateDelivery.toDate().getTime() -
-  //           curr.requestDate.toDate().getTime()
-  //         );
-  //       }, 0) / array.length;
-
-  //     const hours = parseInt(average / 3600000);
-  //     const min = parseInt((average % 3600000) / 60000);
-  //     console.log((hours ? `${hours}h` : "") + `${min}min`);
-  //   }
-  //   setAverageTime(array);
-  // };
-
   useEffect(() => {
     function get(data) {
       if (data)
@@ -81,7 +58,6 @@ const Header = () => {
     }
   };
   const openMenu = () => {
-    //e.preventDefault();
     setOpen(true);
     console.log(open)
   }
@@ -96,9 +72,6 @@ const Header = () => {
               <span></span>
               <span></span>
               <ul id="menu" className={open ? "tras" : ""}>
-                {/* <Link to="/">
-                  <li>Home</li>
-                </Link> */}
                 {user.type === "service" ? (
                   <>
                     <Link to="/delivery">
@@ -122,12 +95,13 @@ const Header = () => {
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
-          <div className="box-bag" onClick={onClickDelivery}>
-            <img src={Bag} className="bag" />
-            {user.type === "service" ? (
+          {}
+          {user.type === "service" ? (
+            <div className="box-bag" onClick={onClickDelivery}>
+              <img src={Bag} className="bag" />
               <span className="orders">{requests}</span>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
       </>
     );
