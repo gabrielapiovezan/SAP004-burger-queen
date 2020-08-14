@@ -82,6 +82,9 @@ const Header = () => {
                     </Link>
                   </>
                 ) : null}
+                <Link to="/">
+                  <li>Cozinha</li>
+                </Link>
                 <Link to="/orderHistory">
                   <li>Histórico</li>
                 </Link>
