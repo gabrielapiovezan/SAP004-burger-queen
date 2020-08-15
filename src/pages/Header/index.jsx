@@ -48,7 +48,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await signOut();
-    } catch (error) {}
+    } catch (error) { }
   };
   const openMenu = () => {
     setOpen(true);
@@ -74,10 +74,10 @@ const Header = () => {
                     </Link>
                   </>
                 ) : (
-                  <Link to="/">
-                    <li>Cozinha</li>
-                  </Link>
-                )}
+                    <Link to="/">
+                      <li>Cozinha</li>
+                    </Link>
+                  )}
                 <Link to="/orderHistory">
                   <li>Histórico</li>
                 </Link>
@@ -91,7 +91,6 @@ const Header = () => {
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
-          {}
           {user.type === "service" ? (
             <div className="box-bag" onClick={onClickDelivery}>
               <img src={Bag} className="bag" />
