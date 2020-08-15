@@ -30,16 +30,6 @@ const OrderHistory = () => {
     history.push("/");
   };
 
-  // const orderByDate = (a, b) => {
-  //   return a.requestDate - b.requestDate;
-  // };
-  // let array = requests;
-  // array.sort(orderByDate);
-
-  // const setStatusSelect = (event) => {
-  //   setStatus(Number(event.target.value) || null);
-  // };
-
   return (
     <div className="container">
       <Button
@@ -50,7 +40,6 @@ const OrderHistory = () => {
       <div className="history">
         <img className="img-history" src={logo} alt="logo" />
         <div className="history-style">
-          {/* <div className="style container-history"> */}
           <div>
             Data inicio:{" "}
             <Flatpickr
@@ -67,8 +56,6 @@ const OrderHistory = () => {
               value={calendarFinish}
             />
           </div>
-          {/* </div> */}
-          {/* <div className="style"> */}
           <select
             className="calendar select"
             name="select"
@@ -79,28 +66,6 @@ const OrderHistory = () => {
             <option value={1}>Em Preparo</option>
             <option value={3}>Finalizado</option>
           </select>
-
-          {/* <Button
-              className="button button-filter style-button"
-              value="Para Entrega"
-              onClick={() => setStatus(2)}
-            />
-            <Button
-              className="button button-filter style-button"
-              value="Em Preparo"
-              onClick={() => setStatus(1)}
-            />
-            <Button
-              className="button button-filter style-button"
-              value="Finalizado"
-              onClick={() => setStatus(3)}
-            />
-            <Button
-              className="button button-filter style-button"
-              value="Todos"
-              onClick={() => setStatus(null)}
-            /> */}
-          {/* </div> */}
         </div>
       </div>
       <div className="request">

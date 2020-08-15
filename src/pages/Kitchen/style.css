@@ -5,9 +5,6 @@
   justify-content: center;
 }
 
-/* .box-imgs > .img {
-  width: 100px;
-} */
 .box-imgs-k {
   width: 100px;
   height: 115.2px;
@@ -19,7 +16,6 @@
   animation: imageAnimation 2s linear infinite 0s;
 }
 .box-imgs-k > :nth-child(1) {
-  /* background-color: lightcoral; */
   position: relative;
   top: 0;
   left: 0;
