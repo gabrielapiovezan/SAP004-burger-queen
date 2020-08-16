@@ -2,7 +2,6 @@ import firebase from "./firebase";
 
 export const isAuthenticated = () => {
   const user = JSON.parse(localStorage.getItem("@user"))
-
   return user.type;
 }
 

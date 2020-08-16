@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-
 import { useAuth } from "../../contexts/auth";
-
 import { Link } from "react-router-dom";
 
 import logo from "../../img/logo1.png";
 import Img1 from "../../img/mordida-1.png";
 import Img2 from "../../img/mordida-2.png";
 import Img3 from "../../img/mordida-3.png";
-import Burguer from "../../img/burguer.gif";
 import ReturnError from "./authError";
 import "./style.css";
 
@@ -49,8 +46,8 @@ const App = () => {
           <img src={Img3} alt="logo" />
         </div>
       ) : (
-        <img className="img-auth" src={logo} alt="logo" />
-      )}
+          <img className="img-auth" src={logo} alt="logo" />
+        )}
 
       <div className="form-auth">
         <h2>Bem Vindo(a)!</h2>
