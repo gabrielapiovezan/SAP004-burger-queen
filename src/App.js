@@ -12,7 +12,6 @@ const App = () => {
     <>
       <Router>
         <AuthProvider>
-          {/* <Menu /> */}
           <Header />
           <Routes />
         </AuthProvider>

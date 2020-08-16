@@ -30,16 +30,6 @@ const OrderHistory = () => {
     history.push("/");
   };
 
-  // const orderByDate = (a, b) => {
-  //   return a.requestDate - b.requestDate;
-  // };
-  // let array = requests;
-  // array.sort(orderByDate);
-
-  // const setStatusSelect = (event) => {
-  //   setStatus(Number(event.target.value) || null);
-  // };
-
   return (
     <div className="container">
       <Button
@@ -50,7 +40,6 @@ const OrderHistory = () => {
       <div className="history">
         <img className="img-history" src={logo} alt="logo" />
         <div className="history-style">
-          {/* <div className="style container-history"> */}
           <div>
             Data inicio:{" "}
             <Flatpickr

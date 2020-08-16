@@ -34,11 +34,6 @@ const Kitchen = () => {
     });
     setShowModal(false);
   };
-  // const orderByDate = (a, b) => {
-  //   return a.requestDate - b.requestDate;
-  // };
-  // let array = requests;
-  // array.sort(orderByDate);
   return (
     <div className="container">
       {!requests.length ? (
@@ -52,26 +47,25 @@ const Kitchen = () => {
           <span>Aguardando pedidos...</span>
         </div>
       ) : (
-        <>
-          <div className="request">
-            {requests.map((request) => (
-              <Command
-                requests={requests}
-                key={request.id}
-                request={request}
-                date={request.requestDate}
-                onClick={() => handleModal(request)}
-                // command={"command-box"}
-              />
-            ))}
-          </div>
-          <Modal
-            show={showModal}
-            onCancel={handleCancel}
-            onFinish={handleFinish}
-          />
-        </>
-      )}
+          <>
+            <div className="request">
+              {requests.map((request) => (
+                <Command
+                  requests={requests}
+                  key={request.id}
+                  request={request}
+                  date={request.requestDate}
+                  onClick={() => handleModal(request)}
+                />
+              ))}
+            </div>
+            <Modal
+              show={showModal}
+              onCancel={handleCancel}
+              onFinish={handleFinish}
+            />
+          </>
+        )}
     </div>
   );
 };

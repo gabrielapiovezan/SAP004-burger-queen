@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./style.css";
 
 const ButtonIcon = (props) => {
@@ -18,6 +18,5 @@ const ButtonIcon = (props) => {
     </div>
   );
 };
-//}
 
 export default ButtonIcon;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../img/logo2.png";
 import "./style.css";
 import { getDataByStatus, notifyHall } from "../../firebase/firebaseService";
@@ -9,12 +9,17 @@ import Bag from "../../img/bag.png";
 
 const Header = () => {
   const history = useHistory();
+  const headerEl = useRef(null);
+
   const { signOut, signed, user } = useAuth();
   const [open, setOpen] = useState(false);
   const [requests, setRequests] = useState(0);
 
   const togleOpen = (e) => {
-    if (open) setOpen(false);
+    debugger;
+    if (headerEl.current && !headerEl.current.contains(e.target) && open === true) {
+      setOpen(false);
+    };
   };
   useEffect(() => {
     window.addEventListener("click", togleOpen, false);
@@ -47,42 +52,33 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await signOut();
-    } catch (error) {}
+    } catch (error) { }
   };
   const openMenu = () => {
-    setOpen(true);
+    setOpen(!open);
   };
   if (signed === true) {
     return (
       <>
-        <div className="header">
+        <div className="header" ref={headerEl} >
           <nav>
             <div id="menuToggle">
-              <input type="checkbox" onClick={() => openMenu()} />
-              <span></span>
-              <span></span>
-              <span></span>
-              <ul id="menu" className={open ? "tras" : ""}>
+              <div onClick={() => openMenu()} className={open ? "open" : ""} >
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <ul id="menu" className={open ? "open" : ""}>
                 {user.type === "service" ? (
                   <>
-                    <Link to="/">
-                      <li>Entrega</li>
-                    </Link>
-                    <Link to="/hall">
-                      <li>Pedido</li>
-                    </Link>
+                    <li><Link to="/">Entrega</Link></li>
+                    <li><Link to="/hall">Pedido</Link></li>
                   </>
                 ) : (
-                  <Link to="/">
-                    <li>Cozinha</li>
-                  </Link>
-                )}
-                <Link to="/orderHistory">
-                  <li>Histórico</li>
-                </Link>
-                <a onClick={handleLogout}>
-                  <li>Sair</li>
-                </a>
+                    <li><Link to="/">Cozinha</Link></li>
+                  )}
+                <li><Link to="/orderHistory">Histórico</Link></li>
+                <li><a onClick={handleLogout}>Sair</a></li>
               </ul>
             </div>
           </nav>
@@ -90,7 +86,6 @@ const Header = () => {
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
-          {}
           {user.type === "service" ? (
             <div className="box-bag" onClick={onClickDelivery}>
               <img src={Bag} className="bag" />

@@ -67,8 +67,8 @@ const Register = () => {
           <img src={Img3} alt="logo" />
         </div>
       ) : (
-        <img className="img-auth" src={logo} alt="logo" />
-      )}
+          <img className="img-auth" src={logo} alt="logo" />
+        )}
       <div className="form-auth">
         <h1>Cadastro</h1>
         <div className="radio-button">
