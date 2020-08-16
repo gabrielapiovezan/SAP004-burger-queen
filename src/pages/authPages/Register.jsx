@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import { authRegister } from "../../firebase/authService";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import ReturnError from "./authError";
@@ -23,7 +23,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("kitchen");
   const [animation, setAnimation] = useState(0);
   const onClickRegister = async () => {
     if (type === "") {
@@ -48,8 +48,8 @@ const Register = () => {
     }
 
     try {
+      await authRegister({ name, email, password, type });
       setAnimation(1);
-
       toast.success("Cadastro realizado com sucesso!");
       history.push("/login");
     } catch (error) {

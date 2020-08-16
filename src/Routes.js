@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall//Hall";
-
 import Delivery from "./pages/Delivery/Index";
 import OrderHistory from "./pages/OrderHistory/Index";
 import Kitchen from "./pages/Kitchen/Index";

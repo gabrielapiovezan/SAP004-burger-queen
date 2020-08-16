@@ -331,6 +331,7 @@ const Table = (props) => {
         <tr>
           <td colSpan="4" align="center">
             <textarea
+              value={props.order.note}
               className="note"
               name=""
               maxlength="140"

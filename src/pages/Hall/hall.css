@@ -84,6 +84,7 @@
 }
 .table-input {
   text-align: center;
+  padding: 0;
 }
 @media only screen and (min-width: 1000px) {
   .table {
