@@ -16,10 +16,13 @@ const Header = () => {
   const [requests, setRequests] = useState(0);
 
   const togleOpen = (e) => {
-    debugger;
-    if (headerEl.current && !headerEl.current.contains(e.target) && open === true) {
+    if (
+      headerEl.current &&
+      !headerEl.current.contains(e.target) &&
+      open === true
+    ) {
       setOpen(false);
-    };
+    }
   };
   useEffect(() => {
     window.addEventListener("click", togleOpen, false);
@@ -52,7 +55,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await signOut();
-    } catch (error) { }
+    } catch (error) {}
   };
   const openMenu = () => {
     setOpen(!open);
@@ -60,10 +63,10 @@ const Header = () => {
   if (signed === true) {
     return (
       <>
-        <div className="header" ref={headerEl} >
+        <div className="header" ref={headerEl}>
           <nav>
             <div id="menuToggle">
-              <div onClick={() => openMenu()} className={open ? "open" : ""} >
+              <div onClick={() => openMenu()} className={open ? "open" : ""}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -71,14 +74,32 @@ const Header = () => {
               <ul id="menu" className={open ? "open" : ""}>
                 {user.type === "service" ? (
                   <>
-                    <li><Link to="/">Entrega</Link></li>
-                    <li><Link to="/hall">Pedido</Link></li>
+                    <li>
+                      <Link to="/" onClick={() => togleOpen(false)}>
+                        Entrega
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/hall" onClick={() => togleOpen(false)}>
+                        Pedido
+                      </Link>
+                    </li>
                   </>
                 ) : (
-                    <li><Link to="/">Cozinha</Link></li>
-                  )}
-                <li><Link to="/orderHistory">Histórico</Link></li>
-                <li><a onClick={handleLogout}>Sair</a></li>
+                  <li>
+                    <Link to="/" onClick={() => togleOpen(false)}>
+                      Cozinha
+                    </Link>
+                  </li>
+                )}
+                <li>
+                  <Link to="/orderHistory" onClick={() => togleOpen(false)}>
+                    Histórico
+                  </Link>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Sair</a>
+                </li>
               </ul>
             </div>
           </nav>
