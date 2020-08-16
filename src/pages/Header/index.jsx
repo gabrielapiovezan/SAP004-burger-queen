@@ -31,7 +31,6 @@ const Header = () => {
       setRequests(data.length);
     }
     getDataByStatus(get, 2);
-    // getDataAll(time);
   }, []);
 
   const onClickDelivery = () => {

@@ -5,6 +5,7 @@ import "./style.css";
 
 const Command = (props) => {
   const [averageTime, setAverageTime] = useState([]);
+
   useEffect(() => {
     getDataAll(time);
   }, []);
@@ -15,9 +16,7 @@ const Command = (props) => {
       const average =
         array.reduce((accum, curr) => {
           return (
-            accum +
-            curr.dateDelivery.toDate().getTime() -
-            curr.requestDate.toDate().getTime()
+            accum + curr.dateDelivery.toDate().getTime() - curr.requestDate.toDate().getTime()
           );
         }, 0) / array.length;
 

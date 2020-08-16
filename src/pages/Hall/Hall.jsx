@@ -174,7 +174,7 @@ const Hall = () => {
               className="button-menu breack-fast"
               onClick={() => setData()}
             >
-              Café da manha
+              Café da manhã
             </button>
             <button className="button-menu dinner" onClick={() => setData()}>
               Almoço e jantar
@@ -190,14 +190,14 @@ const Hall = () => {
               total={value}
             />
           ) : (
-            <Table
-              className="table-dinner"
-              menu={MenuDinner}
-              selector="button-selector-dinner"
-              func={[createTotal, deleteItem, setBurguer, setOptions]}
-              total={value}
-            />
-          )}
+              <Table
+                className="table-dinner"
+                menu={MenuDinner}
+                selector="button-selector-dinner"
+                func={[createTotal, deleteItem, setBurguer, setOptions]}
+                total={value}
+              />
+            )}
         </div>
         <span className="container-table-total">
           {value[0] && (
