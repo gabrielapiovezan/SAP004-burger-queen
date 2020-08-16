@@ -1,43 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../img/logo2.png";
+import { Link, } from "react-router-dom";
+import Bag from "../../img/bag.png";
 import "./style.css";
-
-class MenuLinks extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      links: [{
-        text: 'Author',
-        link: 'https://github.com/Lakston',
-        icon: 'fa-pencil-square-o'
-      }, {
-        text: 'Github page',
-        link: 'https://github.com/Lakston',
-        icon: 'fa-github'
-      }, {
-        text: 'Twitter',
-        link: 'https://twitter.com/Fab_is_coding',
-        icon: 'fa-twitter'
-      }]
-    }
-  }
-
-  render() {
-    let links = this.state.links.map((link, i) =>
-      <li ref={i + 1}>
-        <i aria-hidden="true" className={`fa ${link.icon}`}></i>
-        <a href={link.link} target="_blank">{link.text}</a>
-      </li>);
-
-    return (
-      <div className={this.props.menuStatus} id='menu'>
-        <ul>
-          {links}
-        </ul>
-      </div>
-    )
-  }
-}
+import { useAuth } from "../../contexts/auth";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -68,8 +34,15 @@ class Menu extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+  handleLogout = async () => {
+    try {
+      await signOut();
+    } catch (error) { }
+  };
   render() {
     let menuStatus = this.state.isOpen ? 'isopen' : '';
+
+    const { signOut, signed, user } = useAuth();
 
     return (
       <div className="header" ref="root">
@@ -82,8 +55,27 @@ class Menu extends React.Component {
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
           </div>
+          {user.type === "service" ? (
+            <div className="box-bag" onClick={onClickDelivery}>
+              <img src={Bag} className="bag" />
+              <span className="orders">{requests}</span>
+            </div>
+          ) : null}
         </div>
-        <MenuLinks menuStatus={menuStatus} />
+        <div className={this.props.menuStatus} id='menu'>
+          <ul>
+            {user.type === "service" ? (
+              <>
+                <li><Link to="/">Entrega</Link></li>
+                <li><Link to="/hall">Pedido</Link></li>
+              </>
+            ) : (
+                <li><Link to="/">Cozinha</Link></li>
+              )}
+            <li><Link to="/orderHistory">Histórico</Link></li>
+            <li><a onClick={handleLogout}>Sair</a></li>
+          </ul>
+        </div>
       </div>
     )
   }

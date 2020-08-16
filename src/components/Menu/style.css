@@ -1,7 +1,7 @@
 .menubar {
   position: absolute;
   background-color: #272626;
-  padding: 7px 0;
+  padding:3px ;
   width: 100%;
   display: flex;
 }
@@ -29,9 +29,9 @@
 #hambmenu span {
   position: absolute;
   height: 4px;
-  width:100%;
+  width:90%;
   vertical-align: middle;
-  margin: 10px 0 0 15px;
+  margin: 13px 0 0 15px;
   background:#cdcdcd;
   border-radius: 4px;
   opacity: 1;
@@ -41,8 +41,6 @@
   -webkit-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
   padding: 0px;
-
-
 }
 
 .hambclicker {
@@ -99,7 +97,7 @@
   position: absolute;
   height: calc(50vh - 80px);
   width: 160px;
-  margin-top: 60px;
+  margin-top: 50px;
   background-color: #ffffff;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
@@ -143,7 +141,7 @@ li a {
 }
 
 .img {
-  margin-left: 150px;
+  margin-left: 170px;
   width: 30px;
 }
 
