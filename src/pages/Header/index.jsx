@@ -72,24 +72,14 @@ const Header = () => {
               <ul id="menu" className={open ? "open" : ""}>
                 {user.type === "service" ? (
                   <>
-                    <Link to="/">
-                      <li>Entrega</li>
-                    </Link>
-                    <Link to="/hall">
-                      <li>Pedido</li>
-                    </Link>
+                    <li><Link to="/">Entrega</Link></li>
+                    <li><Link to="/hall">Pedido</Link></li>
                   </>
                 ) : (
-                    <Link to="/">
-                      <li>Cozinha</li>
-                    </Link>
+                    <li><Link to="/">Cozinha</Link></li>
                   )}
-                <Link to="/orderHistory">
-                  <li>Histórico</li>
-                </Link>
-                <a onClick={handleLogout}>
-                  <li>Sair</li>
-                </a>
+                <li><Link to="/orderHistory">Histórico</Link></li>
+                <li><a onClick={handleLogout}>Sair</a></li>
               </ul>
             </div>
           </nav>
