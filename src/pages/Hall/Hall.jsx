@@ -29,6 +29,7 @@ const Hall = () => {
   const deleteAll = () => {
     setValue([]);
     setMenu(0);
+    // setOrder({ name: "", table: "", note: "" });
   };
 
   const createTotal = (index, menuChoice, amount) => {
@@ -209,6 +210,7 @@ const Hall = () => {
                 func={[deleteItem, deleteAll]}
                 total={total}
                 note={note}
+                order={order}
               />
               <div className="error">{error}</div>
               <Button value="Enviar" onClick={() => saveOrder()} />

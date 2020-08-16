@@ -2,6 +2,14 @@
 
 Para acessar a página [clique aqui](https://burgerqueen-004.web.app/).
 
+```sh
+Login Cozinha: cozinha@cozinha.com
+Senha: 123456
+
+Login Salão: salao@salao.com
+Senha:123456
+```
+
 ## Índice
 
 - [1. Introdução](#1-introdução)
@@ -176,9 +184,8 @@ Como usuário logado o funcionário que trabalha no salão pode:
 - Visualizar os pedidos finalizados pela cozinha.
 - Visualizar o histórico de pedidos e fazer uma busca por data e status do pedido.
 - Finalizar o pedido depois da entrega.
- 
- 
- ![Tela-1](img-readme/tela-hall-1.png)
+
+![Tela-1](img-readme/tela-hall-1.png)
 
 Tela de pedido
 

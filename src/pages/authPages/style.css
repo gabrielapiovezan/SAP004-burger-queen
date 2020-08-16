@@ -112,11 +112,12 @@
     height: 100%;
     width: 100%;
     align-self: center;
-    padding: 0;
+    padding: 110;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    /* margin: 100px; */
   }
   .img-auth {
     width: 250px;
@@ -125,5 +126,6 @@
     padding: 25px;
     border: solid 1px #eeeeee20;
     border-radius: 15px;
+    margin-bottom: 0px;
   }
 }
