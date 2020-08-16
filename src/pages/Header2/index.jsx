@@ -9,15 +9,14 @@ import Bag from "../../img/bag.png";
 
 const Header = () => {
   const history = useHistory();
-  const headerEl = useRef(null);
-
+  const inputEl = useRef(null);
   const { signOut, signed, user } = useAuth();
   const [open, setOpen] = useState(false);
   const [requests, setRequests] = useState(0);
 
   const togleOpen = (e) => {
     debugger;
-    if (headerEl.current && !headerEl.current.contains(e.target) && open === true) {
+    if (!inputEl.current.contains(e.target) && open === true) {
       setOpen(false);
     };
   };
@@ -34,10 +33,6 @@ const Header = () => {
     // getDataAll(time);
   }, []);
 
-  const onClickDelivery = () => {
-    history.push("/delivery");
-  };
-
   useEffect(() => {
     function get(data) {
       if (data)
@@ -50,49 +45,29 @@ const Header = () => {
     }
   }, [user]);
 
+  const onClickDelivery = () => {
+    history.push("/delivery");
+  };
+
+  const menuToggle = (e) => {
+    e.stopPropagation();
+    setOpen(true)
+  }
+
   const handleLogout = async () => {
     try {
       await signOut();
     } catch (error) { }
   };
-  const openMenu = () => {
-    setOpen(!open);
-  };
+
   if (signed === true) {
     return (
-      <>
-        <div className="header" ref={headerEl} >
-          <nav>
-            <div id="menuToggle">
-              <div onClick={() => openMenu()} className={open ? "open" : ""} >
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <ul id="menu" className={open ? "open" : ""}>
-                {user.type === "service" ? (
-                  <>
-                    <Link to="/">
-                      <li>Entrega</li>
-                    </Link>
-                    <Link to="/hall">
-                      <li>Pedido</li>
-                    </Link>
-                  </>
-                ) : (
-                    <Link to="/">
-                      <li>Cozinha</li>
-                    </Link>
-                  )}
-                <Link to="/orderHistory">
-                  <li>Histórico</li>
-                </Link>
-                <a onClick={handleLogout}>
-                  <li>Sair</li>
-                </a>
-              </ul>
-            </div>
-          </nav>
+      <div className="header" ref={inputEl} >
+        <div className="menubar">
+          <div className="hambclicker" onClick={menuToggle}></div>
+          <div clasname="hambmenu" id="hambmenu" className={open ? 'isopen' : ''}>
+            <span></span><span></span><span></span><span></span>
+          </div>
           <div className="logo-header">
             <span>Burguer Queen</span>
             <img className="img" src={logo} alt="logo" />
@@ -104,8 +79,32 @@ const Header = () => {
             </div>
           ) : null}
         </div>
-      </>
-    );
+        <div className={open ? 'isopen' : ''} id='menu'>
+          <ul>
+            {user.type === "service" ? (
+              <>
+                <li><Link to="/">Entrega</Link></li>
+                <li><Link to="/hall">Pedido</Link></li>
+              </>
+            ) : (
+                <li><Link to="/">Cozinha</Link></li>
+              )}
+            <li><Link to="/orderHistory">Histórico</Link></li>
+            <li><a onClick={handleLogout}>Sair</a></li>
+          </ul>
+        </div>
+        <div className="logo-header">
+          <span>Burguer Queen</span>
+          <img className="img" src={logo} alt="logo" />
+        </div>
+        {user.type === "service" ? (
+          <div className="box-bag" onClick={onClickDelivery}>
+            <img src={Bag} className="bag" />
+            <span className="orders">{requests}</span>
+          </div>
+        ) : null}
+      </div>
+    )
   } else return null;
 };
 export default Header;

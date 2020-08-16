@@ -76,6 +76,16 @@ class Menu extends React.Component {
             <li><a onClick={handleLogout}>Sair</a></li>
           </ul>
         </div>
+        <div className="logo-header">
+          <span>Burguer Queen</span>
+          <img className="img" src={logo} alt="logo" />
+        </div>
+        {user.type === "service" ? (
+          <div className="box-bag" onClick={onClickDelivery}>
+            <img src={Bag} className="bag" />
+            <span className="orders">{requests}</span>
+          </div>
+        ) : null}
       </div>
     )
   }
