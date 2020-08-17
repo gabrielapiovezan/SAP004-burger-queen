@@ -53,12 +53,13 @@ const Header = () => {
   }, [user]);
 
   const handleLogout = async () => {
-
     try {
       await signOut();
+      setOpen(false);
     } catch (error) { }
   };
   const openMenu = () => {
+
     setOpen(!open);
   };
   if (signed === true) {
