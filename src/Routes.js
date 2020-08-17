@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./pages/authPages/Login";
 import Register from "./pages/authPages/Register";
 import Hall from "./pages/Hall//Hall";
@@ -10,37 +10,40 @@ import { useAuth } from "./contexts/auth";
 
 const RouteDisconnected = () => (
   <Switch>
-    <Route path="/register">
+    <Route path="/register" exact>
       <Register />
     </Route>
-    <Route path="/">
+    <Route path="/" exact>
       <Login />
     </Route>
+    <Redirect to="/" />
   </Switch>
 );
 
 const RouteKitchen = () => (
   <Switch>
-    <Route path="/orderHistory">
+    <Route path="/orderHistory" exact >
       <OrderHistory />
     </Route>
-    <Route exact path="/">
+    <Route exact path="/" exact>
       <Kitchen />
     </Route>
+    <Redirect to="/" />
   </Switch>
 );
 
 const RouteService = () => (
   <Switch>
-    <Route path="/orderHistory">
+    <Route path="/orderHistory" exact>
       <OrderHistory />
     </Route>
-    <Route path="/hall">
+    <Route path="/hall" exact>
       <Hall />
     </Route>
-    <Route path="/">
+    <Route path="/" exact>
       <Delivery />
     </Route>
+    <Redirect to="/" />
   </Switch>
 );
 
