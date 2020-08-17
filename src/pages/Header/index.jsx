@@ -16,7 +16,6 @@ const Header = () => {
   const [requests, setRequests] = useState(0);
 
   const togleOpen = (e) => {
-    debugger;
     if (headerEl.current && !headerEl.current.contains(e.target) && open === true) {
       setOpen(false);
     };
@@ -47,9 +46,10 @@ const Header = () => {
     if (user && user.type === "service") {
       notifyHall(get);
     }
-  }, [user]);
+  }, [user, requests]);
 
   const handleLogout = async () => {
+    togleOpen(false);
     try {
       await signOut();
     } catch (error) { }
