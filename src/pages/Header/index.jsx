@@ -58,10 +58,12 @@ const Header = () => {
   }, [user]);
 
   const handleLogout = async () => {
-    togleOpen(false);
     try {
       await signOut();
-    } catch (error) {}
+
+      setOpen(false);
+    } catch (error) { }
+
   };
   const openMenu = () => {
     setOpen(!open);
