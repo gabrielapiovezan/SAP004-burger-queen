@@ -5,7 +5,6 @@ import "./style.css";
 
 const Command = (props) => {
   const [averageTime, setAverageTime] = useState([]);
-
   useEffect(() => {
     getDataAll(time);
   }, []);
@@ -16,7 +15,9 @@ const Command = (props) => {
       const average =
         array.reduce((accum, curr) => {
           return (
-            accum + curr.dateDelivery.toDate().getTime() - curr.requestDate.toDate().getTime()
+            accum +
+            curr.dateDelivery.toDate().getTime() -
+            curr.requestDate.toDate().getTime()
           );
         }, 0) / array.length;
 
@@ -75,8 +76,8 @@ const Command = (props) => {
   props.request.status === 1
     ? (statusOrder = "start")
     : props.request.status === 2
-      ? (statusOrder = "progress")
-      : (statusOrder = "finished");
+    ? (statusOrder = "progress")
+    : (statusOrder = "finished");
 
   return (
     <div

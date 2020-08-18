@@ -14,6 +14,7 @@ const Header = () => {
   const { signOut, signed, user } = useAuth();
   const [open, setOpen] = useState(false);
   const [requests, setRequests] = useState(0);
+  const [alert, setAlert] = useState(false);
 
   const togleOpen = (e) => {
     if (
@@ -30,10 +31,14 @@ const Header = () => {
   }, [open]);
 
   useEffect(() => {
+    setAlert(requests);
     function get(data) {
       setRequests(data.length);
     }
     getDataByStatus(get, 2);
+    if (alert > requests) {
+      notifyHall(get);
+    }
   }, []);
 
   const onClickDelivery = () => {
@@ -50,13 +55,13 @@ const Header = () => {
     if (user && user.type === "service") {
       notifyHall(get);
     }
-  }, [user, requests]);
+  }, [user]);
 
   const handleLogout = async () => {
     togleOpen(false);
     try {
       await signOut();
-    } catch (error) { }
+    } catch (error) {}
   };
   const openMenu = () => {
     setOpen(!open);
@@ -87,12 +92,12 @@ const Header = () => {
                     </li>
                   </>
                 ) : (
-                    <li>
-                      <Link to="/" onClick={() => togleOpen(false)}>
-                        Cozinha
+                  <li>
+                    <Link to="/" onClick={() => togleOpen(false)}>
+                      Cozinha
                     </Link>
-                    </li>
-                  )}
+                  </li>
+                )}
                 <li>
                   <Link to="/orderHistory" onClick={() => togleOpen(false)}>
                     Histórico
