@@ -59,7 +59,6 @@ const Header = () => {
     } catch (error) { }
   };
   const openMenu = () => {
-
     setOpen(!open);
   };
   if (signed === true) {
