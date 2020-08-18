@@ -50,12 +50,12 @@ const Header = () => {
     if (user && user.type === "service") {
       notifyHall(get);
     }
-  }, [user, requests]);
+  }, [user]);
 
   const handleLogout = async () => {
-    togleOpen(false);
     try {
       await signOut();
+      setOpen(false);
     } catch (error) { }
   };
   const openMenu = () => {

@@ -6,7 +6,6 @@ import { getData } from "../../firebase/firebaseService";
 import Flatpickr from "react-flatpickr";
 import flatpickr from "flatpickr";
 import { Portuguese } from "flatpickr/dist/l10n/pt";
-
 import logo from "../../img/logo3.png";
 import "./style.css";
 
@@ -46,6 +45,7 @@ const OrderHistory = () => {
               className="calendar"
               onChange={(e) => setCalendarStart(e[0])}
               value={calendarStart}
+              options={{ dateFormat: "d-m-Y" }}
             />
           </div>
           <div>
@@ -54,6 +54,7 @@ const OrderHistory = () => {
               className="calendar"
               onChange={(e) => setCalendarFinish(e[0])}
               value={calendarFinish}
+              options={{ dateFormat: "d-m-Y" }}
             />
           </div>
 
